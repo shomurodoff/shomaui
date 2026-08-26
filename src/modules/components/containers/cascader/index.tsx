@@ -1,7 +1,5 @@
-import ComponentPlaceholder from "../component-placeholder"
+import { FilterPanel } from "#/components/shomaui/components/reference-components";
 
-const Index = () => {
-  return <ComponentPlaceholder title="Cascader" />
-}
+const Index = () => <FilterPanel />;
 
-export default Index
+export default Index;

@@ -1,7 +1,5 @@
-import ComponentPlaceholder from "../component-placeholder"
+import { AccordionPreview } from "#/modules/components/previews";
 
-const Index = () => {
-  return <ComponentPlaceholder title="Accordion" />
-}
+const Index = () => <AccordionPreview />;
 
-export default Index
+export default Index;

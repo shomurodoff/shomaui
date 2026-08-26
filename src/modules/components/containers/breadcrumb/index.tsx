@@ -1,7 +1,5 @@
-import ComponentPlaceholder from "../component-placeholder"
+import { BreadcrumbPreview } from "#/modules/components/previews";
 
-const Index = () => {
-  return <ComponentPlaceholder title="Breadcrumb" />
-}
+const Index = () => <BreadcrumbPreview />;
 
-export default Index
+export default Index;

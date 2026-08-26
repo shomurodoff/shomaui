@@ -1,7 +1,5 @@
-import ComponentPlaceholder from "../component-placeholder"
+import { EventCalendar } from "#/components/shomaui/components/reference-components";
 
-const Index = () => {
-  return <ComponentPlaceholder title="Calendar" />
-}
+const Index = () => <EventCalendar />;
 
-export default Index
+export default Index;

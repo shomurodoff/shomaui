@@ -22,10 +22,24 @@ import {
   BadgePreview,
   BreadcrumbPreview,
   ButtonPreview,
-  ComponentCatalogPlaceholderPreview,
   TooltipPreview,
 } from "#/modules/components/previews.tsx";
 import { getCatalogItems, type CatalogItem } from "#/modules/catalog/data";
+import {
+  ButtonGroup,
+  CarouselGallery,
+  ChartCard,
+  CheckboxGroup,
+  CodeBlock,
+  CollapsibleCard,
+  CommandMenu,
+  ContextMenu,
+  DataGridPro,
+  EventCalendar,
+  FilterPanel,
+  ProfileCard,
+  SearchableDropdown,
+} from "#/components/shomaui/components/reference-components";
 import { avatarExamples } from "./containers/avatar/examples.tsx";
 import { buttonExamples } from "./containers/button/examples.tsx";
 import { tooltipExamples } from "./containers/tooltip/examples.tsx";
@@ -145,17 +159,17 @@ const additionalLegacyComponentCards: LegacyComponentCard[] = [
     slug: "button-group",
     name: "Button Group",
     count: 1,
-    category: "Actions",
+    category: "Buttons",
     tags: ["actions"],
-    preview: ComponentCatalogPlaceholderPreview,
+    preview: ButtonGroup,
   },
   {
     slug: "calendar",
     name: "Calendar",
     count: 1,
-    category: "Data Display",
+    category: "Data",
     tags: ["data"],
-    preview: ComponentCatalogPlaceholderPreview,
+    preview: EventCalendar,
   },
   {
     slug: "card",
@@ -163,7 +177,7 @@ const additionalLegacyComponentCards: LegacyComponentCard[] = [
     count: 1,
     category: "Layout",
     tags: ["layout"],
-    preview: ComponentCatalogPlaceholderPreview,
+    preview: ProfileCard,
   },
   {
     slug: "carousel",
@@ -171,7 +185,7 @@ const additionalLegacyComponentCards: LegacyComponentCard[] = [
     count: 1,
     category: "Media",
     tags: ["media"],
-    preview: ComponentCatalogPlaceholderPreview,
+    preview: CarouselGallery,
   },
   {
     slug: "cascader",
@@ -179,15 +193,15 @@ const additionalLegacyComponentCards: LegacyComponentCard[] = [
     count: 1,
     category: "Forms",
     tags: ["forms"],
-    preview: ComponentCatalogPlaceholderPreview,
+    preview: FilterPanel,
   },
   {
     slug: "chart",
     name: "Chart",
     count: 1,
-    category: "Data Display",
+    category: "Data",
     tags: ["data"],
-    preview: ComponentCatalogPlaceholderPreview,
+    preview: ChartCard,
   },
   {
     slug: "checkbox",
@@ -195,7 +209,7 @@ const additionalLegacyComponentCards: LegacyComponentCard[] = [
     count: 1,
     category: "Forms",
     tags: ["forms"],
-    preview: ComponentCatalogPlaceholderPreview,
+    preview: CheckboxGroup,
   },
   {
     slug: "code-block",
@@ -203,7 +217,7 @@ const additionalLegacyComponentCards: LegacyComponentCard[] = [
     count: 1,
     category: "Code",
     tags: ["code"],
-    preview: ComponentCatalogPlaceholderPreview,
+    preview: CodeBlock,
   },
   {
     slug: "collapsible",
@@ -211,7 +225,7 @@ const additionalLegacyComponentCards: LegacyComponentCard[] = [
     count: 1,
     category: "Layout",
     tags: ["layout"],
-    preview: ComponentCatalogPlaceholderPreview,
+    preview: CollapsibleCard,
   },
   {
     slug: "combobox",
@@ -219,7 +233,7 @@ const additionalLegacyComponentCards: LegacyComponentCard[] = [
     count: 1,
     category: "Forms",
     tags: ["forms"],
-    preview: ComponentCatalogPlaceholderPreview,
+    preview: SearchableDropdown,
   },
   {
     slug: "command",
@@ -227,7 +241,7 @@ const additionalLegacyComponentCards: LegacyComponentCard[] = [
     count: 1,
     category: "Navigation",
     tags: ["navigation"],
-    preview: ComponentCatalogPlaceholderPreview,
+    preview: CommandMenu,
   },
   {
     slug: "context-menu",
@@ -235,15 +249,15 @@ const additionalLegacyComponentCards: LegacyComponentCard[] = [
     count: 1,
     category: "Navigation",
     tags: ["navigation"],
-    preview: ComponentCatalogPlaceholderPreview,
+    preview: ContextMenu,
   },
   {
     slug: "data-grid",
     name: "Data Grid",
     count: 1,
-    category: "Data Display",
+    category: "Data",
     tags: ["data"],
-    preview: ComponentCatalogPlaceholderPreview,
+    preview: DataGridPro,
   },
 ];
 
@@ -253,10 +267,10 @@ const legacyCategoryBySlug: Record<string, string> = {
   "alert-dialog": "Feedback",
   "aspect-ratio": "Layout",
   autocomplete: "Forms",
-  avatar: "Identity",
+  avatar: "Profiles",
   badge: "Feedback",
   breadcrumb: "Navigation",
-  button: "Actions",
+  button: "Buttons",
   tooltip: "Feedback",
 };
 

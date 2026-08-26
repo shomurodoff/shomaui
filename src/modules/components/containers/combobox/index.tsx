@@ -1,7 +1,5 @@
-import ComponentPlaceholder from "../component-placeholder"
+import { SearchableDropdown } from "#/components/shomaui/components/reference-components";
 
-const Index = () => {
-  return <ComponentPlaceholder title="Combobox" />
-}
+const Index = () => <SearchableDropdown />;
 
-export default Index
+export default Index;

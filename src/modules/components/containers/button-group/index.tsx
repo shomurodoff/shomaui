@@ -1,7 +1,5 @@
-import ComponentPlaceholder from "../component-placeholder"
+import { ButtonGroup } from "#/components/shomaui/components/reference-components";
 
-const Index = () => {
-  return <ComponentPlaceholder title="Button Group" />
-}
+const Index = () => <ButtonGroup />;
 
-export default Index
+export default Index;

@@ -1,7 +1,5 @@
-import ComponentPlaceholder from "../component-placeholder"
+import { AspectRatioPreview } from "#/modules/components/previews";
 
-const Index = () => {
-  return <ComponentPlaceholder title="Aspect Ratio" />
-}
+const Index = () => <AspectRatioPreview />;
 
-export default Index
+export default Index;

@@ -62,22 +62,6 @@ function PreviewFrame({ children }: { children: ReactNode }) {
   );
 }
 
-function ComponentCatalogPlaceholderPreview() {
-  return (
-    <PreviewFrame>
-      <div className="grid gap-3 rounded-xl border bg-background p-4">
-        <div className="flex items-center gap-2">
-          <span className="size-8 rounded-lg bg-primary/10" />
-          <span className="h-2 w-24 rounded-full bg-muted" />
-        </div>
-        <span className="h-2 w-full rounded-full bg-muted" />
-        <span className="h-2 w-4/5 rounded-full bg-muted" />
-        <span className="h-8 w-24 rounded-lg bg-primary/15" />
-      </div>
-    </PreviewFrame>
-  );
-}
-
 function AccordionPreview() {
   return (
     <PreviewFrame>
@@ -285,6 +269,5 @@ export {
   BadgePreview,
   BreadcrumbPreview,
   ButtonPreview,
-  ComponentCatalogPlaceholderPreview,
   TooltipPreview,
 };

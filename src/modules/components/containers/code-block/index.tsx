@@ -1,7 +1,5 @@
-import ComponentPlaceholder from "../component-placeholder"
+import { CodeBlock } from "#/components/shomaui/components/reference-components";
 
-const Index = () => {
-  return <ComponentPlaceholder title="Code Block" />
-}
+const Index = () => <CodeBlock />;
 
-export default Index
+export default Index;

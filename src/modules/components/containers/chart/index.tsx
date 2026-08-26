@@ -1,7 +1,5 @@
-import ComponentPlaceholder from "../component-placeholder"
+import { ChartCard } from "#/components/shomaui/components/reference-components";
 
-const Index = () => {
-  return <ComponentPlaceholder title="Chart" />
-}
+const Index = () => <ChartCard />;
 
-export default Index
+export default Index;

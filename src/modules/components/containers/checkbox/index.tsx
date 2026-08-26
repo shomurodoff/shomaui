@@ -1,7 +1,5 @@
-import ComponentPlaceholder from "../component-placeholder"
+import { CheckboxGroup } from "#/components/shomaui/components/reference-components";
 
-const Index = () => {
-  return <ComponentPlaceholder title="Checkbox" />
-}
+const Index = () => <CheckboxGroup />;
 
-export default Index
+export default Index;

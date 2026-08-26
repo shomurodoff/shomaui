@@ -1,7 +1,5 @@
-import ComponentPlaceholder from "../component-placeholder"
+import { CarouselGallery } from "#/components/shomaui/components/reference-components";
 
-const Index = () => {
-  return <ComponentPlaceholder title="Carousel" />
-}
+const Index = () => <CarouselGallery />;
 
-export default Index
+export default Index;

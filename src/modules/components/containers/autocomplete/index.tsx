@@ -1,7 +1,5 @@
-import ComponentPlaceholder from "../component-placeholder"
+import { AutocompletePreview } from "#/modules/components/previews";
 
-const Index = () => {
-  return <ComponentPlaceholder title="Autocomplete" />
-}
+const Index = () => <AutocompletePreview />;
 
-export default Index
+export default Index;

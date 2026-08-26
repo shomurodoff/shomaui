@@ -1,7 +1,5 @@
-import ComponentPlaceholder from "../component-placeholder"
+import { CollapsibleCard } from "#/components/shomaui/components/reference-components";
 
-const Index = () => {
-  return <ComponentPlaceholder title="Collapsible" />
-}
+const Index = () => <CollapsibleCard />;
 
-export default Index
+export default Index;

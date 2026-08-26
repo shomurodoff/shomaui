@@ -1,7 +1,5 @@
-import ComponentPlaceholder from "../component-placeholder"
+import { AlertPreview } from "#/modules/components/previews";
 
-const Index = () => {
-  return <ComponentPlaceholder title="Alert" />
-}
+const Index = () => <AlertPreview />;
 
-export default Index
+export default Index;

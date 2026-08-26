@@ -193,11 +193,13 @@
       "title": "Shomaui Action Menu",
       "description": "Base UI action menu with shortcuts and destructive states.",
       "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
-      "files": [{
-        "path": "src/components/shomaui/components/action-menu.tsx",
-        "type": "registry:ui",
-        "target": "@components/shomaui/components/action-menu.tsx"
-      }]
+      "files": [
+        {
+          "path": "src/components/shomaui/components/action-menu.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/action-menu.tsx"
+        }
+      ]
     },
     {
       "name": "glass-card",
@@ -205,11 +207,13 @@
       "title": "Shomaui Glass Card",
       "description": "Layered glass surface for dashboards and product highlights.",
       "dependencies": ["lodash"],
-      "files": [{
-        "path": "src/components/shomaui/components/glass-card.tsx",
-        "type": "registry:ui",
-        "target": "@components/shomaui/components/glass-card.tsx"
-      }]
+      "files": [
+        {
+          "path": "src/components/shomaui/components/glass-card.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/glass-card.tsx"
+        }
+      ]
     },
     {
       "name": "status-badge",
@@ -217,11 +221,13 @@
       "title": "Shomaui Status Badge",
       "description": "Consistent new, stable, beta and deprecated statuses.",
       "dependencies": ["@base-ui/react", "lodash"],
-      "files": [{
-        "path": "src/components/shomaui/components/status-badge.tsx",
-        "type": "registry:ui",
-        "target": "@components/shomaui/components/status-badge.tsx"
-      }]
+      "files": [
+        {
+          "path": "src/components/shomaui/components/status-badge.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/status-badge.tsx"
+        }
+      ]
     },
     {
       "name": "segmented-control",
@@ -229,11 +235,13 @@
       "title": "Shomaui Segmented Control",
       "description": "Base UI tab behavior presented as a compact segmented switcher.",
       "dependencies": ["@base-ui/react", "lodash"],
-      "files": [{
-        "path": "src/components/shomaui/components/segmented-control.tsx",
-        "type": "registry:ui",
-        "target": "@components/shomaui/components/segmented-control.tsx"
-      }]
+      "files": [
+        {
+          "path": "src/components/shomaui/components/segmented-control.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/segmented-control.tsx"
+        }
+      ]
     },
     {
       "name": "stars-background",
@@ -241,11 +249,13 @@
       "title": "Shomaui Stars Background",
       "description": "Deterministic animated star field for immersive surfaces.",
       "dependencies": ["lodash"],
-      "files": [{
-        "path": "src/components/shomaui/background/stars-background.tsx",
-        "type": "registry:ui",
-        "target": "@components/shomaui/background/stars-background.tsx"
-      }]
+      "files": [
+        {
+          "path": "src/components/shomaui/background/stars-background.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/background/stars-background.tsx"
+        }
+      ]
     },
     {
       "name": "grid-background",
@@ -253,11 +263,13 @@
       "title": "Shomaui Grid Background",
       "description": "Responsive CSS grid surface for structured layouts.",
       "dependencies": ["lodash"],
-      "files": [{
-        "path": "src/components/shomaui/background/grid-background.tsx",
-        "type": "registry:ui",
-        "target": "@components/shomaui/background/grid-background.tsx"
-      }]
+      "files": [
+        {
+          "path": "src/components/shomaui/background/grid-background.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/background/grid-background.tsx"
+        }
+      ]
     },
     {
       "name": "aurora-background",
@@ -265,11 +277,13 @@
       "title": "Shomaui Aurora Background",
       "description": "Soft layered gradient light for hero and empty states.",
       "dependencies": ["lodash"],
-      "files": [{
-        "path": "src/components/shomaui/background/aurora-background.tsx",
-        "type": "registry:ui",
-        "target": "@components/shomaui/background/aurora-background.tsx"
-      }]
+      "files": [
+        {
+          "path": "src/components/shomaui/background/aurora-background.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/background/aurora-background.tsx"
+        }
+      ]
     },
     {
       "name": "noise-background",
@@ -277,11 +291,13 @@
       "title": "Shomaui Noise Background",
       "description": "Asset-free texture layer made from CSS gradients.",
       "dependencies": ["lodash"],
-      "files": [{
-        "path": "src/components/shomaui/background/noise-background.tsx",
-        "type": "registry:ui",
-        "target": "@components/shomaui/background/noise-background.tsx"
-      }]
+      "files": [
+        {
+          "path": "src/components/shomaui/background/noise-background.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/background/noise-background.tsx"
+        }
+      ]
     },
     {
       "name": "spotlight-card",
@@ -289,11 +305,13 @@
       "title": "Shomaui Spotlight Card",
       "description": "Pointer-aware radial light for readable interactive cards.",
       "dependencies": ["lodash"],
-      "files": [{
-        "path": "src/components/shomaui/effects/spotlight-card.tsx",
-        "type": "registry:ui",
-        "target": "@components/shomaui/effects/spotlight-card.tsx"
-      }]
+      "files": [
+        {
+          "path": "src/components/shomaui/effects/spotlight-card.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/effects/spotlight-card.tsx"
+        }
+      ]
     },
     {
       "name": "shine-border",
@@ -301,11 +319,13 @@
       "title": "Shomaui Shine Border",
       "description": "Lightweight conic-gradient border animation.",
       "dependencies": ["lodash"],
-      "files": [{
-        "path": "src/components/shomaui/effects/shine-border.tsx",
-        "type": "registry:ui",
-        "target": "@components/shomaui/effects/shine-border.tsx"
-      }]
+      "files": [
+        {
+          "path": "src/components/shomaui/effects/shine-border.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/effects/shine-border.tsx"
+        }
+      ]
     },
     {
       "name": "magnetic",
@@ -313,11 +333,13 @@
       "title": "Shomaui Magnetic",
       "description": "Subtle pointer attraction wrapper for interactive targets.",
       "dependencies": ["lodash"],
-      "files": [{
-        "path": "src/components/shomaui/effects/magnetic.tsx",
-        "type": "registry:ui",
-        "target": "@components/shomaui/effects/magnetic.tsx"
-      }]
+      "files": [
+        {
+          "path": "src/components/shomaui/effects/magnetic.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/effects/magnetic.tsx"
+        }
+      ]
     },
     {
       "name": "glow-hover-card",
@@ -325,11 +347,13 @@
       "title": "Shomaui Glow Hover Card",
       "description": "Lift, border glow and shadow for card-level feedback.",
       "dependencies": ["lodash"],
-      "files": [{
-        "path": "src/components/shomaui/effects/glow-hover-card.tsx",
-        "type": "registry:ui",
-        "target": "@components/shomaui/effects/glow-hover-card.tsx"
-      }]
+      "files": [
+        {
+          "path": "src/components/shomaui/effects/glow-hover-card.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/effects/glow-hover-card.tsx"
+        }
+      ]
     },
     {
       "name": "marquee",
@@ -337,11 +361,13 @@
       "title": "Shomaui Marquee",
       "description": "Accessible looping content rail with reduced-motion support.",
       "dependencies": ["lodash"],
-      "files": [{
-        "path": "src/components/shomaui/animations/marquee.tsx",
-        "type": "registry:ui",
-        "target": "@components/shomaui/animations/marquee.tsx"
-      }]
+      "files": [
+        {
+          "path": "src/components/shomaui/animations/marquee.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/animations/marquee.tsx"
+        }
+      ]
     },
     {
       "name": "reveal",
@@ -349,11 +375,13 @@
       "title": "Shomaui Reveal",
       "description": "IntersectionObserver reveal primitive for progressive content.",
       "dependencies": ["lodash"],
-      "files": [{
-        "path": "src/components/shomaui/animations/reveal.tsx",
-        "type": "registry:ui",
-        "target": "@components/shomaui/animations/reveal.tsx"
-      }]
+      "files": [
+        {
+          "path": "src/components/shomaui/animations/reveal.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/animations/reveal.tsx"
+        }
+      ]
     },
     {
       "name": "number-ticker",
@@ -361,11 +389,13 @@
       "title": "Shomaui Number Ticker",
       "description": "Smooth numeric counter for metrics and dashboards.",
       "dependencies": ["lodash"],
-      "files": [{
-        "path": "src/components/shomaui/animations/number-ticker.tsx",
-        "type": "registry:ui",
-        "target": "@components/shomaui/animations/number-ticker.tsx"
-      }]
+      "files": [
+        {
+          "path": "src/components/shomaui/animations/number-ticker.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/animations/number-ticker.tsx"
+        }
+      ]
     },
     {
       "name": "typing-text",
@@ -373,11 +403,13 @@
       "title": "Shomaui Typing Text",
       "description": "Looping typewriter text with live-region semantics.",
       "dependencies": ["lodash"],
-      "files": [{
-        "path": "src/components/shomaui/text/typing-text.tsx",
-        "type": "registry:ui",
-        "target": "@components/shomaui/text/typing-text.tsx"
-      }]
+      "files": [
+        {
+          "path": "src/components/shomaui/text/typing-text.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/text/typing-text.tsx"
+        }
+      ]
     },
     {
       "name": "shimmer-text",
@@ -385,11 +417,13 @@
       "title": "Shomaui Shimmer Text",
       "description": "Low-cost animated highlight sweep for headings and labels.",
       "dependencies": ["lodash"],
-      "files": [{
-        "path": "src/components/shomaui/text/shimmer-text.tsx",
-        "type": "registry:ui",
-        "target": "@components/shomaui/text/shimmer-text.tsx"
-      }]
+      "files": [
+        {
+          "path": "src/components/shomaui/text/shimmer-text.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/text/shimmer-text.tsx"
+        }
+      ]
     },
     {
       "name": "gradient-text",
@@ -397,11 +431,13 @@
       "title": "Shomaui Gradient Text",
       "description": "Token-aware gradient typography for expressive headlines.",
       "dependencies": ["lodash"],
-      "files": [{
-        "path": "src/components/shomaui/text/gradient-text.tsx",
-        "type": "registry:ui",
-        "target": "@components/shomaui/text/gradient-text.tsx"
-      }]
+      "files": [
+        {
+          "path": "src/components/shomaui/text/gradient-text.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/text/gradient-text.tsx"
+        }
+      ]
     },
     {
       "name": "animated-tooltip",
@@ -428,7 +464,13 @@
       "title": "Shomaui Animated List",
       "description": "A compact live activity rail with gentle item emphasis.",
       "dependencies": ["lodash"],
-      "files": [{"path":"src/components/shomaui/components/animated-list.tsx","type":"registry:ui","target":"@components/shomaui/components/animated-list.tsx"}]
+      "files": [
+        {
+          "path": "src/components/shomaui/components/animated-list.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/animated-list.tsx"
+        }
+      ]
     },
     {
       "name": "dock",
@@ -436,7 +478,13 @@
       "title": "Shomaui Dock",
       "description": "A keyboard-friendly application dock with tooltip labels and active state.",
       "dependencies": ["lodash"],
-      "files": [{"path":"src/components/shomaui/components/dock.tsx","type":"registry:ui","target":"@components/shomaui/components/dock.tsx"}]
+      "files": [
+        {
+          "path": "src/components/shomaui/components/dock.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/dock.tsx"
+        }
+      ]
     },
     {
       "name": "timeline",
@@ -444,7 +492,13 @@
       "title": "Shomaui Timeline",
       "description": "A vertical milestone timeline for product progress and workflows.",
       "dependencies": ["lodash", "lucide-react"],
-      "files": [{"path":"src/components/shomaui/components/timeline.tsx","type":"registry:ui","target":"@components/shomaui/components/timeline.tsx"}]
+      "files": [
+        {
+          "path": "src/components/shomaui/components/timeline.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/timeline.tsx"
+        }
+      ]
     },
     {
       "name": "rating",
@@ -452,7 +506,13 @@
       "title": "Shomaui Rating",
       "description": "An accessible star rating input with keyboard and screen-reader labels.",
       "dependencies": ["lodash", "lucide-react"],
-      "files": [{"path":"src/components/shomaui/components/rating.tsx","type":"registry:ui","target":"@components/shomaui/components/rating.tsx"}]
+      "files": [
+        {
+          "path": "src/components/shomaui/components/rating.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/rating.tsx"
+        }
+      ]
     },
     {
       "name": "file-upload",
@@ -460,7 +520,13 @@
       "title": "Shomaui File Upload",
       "description": "Drag-and-drop file input with deduplication and remove actions.",
       "dependencies": ["lodash", "lucide-react"],
-      "files": [{"path":"src/components/shomaui/components/file-upload.tsx","type":"registry:ui","target":"@components/shomaui/components/file-upload.tsx"}]
+      "files": [
+        {
+          "path": "src/components/shomaui/components/file-upload.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/file-upload.tsx"
+        }
+      ]
     },
     {
       "name": "copy-button",
@@ -468,8 +534,20 @@
       "title": "Shomaui Copy Button",
       "description": "A reusable clipboard action with copied confirmation state.",
       "registryDependencies": ["https://shomaui.vercel.app/r/button.json"],
-      "dependencies": ["@base-ui/react", "class-variance-authority", "cnfast", "lodash", "lucide-react"],
-      "files": [{"path":"src/components/shomaui/components/copy-button.tsx","type":"registry:ui","target":"@components/shomaui/components/copy-button.tsx"}]
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cnfast",
+        "lodash",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/copy-button.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/copy-button.tsx"
+        }
+      ]
     },
     {
       "name": "flickering-grid",
@@ -477,7 +555,13 @@
       "title": "Shomaui Flickering Grid",
       "description": "A deterministic grid of softly flickering cells.",
       "dependencies": ["lodash"],
-      "files": [{"path":"src/components/shomaui/background/flickering-grid.tsx","type":"registry:ui","target":"@components/shomaui/background/flickering-grid.tsx"}]
+      "files": [
+        {
+          "path": "src/components/shomaui/background/flickering-grid.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/background/flickering-grid.tsx"
+        }
+      ]
     },
     {
       "name": "retro-grid",
@@ -485,7 +569,13 @@
       "title": "Shomaui Retro Grid",
       "description": "A perspective neon grid for atmospheric hero sections.",
       "dependencies": ["lodash"],
-      "files": [{"path":"src/components/shomaui/background/retro-grid.tsx","type":"registry:ui","target":"@components/shomaui/background/retro-grid.tsx"}]
+      "files": [
+        {
+          "path": "src/components/shomaui/background/retro-grid.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/background/retro-grid.tsx"
+        }
+      ]
     },
     {
       "name": "dot-pattern",
@@ -493,7 +583,13 @@
       "title": "Shomaui Dot Pattern",
       "description": "A configurable CSS dot field with token-aware color and spacing.",
       "dependencies": ["lodash"],
-      "files": [{"path":"src/components/shomaui/background/dot-pattern.tsx","type":"registry:ui","target":"@components/shomaui/background/dot-pattern.tsx"}]
+      "files": [
+        {
+          "path": "src/components/shomaui/background/dot-pattern.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/background/dot-pattern.tsx"
+        }
+      ]
     },
     {
       "name": "bubble-background",
@@ -501,7 +597,13 @@
       "title": "Shomaui Bubble Background",
       "description": "A soft floating bubble field for playful interface moments.",
       "dependencies": ["lodash"],
-      "files": [{"path":"src/components/shomaui/background/bubble-background.tsx","type":"registry:ui","target":"@components/shomaui/background/bubble-background.tsx"}]
+      "files": [
+        {
+          "path": "src/components/shomaui/background/bubble-background.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/background/bubble-background.tsx"
+        }
+      ]
     },
     {
       "name": "gradient-background",
@@ -509,7 +611,13 @@
       "title": "Shomaui Gradient Background",
       "description": "Layered radial gradients for soft focus without image assets.",
       "dependencies": ["lodash"],
-      "files": [{"path":"src/components/shomaui/background/gradient-background.tsx","type":"registry:ui","target":"@components/shomaui/background/gradient-background.tsx"}]
+      "files": [
+        {
+          "path": "src/components/shomaui/background/gradient-background.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/background/gradient-background.tsx"
+        }
+      ]
     },
     {
       "name": "hexagon-background",
@@ -517,7 +625,13 @@
       "title": "Shomaui Hexagon Background",
       "description": "A lightweight hexagonal pattern for technical interfaces.",
       "dependencies": ["lodash"],
-      "files": [{"path":"src/components/shomaui/background/hexagon-background.tsx","type":"registry:ui","target":"@components/shomaui/background/hexagon-background.tsx"}]
+      "files": [
+        {
+          "path": "src/components/shomaui/background/hexagon-background.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/background/hexagon-background.tsx"
+        }
+      ]
     },
     {
       "name": "border-beam",
@@ -525,7 +639,13 @@
       "title": "Shomaui Border Beam",
       "description": "A moving conic-gradient beam that draws attention to a card edge.",
       "dependencies": ["lodash"],
-      "files": [{"path":"src/components/shomaui/effects/border-beam.tsx","type":"registry:ui","target":"@components/shomaui/effects/border-beam.tsx"}]
+      "files": [
+        {
+          "path": "src/components/shomaui/effects/border-beam.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/effects/border-beam.tsx"
+        }
+      ]
     },
     {
       "name": "glare-hover",
@@ -533,7 +653,13 @@
       "title": "Shomaui Glare Hover",
       "description": "Pointer-aware glare that adds depth while preserving readable content.",
       "dependencies": ["lodash"],
-      "files": [{"path":"src/components/shomaui/effects/glare-hover.tsx","type":"registry:ui","target":"@components/shomaui/effects/glare-hover.tsx"}]
+      "files": [
+        {
+          "path": "src/components/shomaui/effects/glare-hover.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/effects/glare-hover.tsx"
+        }
+      ]
     },
     {
       "name": "meteors",
@@ -541,7 +667,13 @@
       "title": "Shomaui Meteors",
       "description": "A deterministic meteor shower for high-energy dark surfaces.",
       "dependencies": ["lodash"],
-      "files": [{"path":"src/components/shomaui/effects/meteors.tsx","type":"registry:ui","target":"@components/shomaui/effects/meteors.tsx"}]
+      "files": [
+        {
+          "path": "src/components/shomaui/effects/meteors.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/effects/meteors.tsx"
+        }
+      ]
     },
     {
       "name": "confetti",
@@ -549,8 +681,20 @@
       "title": "Shomaui Confetti",
       "description": "A lightweight celebration burst for completion moments.",
       "registryDependencies": ["https://shomaui.vercel.app/r/button.json"],
-      "dependencies": ["@base-ui/react", "class-variance-authority", "cnfast", "lodash", "lucide-react"],
-      "files": [{"path":"src/components/shomaui/effects/confetti.tsx","type":"registry:ui","target":"@components/shomaui/effects/confetti.tsx"}]
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cnfast",
+        "lodash",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "src/components/shomaui/effects/confetti.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/effects/confetti.tsx"
+        }
+      ]
     },
     {
       "name": "progressive-blur",
@@ -558,7 +702,13 @@
       "title": "Shomaui Progressive Blur",
       "description": "A top or bottom blur veil for clipped content surfaces.",
       "dependencies": ["lodash"],
-      "files": [{"path":"src/components/shomaui/effects/progressive-blur.tsx","type":"registry:ui","target":"@components/shomaui/effects/progressive-blur.tsx"}]
+      "files": [
+        {
+          "path": "src/components/shomaui/effects/progressive-blur.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/effects/progressive-blur.tsx"
+        }
+      ]
     },
     {
       "name": "image-reveal",
@@ -566,7 +716,13 @@
       "title": "Shomaui Image Reveal",
       "description": "A focus-friendly image transition from blur to clarity.",
       "dependencies": ["lodash"],
-      "files": [{"path":"src/components/shomaui/effects/image-reveal.tsx","type":"registry:ui","target":"@components/shomaui/effects/image-reveal.tsx"}]
+      "files": [
+        {
+          "path": "src/components/shomaui/effects/image-reveal.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/effects/image-reveal.tsx"
+        }
+      ]
     },
     {
       "name": "blur-fade",
@@ -574,7 +730,13 @@
       "title": "Shomaui Blur Fade",
       "description": "An IntersectionObserver-powered entrance animation.",
       "dependencies": ["lodash"],
-      "files": [{"path":"src/components/shomaui/animations/blur-fade.tsx","type":"registry:ui","target":"@components/shomaui/animations/blur-fade.tsx"}]
+      "files": [
+        {
+          "path": "src/components/shomaui/animations/blur-fade.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/animations/blur-fade.tsx"
+        }
+      ]
     },
     {
       "name": "stacking-card",
@@ -582,7 +744,13 @@
       "title": "Shomaui Stacking Card",
       "description": "Sticky cards that layer into a clear scroll narrative.",
       "dependencies": ["lodash"],
-      "files": [{"path":"src/components/shomaui/animations/stacking-card.tsx","type":"registry:ui","target":"@components/shomaui/animations/stacking-card.tsx"}]
+      "files": [
+        {
+          "path": "src/components/shomaui/animations/stacking-card.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/animations/stacking-card.tsx"
+        }
+      ]
     },
     {
       "name": "shimmer-loader",
@@ -590,7 +758,13 @@
       "title": "Shomaui Shimmer Loader",
       "description": "A compact loading skeleton for async content states.",
       "dependencies": ["lodash"],
-      "files": [{"path":"src/components/shomaui/animations/shimmer-loader.tsx","type":"registry:ui","target":"@components/shomaui/animations/shimmer-loader.tsx"}]
+      "files": [
+        {
+          "path": "src/components/shomaui/animations/shimmer-loader.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/animations/shimmer-loader.tsx"
+        }
+      ]
     },
     {
       "name": "scroll-progress",
@@ -598,7 +772,13 @@
       "title": "Shomaui Scroll Progress",
       "description": "A fixed reading progress indicator for long-form pages.",
       "dependencies": ["lodash"],
-      "files": [{"path":"src/components/shomaui/animations/scroll-progress.tsx","type":"registry:ui","target":"@components/shomaui/animations/scroll-progress.tsx"}]
+      "files": [
+        {
+          "path": "src/components/shomaui/animations/scroll-progress.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/animations/scroll-progress.tsx"
+        }
+      ]
     },
     {
       "name": "aurora-text",
@@ -606,7 +786,13 @@
       "title": "Shomaui Aurora Text",
       "description": "Animated aurora color movement for expressive headlines.",
       "dependencies": ["lodash"],
-      "files": [{"path":"src/components/shomaui/text/aurora-text.tsx","type":"registry:ui","target":"@components/shomaui/text/aurora-text.tsx"}]
+      "files": [
+        {
+          "path": "src/components/shomaui/text/aurora-text.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/text/aurora-text.tsx"
+        }
+      ]
     },
     {
       "name": "sparkles-text",
@@ -614,7 +800,13 @@
       "title": "Shomaui Sparkles Text",
       "description": "Small animated sparkles that make a short phrase feel special.",
       "dependencies": ["lodash", "lucide-react"],
-      "files": [{"path":"src/components/shomaui/text/sparkles-text.tsx","type":"registry:ui","target":"@components/shomaui/text/sparkles-text.tsx"}]
+      "files": [
+        {
+          "path": "src/components/shomaui/text/sparkles-text.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/text/sparkles-text.tsx"
+        }
+      ]
     },
     {
       "name": "morphing-text",
@@ -622,7 +814,13 @@
       "title": "Shomaui Morphing Text",
       "description": "Looping word changes for compact value propositions.",
       "dependencies": ["lodash"],
-      "files": [{"path":"src/components/shomaui/text/morphing-text.tsx","type":"registry:ui","target":"@components/shomaui/text/morphing-text.tsx"}]
+      "files": [
+        {
+          "path": "src/components/shomaui/text/morphing-text.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/text/morphing-text.tsx"
+        }
+      ]
     },
     {
       "name": "text-reveal",
@@ -630,7 +828,13 @@
       "title": "Shomaui Text Reveal",
       "description": "A viewport-aware line reveal for editorial headings.",
       "dependencies": ["lodash"],
-      "files": [{"path":"src/components/shomaui/text/text-reveal.tsx","type":"registry:ui","target":"@components/shomaui/text/text-reveal.tsx"}]
+      "files": [
+        {
+          "path": "src/components/shomaui/text/text-reveal.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/text/text-reveal.tsx"
+        }
+      ]
     },
     {
       "name": "text-highlighter",
@@ -638,7 +842,13 @@
       "title": "Shomaui Text Highlighter",
       "description": "A semantic inline highlight for visual copy cues.",
       "dependencies": ["lodash"],
-      "files": [{"path":"src/components/shomaui/text/text-highlighter.tsx","type":"registry:ui","target":"@components/shomaui/text/text-highlighter.tsx"}]
+      "files": [
+        {
+          "path": "src/components/shomaui/text/text-highlighter.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/text/text-highlighter.tsx"
+        }
+      ]
     },
     {
       "name": "word-rotate",
@@ -646,7 +856,1511 @@
       "title": "Shomaui Word Rotate",
       "description": "An accessible rotating word primitive for concise animated copy.",
       "dependencies": ["lodash"],
-      "files": [{"path":"src/components/shomaui/text/word-rotate.tsx","type":"registry:ui","target":"@components/shomaui/text/word-rotate.tsx"}]
+      "files": [
+        {
+          "path": "src/components/shomaui/text/word-rotate.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/text/word-rotate.tsx"
+        }
+      ]
+    },
+    {
+      "name": "shimmer-button",
+      "type": "registry:ui",
+      "title": "Shomaui Shimmer Button",
+      "description": "Shimmer Button component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pulsating-button",
+      "type": "registry:ui",
+      "title": "Shomaui Pulsating Button",
+      "description": "Pulsating Button component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "magnetic-button",
+      "type": "registry:ui",
+      "title": "Shomaui Magnetic Button",
+      "description": "Magnetic Button component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "clip-corners-button",
+      "type": "registry:ui",
+      "title": "Shomaui Clip Corners Button",
+      "description": "Clip Corners Button component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dot-morph-button",
+      "type": "registry:ui",
+      "title": "Shomaui Dot Morph Button",
+      "description": "Dot Morph Button component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "flip-button",
+      "type": "registry:ui",
+      "title": "Shomaui Flip Button",
+      "description": "Flip Button component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "icon-button",
+      "type": "registry:ui",
+      "title": "Shomaui Icon Button",
+      "description": "Icon Button component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "loading-button",
+      "type": "registry:ui",
+      "title": "Shomaui Loading Button",
+      "description": "Loading Button component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "split-button",
+      "type": "registry:ui",
+      "title": "Shomaui Split Button",
+      "description": "Split Button component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "download-button",
+      "type": "registry:ui",
+      "title": "Shomaui Download Button",
+      "description": "Download Button component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "hold-button",
+      "type": "registry:ui",
+      "title": "Shomaui Hold Button",
+      "description": "Hold Button component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "social-button",
+      "type": "registry:ui",
+      "title": "Shomaui Social Button",
+      "description": "Social Button component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Shomaui Input",
+      "description": "Input component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "title": "Shomaui Input Otp",
+      "description": "Input Otp component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "phone-input",
+      "type": "registry:ui",
+      "title": "Shomaui Phone Input",
+      "description": "Phone Input component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "number-field",
+      "type": "registry:ui",
+      "title": "Shomaui Number Field",
+      "description": "Number Field component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "color-picker",
+      "type": "registry:ui",
+      "title": "Shomaui Color Picker",
+      "description": "Color Picker component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "range-slider",
+      "type": "registry:ui",
+      "title": "Shomaui Range Slider",
+      "description": "Range Slider component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "date-range-picker",
+      "type": "registry:ui",
+      "title": "Shomaui Date Range Picker",
+      "description": "Date Range Picker component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "multi-select",
+      "type": "registry:ui",
+      "title": "Shomaui Multi Select",
+      "description": "Multi Select component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "searchable-dropdown",
+      "type": "registry:ui",
+      "title": "Shomaui Searchable Dropdown",
+      "description": "Searchable Dropdown component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "password-field",
+      "type": "registry:ui",
+      "title": "Shomaui Password Field",
+      "description": "Password Field component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tag-input",
+      "type": "registry:ui",
+      "title": "Shomaui Tag Input",
+      "description": "Tag Input component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "form-stepper",
+      "type": "registry:ui",
+      "title": "Shomaui Form Stepper",
+      "description": "Form Stepper component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "filter-panel",
+      "type": "registry:ui",
+      "title": "Shomaui Filter Panel",
+      "description": "Filter Panel component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "radio-card-group",
+      "type": "registry:ui",
+      "title": "Shomaui Radio Card Group",
+      "description": "Radio Card Group component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "checkbox-group",
+      "type": "registry:ui",
+      "title": "Shomaui Checkbox Group",
+      "description": "Checkbox Group component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-file-upload",
+      "type": "registry:ui",
+      "title": "Shomaui Animated File Upload",
+      "description": "Animated File Upload component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Shomaui Pagination",
+      "description": "Pagination component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Shomaui Tabs",
+      "description": "Tabs component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "mega-menu",
+      "type": "registry:ui",
+      "title": "Shomaui Mega Menu",
+      "description": "Mega Menu component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "navigation-rail",
+      "type": "registry:ui",
+      "title": "Shomaui Navigation Rail",
+      "description": "Navigation Rail component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "command-menu",
+      "type": "registry:ui",
+      "title": "Shomaui Command Menu",
+      "description": "Command Menu component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Shomaui Dropdown Menu",
+      "description": "Dropdown Menu component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "context-menu-card",
+      "type": "registry:ui",
+      "title": "Shomaui Context Menu Card",
+      "description": "Context Menu Card component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "menu-bar",
+      "type": "registry:ui",
+      "title": "Shomaui Menu Bar",
+      "description": "Menu Bar component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stepper",
+      "type": "registry:ui",
+      "title": "Shomaui Stepper",
+      "description": "Stepper component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "link-preview",
+      "type": "registry:ui",
+      "title": "Shomaui Link Preview",
+      "description": "Link Preview component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sidebar-nav",
+      "type": "registry:ui",
+      "title": "Shomaui Sidebar Nav",
+      "description": "Sidebar Nav component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb-nav",
+      "type": "registry:ui",
+      "title": "Shomaui Breadcrumb Nav",
+      "description": "Breadcrumb Nav component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "toast-stack",
+      "type": "registry:ui",
+      "title": "Shomaui Toast Stack",
+      "description": "Toast Stack component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "progress-card",
+      "type": "registry:ui",
+      "title": "Shomaui Progress Card",
+      "description": "Progress Card component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "notification-badge",
+      "type": "registry:ui",
+      "title": "Shomaui Notification Badge",
+      "description": "Notification Badge component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "success-alert",
+      "type": "registry:ui",
+      "title": "Shomaui Success Alert",
+      "description": "Success Alert component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "warning-alert",
+      "type": "registry:ui",
+      "title": "Shomaui Warning Alert",
+      "description": "Warning Alert component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "empty-state",
+      "type": "registry:ui",
+      "title": "Shomaui Empty State",
+      "description": "Empty State component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "skeleton-card",
+      "type": "registry:ui",
+      "title": "Shomaui Skeleton Card",
+      "description": "Skeleton Card component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "confirm-dialog",
+      "type": "registry:ui",
+      "title": "Shomaui Confirm Dialog",
+      "description": "Confirm Dialog component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "status-chip",
+      "type": "registry:ui",
+      "title": "Shomaui Status Chip",
+      "description": "Status Chip component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "animated-progress",
+      "type": "registry:ui",
+      "title": "Shomaui Animated Progress",
+      "description": "Animated Progress component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "bento-grid",
+      "type": "registry:ui",
+      "title": "Shomaui Bento Grid",
+      "description": "Bento Grid component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "masonry-grid",
+      "type": "registry:ui",
+      "title": "Shomaui Masonry Grid",
+      "description": "Masonry Grid component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "split-pane",
+      "type": "registry:ui",
+      "title": "Shomaui Split Pane",
+      "description": "Split Pane component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "resizable-panels",
+      "type": "registry:ui",
+      "title": "Shomaui Resizable Panels",
+      "description": "Resizable Panels component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "accordion-stack",
+      "type": "registry:ui",
+      "title": "Shomaui Accordion Stack",
+      "description": "Accordion Stack component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "collapsible-card",
+      "type": "registry:ui",
+      "title": "Shomaui Collapsible Card",
+      "description": "Collapsible Card component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "header",
+      "type": "registry:ui",
+      "title": "Shomaui Header",
+      "description": "Header component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "footer",
+      "type": "registry:ui",
+      "title": "Shomaui Footer",
+      "description": "Footer component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "aspect-ratio-media",
+      "type": "registry:ui",
+      "title": "Shomaui Aspect Ratio Media",
+      "description": "Aspect Ratio Media component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "expandable-card",
+      "type": "registry:ui",
+      "title": "Shomaui Expandable Card",
+      "description": "Expandable Card component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "data-grid-pro",
+      "type": "registry:ui",
+      "title": "Shomaui Data Grid Pro",
+      "description": "Data Grid Pro component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "event-calendar",
+      "type": "registry:ui",
+      "title": "Shomaui Event Calendar",
+      "description": "Event Calendar component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gantt-chart",
+      "type": "registry:ui",
+      "title": "Shomaui Gantt Chart",
+      "description": "Gantt Chart component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "kanban-board",
+      "type": "registry:ui",
+      "title": "Shomaui Kanban Board",
+      "description": "Kanban Board component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "sortable-list",
+      "type": "registry:ui",
+      "title": "Shomaui Sortable List",
+      "description": "Sortable List component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tree-view",
+      "type": "registry:ui",
+      "title": "Shomaui Tree View",
+      "description": "Tree View component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stats-card",
+      "type": "registry:ui",
+      "title": "Shomaui Stats Card",
+      "description": "Stats Card component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "activity-feed",
+      "type": "registry:ui",
+      "title": "Shomaui Activity Feed",
+      "description": "Activity Feed component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "schedule-board",
+      "type": "registry:ui",
+      "title": "Shomaui Schedule Board",
+      "description": "Schedule Board component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "comparison-table",
+      "type": "registry:ui",
+      "title": "Shomaui Comparison Table",
+      "description": "Comparison Table component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "data-list",
+      "type": "registry:ui",
+      "title": "Shomaui Data List",
+      "description": "Data List component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "chart-card",
+      "type": "registry:ui",
+      "title": "Shomaui Chart Card",
+      "description": "Chart Card component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "stepper-table",
+      "type": "registry:ui",
+      "title": "Shomaui Stepper Table",
+      "description": "Stepper Table component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "filter-table",
+      "type": "registry:ui",
+      "title": "Shomaui Filter Table",
+      "description": "Filter Table component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "horizontal-timeline",
+      "type": "registry:ui",
+      "title": "Shomaui Horizontal Timeline",
+      "description": "Horizontal Timeline component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "carousel-gallery",
+      "type": "registry:ui",
+      "title": "Shomaui Carousel Gallery",
+      "description": "Carousel Gallery component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "image-mask",
+      "type": "registry:ui",
+      "title": "Shomaui Image Mask",
+      "description": "Image Mask component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "video-card",
+      "type": "registry:ui",
+      "title": "Shomaui Video Card",
+      "description": "Video Card component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "product-card",
+      "type": "registry:ui",
+      "title": "Shomaui Product Card",
+      "description": "Product Card component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "photo-stack",
+      "type": "registry:ui",
+      "title": "Shomaui Photo Stack",
+      "description": "Photo Stack component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "image-tabs",
+      "type": "registry:ui",
+      "title": "Shomaui Image Tabs",
+      "description": "Image Tabs component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "media-modal",
+      "type": "registry:ui",
+      "title": "Shomaui Media Modal",
+      "description": "Media Modal component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "avatar-circles",
+      "type": "registry:ui",
+      "title": "Shomaui Avatar Circles",
+      "description": "Avatar Circles component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "tweet-card",
+      "type": "registry:ui",
+      "title": "Shomaui Tweet Card",
+      "description": "Tweet Card component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "testimonial-card",
+      "type": "registry:ui",
+      "title": "Shomaui Testimonial Card",
+      "description": "Testimonial Card component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "feature-list",
+      "type": "registry:ui",
+      "title": "Shomaui Feature List",
+      "description": "Feature List component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "announcement-card",
+      "type": "registry:ui",
+      "title": "Shomaui Announcement Card",
+      "description": "Announcement Card component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pricing-card",
+      "type": "registry:ui",
+      "title": "Shomaui Pricing Card",
+      "description": "Pricing Card component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "blog-card",
+      "type": "registry:ui",
+      "title": "Shomaui Blog Card",
+      "description": "Blog Card component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "file-tree",
+      "type": "registry:ui",
+      "title": "Shomaui File Tree",
+      "description": "File Tree component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "terminal-card",
+      "type": "registry:ui",
+      "title": "Shomaui Terminal Card",
+      "description": "Terminal Card component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "profile-card",
+      "type": "registry:ui",
+      "title": "Shomaui Profile Card",
+      "description": "Profile Card component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "user-presence",
+      "type": "registry:ui",
+      "title": "Shomaui User Presence",
+      "description": "User Presence component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "team-stack",
+      "type": "registry:ui",
+      "title": "Shomaui Team Stack",
+      "description": "Team Stack component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "account-menu",
+      "type": "registry:ui",
+      "title": "Shomaui Account Menu",
+      "description": "Account Menu component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "contact-card",
+      "type": "registry:ui",
+      "title": "Shomaui Contact Card",
+      "description": "Contact Card component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "profile-stat",
+      "type": "registry:ui",
+      "title": "Shomaui Profile Stat",
+      "description": "Profile Stat component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "code-block-pro",
+      "type": "registry:ui",
+      "title": "Shomaui Code Block Pro",
+      "description": "Code Block Pro component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "code-tabs",
+      "type": "registry:ui",
+      "title": "Shomaui Code Tabs",
+      "description": "Code Tabs component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "code-comparison",
+      "type": "registry:ui",
+      "title": "Shomaui Code Comparison",
+      "description": "Code Comparison component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "terminal",
+      "type": "registry:ui",
+      "title": "Shomaui Terminal",
+      "description": "Terminal component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "diff-viewer",
+      "type": "registry:ui",
+      "title": "Shomaui Diff Viewer",
+      "description": "Diff Viewer component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "neon-card",
+      "type": "registry:ui",
+      "title": "Shomaui Neon Card",
+      "description": "Neon Card component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "magic-card",
+      "type": "registry:ui",
+      "title": "Shomaui Magic Card",
+      "description": "Magic Card component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "spotlight-surface",
+      "type": "registry:ui",
+      "title": "Shomaui Spotlight Surface",
+      "description": "Spotlight Surface component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "gradient-border-card",
+      "type": "registry:ui",
+      "title": "Shomaui Gradient Border Card",
+      "description": "Gradient Border Card component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
+    },
+    {
+      "name": "liquid-glass",
+      "type": "registry:ui",
+      "title": "Shomaui Liquid Glass",
+      "description": "Liquid Glass component for accessible product interfaces and responsive layouts.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/reference-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/reference-components.tsx"
+        }
+      ]
     }
   ]
 }

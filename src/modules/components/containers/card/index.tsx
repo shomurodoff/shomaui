@@ -1,7 +1,5 @@
-import ComponentPlaceholder from "../component-placeholder"
+import { ProfileCard } from "#/components/shomaui/components/reference-components";
 
-const Index = () => {
-  return <ComponentPlaceholder title="Card" />
-}
+const Index = () => <ProfileCard />;
 
-export default Index
+export default Index;

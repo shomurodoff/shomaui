@@ -1,7 +1,5 @@
-import ComponentPlaceholder from "../component-placeholder"
+import { BadgePreview } from "#/modules/components/previews";
 
-const Index = () => {
-  return <ComponentPlaceholder title="Badge" />
-}
+const Index = () => <BadgePreview />;
 
-export default Index
+export default Index;

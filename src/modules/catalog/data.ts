@@ -1,4 +1,5 @@
 import type { ComponentType } from "react";
+import { concat } from "lodash";
 import {
   Activity,
   Asterisk,
@@ -65,6 +66,7 @@ import {
   TypingPreview,
   WordRotatePreview,
 } from "./previews";
+import { referenceCatalogItems } from "./reference-data";
 
 export type CatalogKind =
   "components" | "backgrounds" | "effects" | "animations" | "texts";
@@ -150,12 +152,12 @@ const sourceLinks = {
 
 const baseDependencies = ["@base-ui/react", "lodash"];
 
-export const catalogItems: CatalogItem[] = [
+const baseCatalogItems: CatalogItem[] = [
   {
     slug: "avatar",
     name: "Avatar",
     kind: "components",
-    category: "Identity",
+    category: "Profiles",
     description:
       "Composable identity primitives for people, teams and presence.",
     tags: ["identity", "base-ui", "profile"],
@@ -172,7 +174,7 @@ export const catalogItems: CatalogItem[] = [
     slug: "button",
     name: "Button",
     kind: "components",
-    category: "Actions",
+    category: "Buttons",
     description: "Base UI powered actions with accessible states and sizes.",
     tags: ["actions", "base-ui", "forms"],
     preview: ButtonCatalogPreview,
@@ -188,7 +190,7 @@ export const catalogItems: CatalogItem[] = [
     slug: "tooltip",
     name: "Tooltip",
     kind: "components",
-    category: "Disclosure",
+    category: "Feedback",
     description:
       "Keyboard-friendly contextual help built on Base UI primitives.",
     tags: ["disclosure", "base-ui", "feedback"],
@@ -270,7 +272,7 @@ export const catalogItems: CatalogItem[] = [
     slug: "rainbow-button",
     name: "Rainbow Button",
     kind: "components",
-    category: "Actions",
+    category: "Buttons",
     description: "Animated gradient action button for high-emphasis moments.",
     tags: ["button", "gradient", "animated"],
     preview: RainbowButtonPreview,
@@ -286,7 +288,7 @@ export const catalogItems: CatalogItem[] = [
     slug: "ripple-button",
     name: "Ripple Button",
     kind: "components",
-    category: "Actions",
+    category: "Buttons",
     description: "Click-position ripple feedback for tactile actions.",
     tags: ["button", "ripple", "interaction"],
     preview: RippleButtonPreview,
@@ -302,7 +304,7 @@ export const catalogItems: CatalogItem[] = [
     slug: "shiny-button",
     name: "Shiny Button",
     kind: "components",
-    category: "Actions",
+    category: "Buttons",
     description: "Motion-powered highlight sweep for premium calls to action.",
     tags: ["button", "motion", "shine"],
     preview: ShinyButtonPreview,
@@ -318,7 +320,7 @@ export const catalogItems: CatalogItem[] = [
     slug: "interactive-hover-button",
     name: "Interactive Hover Button",
     kind: "components",
-    category: "Actions",
+    category: "Buttons",
     description: "Arrow-reveal button interaction for compact navigation.",
     tags: ["button", "hover", "navigation"],
     preview: InteractiveHoverButtonPreview,
@@ -595,7 +597,7 @@ export const catalogItems: CatalogItem[] = [
     slug: "timeline",
     name: "Timeline",
     kind: "components",
-    category: "Data Display",
+    category: "Data",
     description:
       "A vertical milestone timeline for product progress, history and workflows.",
     tags: ["timeline", "milestones", "data"],
@@ -646,7 +648,7 @@ export const catalogItems: CatalogItem[] = [
     slug: "copy-button",
     name: "Copy Button",
     kind: "components",
-    category: "Actions",
+    category: "Buttons",
     description:
       "A reusable clipboard action with a short-lived copied confirmation state.",
     tags: ["copy", "clipboard", "button"],
@@ -1041,6 +1043,11 @@ export const catalogItems: CatalogItem[] = [
     license: "MIT-compatible adaptation",
   },
 ];
+
+export const catalogItems: CatalogItem[] = concat(
+  baseCatalogItems,
+  referenceCatalogItems,
+);
 
 export const getCatalogProduct = (kind: CatalogKind) =>
   catalogProducts.find((product) => product.kind === kind) ??

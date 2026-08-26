@@ -1,7 +1,5 @@
-import ComponentPlaceholder from "../component-placeholder"
+import { ContextMenu } from "#/components/shomaui/components/reference-components";
 
-const Index = () => {
-  return <ComponentPlaceholder title="Context Menu" />
-}
+const Index = () => <ContextMenu />;
 
-export default Index
+export default Index;

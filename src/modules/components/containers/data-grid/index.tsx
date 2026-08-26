@@ -1,7 +1,5 @@
-import ComponentPlaceholder from "../component-placeholder"
+import { DataGridPro } from "#/components/shomaui/components/reference-components";
 
-const Index = () => {
-  return <ComponentPlaceholder title="Data Grid" />
-}
+const Index = () => <DataGridPro />;
 
-export default Index
+export default Index;
