@@ -88,7 +88,7 @@ const ComponentCard = ({ card }: { card: (typeof componentCards)[number] }) => {
             variant="outline"
             className="shrink-0 rounded-full text-[0.65rem]"
           >
-            {card.category}
+            {card.groupName}
           </Badge>
         </div>
       </CardHeader>
@@ -125,12 +125,12 @@ function ComponentsPage() {
     return filter(componentCards, (card) => {
       const searchable = [
         card.name,
-        card.category,
+        card.groupName,
         card.description,
         ...card.tags,
       ].join(" ");
       const matchesCategory =
-        !activeCategory || card.categorySlug === activeCategory;
+        !activeCategory || card.groupSlug === activeCategory;
       const matchesQuery = !query || includes(toLower(searchable), query);
 
       return matchesCategory && matchesQuery;

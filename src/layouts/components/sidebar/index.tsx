@@ -45,10 +45,7 @@ const ComponentsSidebar = () => {
   const isComponentsIndex =
     location.pathname === "/components" || location.pathname === "/components/";
   const detailSlug = last(split(location.pathname, "/"));
-  const detailCategory = get(
-    getComponentCard(detailSlug ?? ""),
-    "categorySlug",
-  );
+  const detailCategory = get(getComponentCard(detailSlug ?? ""), "groupSlug");
   const activeCategory = isComponentsIndex ? selectedCategory : detailCategory;
 
   const handleCategorySelect = (category: ComponentCategory) => {
@@ -67,19 +64,21 @@ const ComponentsSidebar = () => {
             <SidebarInput
               value={categoryQuery}
               onChange={(event) => setCategoryQuery(event.target.value)}
-              placeholder="Filter component categories..."
-              aria-label="Filter component categories"
+              placeholder="Filter categories..."
+              aria-label="Filter categories"
               className="border-0 bg-transparent pl-7 shadow-none focus-visible:ring-0"
             />
           </div>
-          <SidebarTrigger className="shrink-0" />
+          <SidebarTrigger
+            className="shrink-0"
+            aria-label="Compact view"
+            title="Compact view"
+          />
         </div>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup className="px-3 py-4">
-          <SidebarGroupLabel className="px-3 text-xs uppercase tracking-wider">
-            Components
-          </SidebarGroupLabel>
+          <SidebarGroupLabel className="sr-only">Components</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {map(visibleCategories, (category) => (

@@ -1,16 +1,7 @@
 import { useMemo, useState, type MouseEvent } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, Code2, ExternalLink, Search } from "lucide-react";
-import {
-  filter,
-  includes,
-  kebabCase,
-  map,
-  size,
-  toLower,
-  trim,
-  uniq,
-} from "lodash";
+import { filter, includes, map, size, toLower, trim, uniq } from "lodash";
 
 import { Badge } from "#/components/ui/badge";
 import { Button } from "#/components/ui/button";
@@ -43,6 +34,7 @@ import {
 } from "./data";
 import { CatalogItemLink } from "./link";
 import { useComponentNavigation } from "#/modules/components/navigation-state";
+import { getComponentFamily } from "#/modules/components/data";
 
 const getViewStorageKey = (kind: CatalogKind) => `shomaui-${kind}-view`;
 
@@ -320,12 +312,14 @@ export function CatalogDetailPage({
                   <Link
                     to="/components"
                     onClick={() =>
-                      setActiveComponentCategory(kebabCase(item.category))
+                      setActiveComponentCategory(
+                        getComponentFamily(item.slug, item.name).groupSlug,
+                      )
                     }
                     className="rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring"
                   >
                     <Badge variant="secondary" className="rounded-full">
-                      {item.category}
+                      {getComponentFamily(item.slug, item.name).groupName}
                     </Badge>
                   </Link>
                 ) : (

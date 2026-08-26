@@ -9,7 +9,9 @@ import {
   map,
   orderBy,
   size as collectionSize,
+  startCase,
   uniqBy,
+  uniq,
 } from "lodash";
 
 import {
@@ -58,6 +60,8 @@ export type ComponentCardDefinition = {
   count: number;
   category: string;
   categorySlug: string;
+  groupSlug: string;
+  groupName: string;
   tags: string[];
   preview: ComponentType;
   href: string;
@@ -68,7 +72,13 @@ export type ComponentCardDefinition = {
 
 type LegacyComponentCard = Omit<
   ComponentCardDefinition,
-  "categorySlug" | "href" | "description" | "source" | "catalogItem"
+  | "categorySlug"
+  | "groupSlug"
+  | "groupName"
+  | "href"
+  | "description"
+  | "source"
+  | "catalogItem"
 >;
 
 const legacyComponentCards: LegacyComponentCard[] = [
@@ -261,6 +271,144 @@ const additionalLegacyComponentCards: LegacyComponentCard[] = [
   },
 ];
 
+const componentFamilyBySlug: Record<string, string> = {
+  "rainbow-button": "button",
+  "ripple-button": "button",
+  "shiny-button": "button",
+  "interactive-hover-button": "button",
+  "copy-button": "button",
+  "shimmer-button": "button",
+  "pulsating-button": "button",
+  "magnetic-button": "button",
+  "clip-corners-button": "button",
+  "dot-morph-button": "button",
+  "flip-button": "button",
+  "icon-button": "button",
+  "loading-button": "button",
+  "split-button": "button",
+  "download-button": "button",
+  "hold-button": "button",
+  "social-button": "button",
+  "input-otp": "input-otp",
+  "phone-input": "phone-input",
+  "number-field": "number-field",
+  "color-picker": "color-picker",
+  "range-slider": "slider",
+  "date-range-picker": "date-selector",
+  "multi-select": "select",
+  "searchable-dropdown": "combobox",
+  "password-field": "input",
+  "tag-input": "input",
+  "form-stepper": "stepper",
+  "filter-panel": "filters",
+  "radio-card-group": "radio-group",
+  "checkbox-group": "checkbox",
+  "animated-file-upload": "file-upload",
+  "mega-menu": "navigation-menu",
+  "navigation-rail": "navigation-menu",
+  "command-menu": "command",
+  "dropdown-menu": "dropdown-menu",
+  "context-menu-card": "context-menu",
+  "menu-bar": "menubar",
+  "link-preview": "link-preview",
+  "sidebar-nav": "navigation-menu",
+  "breadcrumb-nav": "breadcrumb",
+  "toast-stack": "sonner",
+  "progress-card": "progress",
+  "notification-badge": "badge",
+  "empty-state": "empty",
+  "skeleton-card": "skeleton",
+  "confirm-dialog": "dialog",
+  "status-chip": "badge",
+  "animated-progress": "progress",
+  "bento-grid": "bento-grid",
+  "masonry-grid": "masonry-grid",
+  "split-pane": "resizable",
+  "resizable-panels": "resizable",
+  "accordion-stack": "accordion",
+  "collapsible-card": "collapsible",
+  "aspect-ratio-media": "aspect-ratio",
+  "data-grid-pro": "data-grid",
+  "event-calendar": "event-calendar",
+  "gantt-chart": "gantt",
+  "kanban-board": "kanban",
+  "sortable-list": "sortable",
+  "tree-view": "tree",
+  "stats-card": "stats",
+  "activity-feed": "timeline",
+  "schedule-board": "schedule",
+  "comparison-table": "table",
+  "data-list": "list",
+  "chart-card": "chart",
+  "stepper-table": "stepper",
+  "filter-table": "filters",
+  "horizontal-timeline": "timeline",
+  "carousel-gallery": "carousel",
+  "image-tabs": "tabs",
+  "media-modal": "dialog",
+  "avatar-circles": "avatar",
+  "code-block-pro": "code-block",
+  "code-tabs": "code-tabs",
+  "code-comparison": "code-comparison",
+  "neon-card": "card",
+  "magic-card": "card",
+  "spotlight-surface": "card",
+  "gradient-border-card": "card",
+  "liquid-glass": "card",
+};
+
+const componentFamilyNameBySlug: Record<string, string> = {
+  "input-otp": "Input Otp",
+  "date-selector": "Date Selector",
+  "radio-group": "Radio Group",
+  "navigation-menu": "Navigation Menu",
+  menubar: "Menubar",
+  "context-menu": "Context Menu",
+  "dropdown-menu": "Dropdown Menu",
+  "link-preview": "Link Preview",
+  sonner: "Sonner",
+  empty: "Empty",
+  skeleton: "Skeleton",
+  dialog: "Dialog",
+  progress: "Progress",
+  "bento-grid": "Bento Grid",
+  "masonry-grid": "Masonry Grid",
+  resizable: "Resizable",
+  accordion: "Accordion",
+  collapsible: "Collapsible",
+  "aspect-ratio": "Aspect Ratio",
+  "data-grid": "Data Grid",
+  "event-calendar": "Event Calendar",
+  gantt: "Gantt",
+  kanban: "Kanban",
+  sortable: "Sortable",
+  tree: "Tree",
+  stats: "Stats",
+  timeline: "Timeline",
+  schedule: "Schedule",
+  table: "Table",
+  list: "List",
+  chart: "Chart",
+  stepper: "Stepper",
+  filters: "Filters",
+  carousel: "Carousel",
+  tabs: "Tabs",
+  avatar: "Avatar",
+  "code-block": "Code Block",
+  "code-tabs": "Code Tabs",
+  "code-comparison": "Code Comparison",
+  card: "Card",
+};
+
+export const getComponentFamily = (slug: string, name: string) => {
+  const groupSlug = get(componentFamilyBySlug, slug, kebabCase(name));
+
+  return {
+    groupSlug,
+    groupName: get(componentFamilyNameBySlug, groupSlug, startCase(groupSlug)),
+  };
+};
+
 const legacyCategoryBySlug: Record<string, string> = {
   accordion: "Layout",
   alert: "Feedback",
@@ -296,6 +444,7 @@ const normalizeLegacyCard = (
     ...card,
     category,
     categorySlug: kebabCase(category),
+    ...getComponentFamily(card.slug, card.name),
     href: `/components/${card.slug}`,
     description: get(
       legacyDescriptionBySlug,
@@ -314,6 +463,7 @@ const shomauiComponentCards: ComponentCardDefinition[] = map(
     count: 1,
     category: item.category,
     categorySlug: kebabCase(item.category),
+    ...getComponentFamily(item.slug, item.name),
     tags: item.tags,
     preview: item.preview,
     href: `/components/${item.slug}`,
@@ -334,7 +484,65 @@ export const componentCards = uniqBy(
   "slug",
 );
 
-const groupedComponentCards = groupBy(componentCards, "categorySlug");
+const groupedComponentCards = groupBy(componentCards, "groupSlug");
+
+const componentFamilyOrder = [
+  "accordion",
+  "alert",
+  "alert-dialog",
+  "aspect-ratio",
+  "autocomplete",
+  "avatar",
+  "badge",
+  "breadcrumb",
+  "button",
+  "button-group",
+  "calendar",
+  "card",
+  "carousel",
+  "cascader",
+  "chart",
+  "checkbox",
+  "code-block",
+  "collapsible",
+  "combobox",
+  "command",
+  "context-menu",
+  "data-grid",
+  "date-selector",
+  "dialog",
+  "dropdown-menu",
+  "empty",
+  "event-calendar",
+  "file-upload",
+  "filters",
+  "gantt",
+  "kanban",
+  "input",
+  "input-otp",
+  "number-field",
+  "phone-input",
+  "pagination",
+  "progress",
+  "radio-group",
+  "rating",
+  "resizable",
+  "select",
+  "skeleton",
+  "slider",
+  "sortable",
+  "sonner",
+  "stepper",
+  "tabs",
+  "table",
+  "timeline",
+  "tooltip",
+  "tree",
+];
+
+const orderedComponentFamilySlugs = uniq(
+  concat(componentFamilyOrder, orderBy(keys(groupedComponentCards))),
+);
 
 export const componentCategories: ComponentCategory[] = [
   {
@@ -343,12 +551,12 @@ export const componentCategories: ComponentCategory[] = [
     count: collectionSize(componentCards),
     href: "/components",
   },
-  ...map(orderBy(keys(groupedComponentCards)), (slug) => {
-    const firstCard = find(componentCards, { categorySlug: slug });
+  ...map(orderedComponentFamilySlugs, (slug) => {
+    const firstCard = find(componentCards, { groupSlug: slug });
 
     return {
       slug,
-      label: get(firstCard, "category", slug),
+      label: get(firstCard, "groupName", startCase(slug)),
       count: collectionSize(get(groupedComponentCards, slug, [])),
       href: "/components",
     };
