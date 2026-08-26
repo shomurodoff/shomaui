@@ -1,7 +1,16 @@
 import { useMemo, useState, type MouseEvent } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, Code2, ExternalLink, Search } from "lucide-react";
-import { filter, includes, map, size, toLower, trim, uniq } from "lodash";
+import {
+  filter,
+  includes,
+  kebabCase,
+  map,
+  size,
+  toLower,
+  trim,
+  uniq,
+} from "lodash";
 
 import { Badge } from "#/components/ui/badge";
 import { Button } from "#/components/ui/button";
@@ -24,6 +33,7 @@ import { Input } from "#/components/ui/input";
 import { Separator } from "#/components/ui/separator";
 import CodeSheet from "#/modules/components/code-sheet";
 import CatalogLayout from "#/layouts/catalog";
+import ComponentsLayout from "#/layouts/components";
 import {
   getCatalogItem,
   getCatalogItems,
@@ -32,6 +42,7 @@ import {
   type CatalogKind,
 } from "./data";
 import { CatalogItemLink } from "./link";
+import { useComponentNavigation } from "#/modules/components/navigation-state";
 
 const getViewStorageKey = (kind: CatalogKind) => `shomaui-${kind}-view`;
 
@@ -54,7 +65,9 @@ const CatalogCard = ({ item }: { item: CatalogItem }) => {
     const target = event.target;
     if (
       target instanceof HTMLElement &&
-      target.closest("button, input, select, textarea, [role='tab'], [role='menuitem']")
+      target.closest(
+        "button, input, select, textarea, [role='tab'], [role='menuitem']",
+      )
     ) {
       event.preventDefault();
     }
@@ -80,7 +93,10 @@ const CatalogCard = ({ item }: { item: CatalogItem }) => {
               {item.description}
             </CardDescription>
           </div>
-          <Badge variant="outline" className="shrink-0 rounded-full text-[0.65rem]">
+          <Badge
+            variant="outline"
+            className="shrink-0 rounded-full text-[0.65rem]"
+          >
             {item.category}
           </Badge>
         </div>
@@ -104,9 +120,15 @@ export function CatalogIndexPage({ kind }: { kind: CatalogKind }) {
     const normalizedQuery = toLower(trim(query));
 
     return filter(items, (item) => {
-      const searchable = [item.name, item.category, item.description, ...item.tags].join(" ");
+      const searchable = [
+        item.name,
+        item.category,
+        item.description,
+        ...item.tags,
+      ].join(" ");
       const matchesTag = !activeTag || includes(item.tags, activeTag);
-      const matchesQuery = !normalizedQuery || includes(toLower(searchable), normalizedQuery);
+      const matchesQuery =
+        !normalizedQuery || includes(toLower(searchable), normalizedQuery);
       return matchesTag && matchesQuery;
     });
   }, [activeTag, items, query]);
@@ -133,7 +155,9 @@ export function CatalogIndexPage({ kind }: { kind: CatalogKind }) {
     >
       <main className="mx-auto w-full max-w-[1524px] px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
         <div className="mb-9">
-          <p className="mb-3 text-sm font-medium text-muted-foreground">ShomaUI / Products</p>
+          <p className="mb-3 text-sm font-medium text-muted-foreground">
+            ShomaUI / Products
+          </p>
           <div className="flex flex-wrap items-center gap-3">
             <h1 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
               {product.label}
@@ -143,7 +167,8 @@ export function CatalogIndexPage({ kind }: { kind: CatalogKind }) {
             </Badge>
           </div>
           <p className="mt-4 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
-            {product.description} Browse copy-ready ShomaUI primitives for React and Tailwind CSS.
+            {product.description} Browse copy-ready ShomaUI primitives for React
+            and Tailwind CSS.
           </p>
         </div>
 
@@ -182,7 +207,9 @@ export function CatalogIndexPage({ kind }: { kind: CatalogKind }) {
                 : "grid gap-6 md:grid-cols-2 xl:grid-cols-3"
             }
           >
-            {map(visibleItems, (item) => <CatalogCard key={item.slug} item={item} />)}
+            {map(visibleItems, (item) => (
+              <CatalogCard key={item.slug} item={item} />
+            ))}
           </div>
         ) : (
           <Empty className="min-h-72 border">
@@ -191,10 +218,14 @@ export function CatalogIndexPage({ kind }: { kind: CatalogKind }) {
                 <Search />
               </EmptyMedia>
               <EmptyTitle>No {product.label.toLowerCase()} found</EmptyTitle>
-              <EmptyDescription>Try another search or clear the selected filter.</EmptyDescription>
+              <EmptyDescription>
+                Try another search or clear the selected filter.
+              </EmptyDescription>
             </EmptyHeader>
             <EmptyContent>
-              <Button variant="outline" onClick={resetFilters}>Clear filters</Button>
+              <Button variant="outline" onClick={resetFilters}>
+                Clear filters
+              </Button>
             </EmptyContent>
           </Empty>
         )}
@@ -210,12 +241,20 @@ const NotFoundCatalogItem = ({ kind }: { kind: CatalogKind }) => {
     <section className="flex min-h-[calc(100svh-10rem)] items-center justify-center px-4 py-16">
       <Empty className="max-w-lg">
         <EmptyHeader>
-          <EmptyMedia variant="icon"><Code2 /></EmptyMedia>
+          <EmptyMedia variant="icon">
+            <Code2 />
+          </EmptyMedia>
           <EmptyTitle>Component not found</EmptyTitle>
-          <EmptyDescription>This item is not part of the {product.label.toLowerCase()} catalog.</EmptyDescription>
+          <EmptyDescription>
+            This item is not part of the {product.label.toLowerCase()} catalog.
+          </EmptyDescription>
         </EmptyHeader>
         <EmptyContent>
-          <Button render={<Link to={product.basePath} />} nativeButton={false} variant="outline">
+          <Button
+            render={<Link to={product.basePath} />}
+            nativeButton={false}
+            variant="outline"
+          >
             <ArrowLeft data-icon="inline-start" />
             Back to {product.label}
           </Button>
@@ -225,26 +264,42 @@ const NotFoundCatalogItem = ({ kind }: { kind: CatalogKind }) => {
   );
 };
 
-export function CatalogDetailPage({ kind, slug }: { kind: CatalogKind; slug: string }) {
+export function CatalogDetailPage({
+  kind,
+  slug,
+}: {
+  kind: CatalogKind;
+  slug: string;
+}) {
   const product = getCatalogProduct(kind);
   const item = getCatalogItem(kind, slug);
   const [codeOpen, setCodeOpen] = useState(false);
+  const setActiveComponentCategory = useComponentNavigation(
+    (state) => state.setActiveCategory,
+  );
 
   if (!item) {
-    return (
-      <CatalogLayout kind={kind}>
-        <NotFoundCatalogItem kind={kind} />
-      </CatalogLayout>
+    const notFoundContent = <NotFoundCatalogItem kind={kind} />;
+
+    return kind === "components" ? (
+      <ComponentsLayout>{notFoundContent}</ComponentsLayout>
+    ) : (
+      <CatalogLayout kind={kind}>{notFoundContent}</CatalogLayout>
     );
   }
 
   const Preview = item.preview;
 
-  return (
-    <CatalogLayout kind={kind}>
+  const detailContent = (
+    <>
       <main className="mx-auto w-full max-w-[1320px] px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
         <div className="mb-8 flex flex-wrap items-center justify-between gap-3">
-          <Button render={<Link to={product.basePath} />} nativeButton={false} variant="ghost" size="sm">
+          <Button
+            render={<Link to={product.basePath} />}
+            nativeButton={false}
+            variant="ghost"
+            size="sm"
+          >
             <ArrowLeft data-icon="inline-start" />
             All {product.label}
           </Button>
@@ -258,14 +313,38 @@ export function CatalogDetailPage({ kind, slug }: { kind: CatalogKind; slug: str
           <div className="min-w-0">
             <div className="mb-7">
               <div className="mb-3 flex flex-wrap items-center gap-2">
-                <Badge variant="outline" className="rounded-full">{product.singularLabel}</Badge>
-                <Badge variant="secondary" className="rounded-full">{item.category}</Badge>
+                <Badge variant="outline" className="rounded-full">
+                  {product.singularLabel}
+                </Badge>
+                {kind === "components" ? (
+                  <Link
+                    to="/components"
+                    onClick={() =>
+                      setActiveComponentCategory(kebabCase(item.category))
+                    }
+                    className="rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  >
+                    <Badge variant="secondary" className="rounded-full">
+                      {item.category}
+                    </Badge>
+                  </Link>
+                ) : (
+                  <Badge variant="secondary" className="rounded-full">
+                    {item.category}
+                  </Badge>
+                )}
               </div>
-              <h1 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">{item.name}</h1>
-              <p className="mt-3 max-w-2xl text-base leading-7 text-muted-foreground">{item.description}</p>
+              <h1 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
+                {item.name}
+              </h1>
+              <p className="mt-3 max-w-2xl text-base leading-7 text-muted-foreground">
+                {item.description}
+              </p>
             </div>
             <Card className="overflow-hidden bg-background p-2">
-              <CardContent className="p-0"><Preview /></CardContent>
+              <CardContent className="p-0">
+                <Preview />
+              </CardContent>
             </Card>
           </div>
 
@@ -273,26 +352,57 @@ export function CatalogDetailPage({ kind, slug }: { kind: CatalogKind; slug: str
             <Card>
               <CardHeader>
                 <CardTitle className="text-base">About this item</CardTitle>
-                <CardDescription>Copy it into your own project and make it yours.</CardDescription>
+                <CardDescription>
+                  Copy it into your own project and make it yours.
+                </CardDescription>
               </CardHeader>
               <CardContent className="grid gap-4 text-sm">
                 <div>
-                  <p className="mb-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">Tags</p>
-                  <div className="flex flex-wrap gap-1.5">{map(item.tags, (tag) => <Badge key={tag} variant="outline">{tag}</Badge>)}</div>
+                  <p className="mb-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                    Tags
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {map(item.tags, (tag) => (
+                      <Badge key={tag} variant="outline">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
                 </div>
                 <Separator />
                 <div>
-                  <p className="mb-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">Dependencies</p>
-                  <div className="flex flex-wrap gap-1.5">{map(item.dependencies, (dependency) => <code key={dependency} className="rounded bg-muted px-1.5 py-0.5 text-xs">{dependency}</code>)}</div>
+                  <p className="mb-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                    Dependencies
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {map(item.dependencies, (dependency) => (
+                      <code
+                        key={dependency}
+                        className="rounded bg-muted px-1.5 py-0.5 text-xs"
+                      >
+                        {dependency}
+                      </code>
+                    ))}
+                  </div>
                 </div>
                 <Separator />
                 <div className="grid gap-1 text-xs text-muted-foreground">
                   <span>Source: {item.author}</span>
                   <span>License: {item.license}</span>
                 </div>
-                {item.attribution ? <p className="text-xs leading-5 text-muted-foreground">{item.attribution}</p> : null}
-                <a href={item.sourceUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground underline underline-offset-4">
-                  View reference source <ExternalLink className="size-3.5" aria-hidden="true" />
+                {item.attribution ? (
+                  <p className="text-xs leading-5 text-muted-foreground">
+                    {item.attribution}
+                  </p>
+                ) : null}
+                <a
+                  href={item.sourceUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground underline underline-offset-4"
+                >
+                  View reference source{" "}
+                  <ExternalLink className="size-3.5" aria-hidden="true" />
                 </a>
               </CardContent>
             </Card>
@@ -306,6 +416,12 @@ export function CatalogDetailPage({ kind, slug }: { kind: CatalogKind; slug: str
         registrySlug={item.registryName}
         code={item.code}
       />
-    </CatalogLayout>
+    </>
+  );
+
+  return kind === "components" ? (
+    <ComponentsLayout>{detailContent}</ComponentsLayout>
+  ) : (
+    <CatalogLayout kind={kind}>{detailContent}</CatalogLayout>
   );
 }

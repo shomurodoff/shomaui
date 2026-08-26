@@ -38,7 +38,6 @@ import { Badge } from "#/components/ui/badge.tsx";
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
@@ -60,6 +59,22 @@ function PreviewFrame({ children }: { children: ReactNode }) {
     <div className="flex min-h-52 items-center justify-center overflow-hidden rounded-lg border bg-muted/20 p-5">
       <div className="w-full max-w-64">{children}</div>
     </div>
+  );
+}
+
+function ComponentCatalogPlaceholderPreview() {
+  return (
+    <PreviewFrame>
+      <div className="grid gap-3 rounded-xl border bg-background p-4">
+        <div className="flex items-center gap-2">
+          <span className="size-8 rounded-lg bg-primary/10" />
+          <span className="h-2 w-24 rounded-full bg-muted" />
+        </div>
+        <span className="h-2 w-full rounded-full bg-muted" />
+        <span className="h-2 w-4/5 rounded-full bg-muted" />
+        <span className="h-8 w-24 rounded-lg bg-primary/15" />
+      </div>
+    </PreviewFrame>
   );
 }
 
@@ -210,7 +225,9 @@ function BreadcrumbPreview() {
       <Breadcrumb>
         <BreadcrumbList className="flex-nowrap text-xs">
           <BreadcrumbItem>
-            <BreadcrumbLink href="#">Projects</BreadcrumbLink>
+            <span className="transition-colors hover:text-foreground">
+              Projects
+            </span>
           </BreadcrumbItem>
           <BreadcrumbSeparator>
             <ChevronRight />
@@ -268,5 +285,6 @@ export {
   BadgePreview,
   BreadcrumbPreview,
   ButtonPreview,
+  ComponentCatalogPlaceholderPreview,
   TooltipPreview,
 };

@@ -1,7 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router"
+import { createFileRoute } from "@tanstack/react-router";
 
-import { CatalogIndexPage } from "#/modules/catalog";
+import ComponentsPage from "#/modules/components";
 
 export const Route = createFileRoute("/components/")({
-  component: () => <CatalogIndexPage kind="components" />,
+  component: ComponentsPage,
 });

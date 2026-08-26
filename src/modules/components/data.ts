@@ -1,5 +1,16 @@
 import type { ComponentType } from "react";
-import { size as collectionSize } from "lodash";
+import {
+  concat,
+  find,
+  get,
+  groupBy,
+  kebabCase,
+  keys,
+  map,
+  orderBy,
+  size as collectionSize,
+  uniqBy,
+} from "lodash";
 
 import {
   AccordionPreview,
@@ -11,8 +22,10 @@ import {
   BadgePreview,
   BreadcrumbPreview,
   ButtonPreview,
+  ComponentCatalogPlaceholderPreview,
   TooltipPreview,
 } from "#/modules/components/previews.tsx";
+import { getCatalogItems, type CatalogItem } from "#/modules/catalog/data";
 import { avatarExamples } from "./containers/avatar/examples.tsx";
 import { buttonExamples } from "./containers/button/examples.tsx";
 import { tooltipExamples } from "./containers/tooltip/examples.tsx";
@@ -30,11 +43,21 @@ export type ComponentCardDefinition = {
   name: string;
   count: number;
   category: string;
+  categorySlug: string;
   tags: string[];
   preview: ComponentType;
+  href: string;
+  description: string;
+  source: "legacy" | "shomaui";
+  catalogItem?: CatalogItem;
 };
 
-export const componentCards: ComponentCardDefinition[] = [
+type LegacyComponentCard = Omit<
+  ComponentCardDefinition,
+  "categorySlug" | "href" | "description" | "source" | "catalogItem"
+>;
+
+const legacyComponentCards: LegacyComponentCard[] = [
   {
     slug: "accordion",
     name: "Accordion",
@@ -117,6 +140,188 @@ export const componentCards: ComponentCardDefinition[] = [
   },
 ];
 
+const additionalLegacyComponentCards: LegacyComponentCard[] = [
+  {
+    slug: "button-group",
+    name: "Button Group",
+    count: 1,
+    category: "Actions",
+    tags: ["actions"],
+    preview: ComponentCatalogPlaceholderPreview,
+  },
+  {
+    slug: "calendar",
+    name: "Calendar",
+    count: 1,
+    category: "Data Display",
+    tags: ["data"],
+    preview: ComponentCatalogPlaceholderPreview,
+  },
+  {
+    slug: "card",
+    name: "Card",
+    count: 1,
+    category: "Layout",
+    tags: ["layout"],
+    preview: ComponentCatalogPlaceholderPreview,
+  },
+  {
+    slug: "carousel",
+    name: "Carousel",
+    count: 1,
+    category: "Media",
+    tags: ["media"],
+    preview: ComponentCatalogPlaceholderPreview,
+  },
+  {
+    slug: "cascader",
+    name: "Cascader",
+    count: 1,
+    category: "Forms",
+    tags: ["forms"],
+    preview: ComponentCatalogPlaceholderPreview,
+  },
+  {
+    slug: "chart",
+    name: "Chart",
+    count: 1,
+    category: "Data Display",
+    tags: ["data"],
+    preview: ComponentCatalogPlaceholderPreview,
+  },
+  {
+    slug: "checkbox",
+    name: "Checkbox",
+    count: 1,
+    category: "Forms",
+    tags: ["forms"],
+    preview: ComponentCatalogPlaceholderPreview,
+  },
+  {
+    slug: "code-block",
+    name: "Code Block",
+    count: 1,
+    category: "Code",
+    tags: ["code"],
+    preview: ComponentCatalogPlaceholderPreview,
+  },
+  {
+    slug: "collapsible",
+    name: "Collapsible",
+    count: 1,
+    category: "Layout",
+    tags: ["layout"],
+    preview: ComponentCatalogPlaceholderPreview,
+  },
+  {
+    slug: "combobox",
+    name: "Combobox",
+    count: 1,
+    category: "Forms",
+    tags: ["forms"],
+    preview: ComponentCatalogPlaceholderPreview,
+  },
+  {
+    slug: "command",
+    name: "Command",
+    count: 1,
+    category: "Navigation",
+    tags: ["navigation"],
+    preview: ComponentCatalogPlaceholderPreview,
+  },
+  {
+    slug: "context-menu",
+    name: "Context Menu",
+    count: 1,
+    category: "Navigation",
+    tags: ["navigation"],
+    preview: ComponentCatalogPlaceholderPreview,
+  },
+  {
+    slug: "data-grid",
+    name: "Data Grid",
+    count: 1,
+    category: "Data Display",
+    tags: ["data"],
+    preview: ComponentCatalogPlaceholderPreview,
+  },
+];
+
+const legacyCategoryBySlug: Record<string, string> = {
+  accordion: "Layout",
+  alert: "Feedback",
+  "alert-dialog": "Feedback",
+  "aspect-ratio": "Layout",
+  autocomplete: "Forms",
+  avatar: "Identity",
+  badge: "Feedback",
+  breadcrumb: "Navigation",
+  button: "Actions",
+  tooltip: "Feedback",
+};
+
+const legacyDescriptionBySlug: Record<string, string> = {
+  accordion: "Expandable sections for progressive disclosure.",
+  alert: "Inline feedback for status, validation and announcements.",
+  "alert-dialog": "A focused confirmation dialog for destructive actions.",
+  "aspect-ratio": "A predictable media frame that preserves its ratio.",
+  autocomplete: "Searchable suggestions for fast form completion.",
+  avatar: "Identity primitives for people, teams and presence.",
+  badge: "Compact labels for status, category and metadata.",
+  breadcrumb: "Contextual navigation for nested product surfaces.",
+  button: "Accessible actions with consistent variants and sizes.",
+  tooltip: "Contextual help that works with pointer and keyboard input.",
+};
+
+const normalizeLegacyCard = (
+  card: LegacyComponentCard,
+): ComponentCardDefinition => {
+  const category = get(legacyCategoryBySlug, card.slug, card.category);
+
+  return {
+    ...card,
+    category,
+    categorySlug: kebabCase(category),
+    href: `/components/${card.slug}`,
+    description: get(
+      legacyDescriptionBySlug,
+      card.slug,
+      `${card.name} for product interfaces.`,
+    ),
+    source: "legacy",
+  };
+};
+
+const shomauiComponentCards: ComponentCardDefinition[] = map(
+  getCatalogItems("components"),
+  (item) => ({
+    slug: item.slug,
+    name: item.name,
+    count: 1,
+    category: item.category,
+    categorySlug: kebabCase(item.category),
+    tags: item.tags,
+    preview: item.preview,
+    href: `/components/${item.slug}`,
+    description: item.description,
+    source: "shomaui",
+    catalogItem: item,
+  }),
+);
+
+export const componentCards = uniqBy(
+  concat(
+    map(
+      [...legacyComponentCards, ...additionalLegacyComponentCards],
+      normalizeLegacyCard,
+    ),
+    shomauiComponentCards,
+  ),
+  "slug",
+);
+
+const groupedComponentCards = groupBy(componentCards, "categorySlug");
+
 export const componentCategories: ComponentCategory[] = [
   {
     slug: "all",
@@ -124,45 +329,20 @@ export const componentCategories: ComponentCategory[] = [
     count: collectionSize(componentCards),
     href: "/components",
   },
-  // { slug: "accordion", label: "Accordion", count: 11, href: "/components/accordion" },
-  // { slug: "alert", label: "Alert", count: 20, href: "/components/alert" },
-  // { slug: "alert-dialog", label: "Alert Dialog", count: 14, href: "/components/alert-dialog" },
-  // { slug: "aspect-ratio", label: "Aspect Ratio", count: 8, href: "/components/aspect-ratio" },
-  // { slug: "autocomplete", label: "Autocomplete", count: 12, href: "/components/autocomplete" },
-  {
-    slug: "avatar",
-    label: "Avatar",
-    count: collectionSize(avatarExamples),
-    href: "/components/avatar",
-  },
-  {
-    slug: "button",
-    label: "Button",
-    count: collectionSize(buttonExamples),
-    href: "/components/button",
-  },
-  {
-    slug: "tooltip",
-    label: "Tooltip",
-    count: collectionSize(tooltipExamples),
-    href: "/components/tooltip",
-  },
-  // { slug: "badge", label: "Badge", count: 25, href: "/components/badge" },
-  // { slug: "breadcrumb", label: "Breadcrumb", count: 15, href: "/components/breadcrumb" },
-  // { slug: "button-group", label: "Button Group", count: 57, href: "/components/button-group" },
-  // { slug: "calendar", label: "Calendar", count: 30, href: "/components/calendar" },
-  // { slug: "card", label: "Card", count: 18, href: "/components/card" },
-  // { slug: "carousel", label: "Carousel", count: 11, href: "/components/carousel" },
-  // { slug: "cascader", label: "Cascader", count: 20, href: "/components/cascader", isNew: true },
-  // { slug: "chart", label: "Chart", count: 25, href: "/components/chart" },
-  // { slug: "checkbox", label: "Checkbox", count: 22, href: "/components/checkbox" },
-  // { slug: "code-block", label: "Code Block", count: 27, href: "/components/code-block", isNew: true },
-  // { slug: "collapsible", label: "Collapsible", count: 10, href: "/components/collapsible" },
-  // { slug: "combobox", label: "Combobox", count: 28, href: "/components/combobox" },
-  // { slug: "command", label: "Command", count: 8, href: "/components/command" },
-  // { slug: "context-menu", label: "Context Menu", count: 10, href: "/components/context-menu" },
-  // { slug: "data-grid", label: "Data Grid", count: 30, href: "/components/data-grid", isNew: true },
+  ...map(orderBy(keys(groupedComponentCards)), (slug) => {
+    const firstCard = find(componentCards, { categorySlug: slug });
+
+    return {
+      slug,
+      label: get(firstCard, "category", slug),
+      count: collectionSize(get(groupedComponentCards, slug, [])),
+      href: "/components",
+    };
+  }),
 ];
+
+export const getComponentCard = (slug: string) =>
+  find(componentCards, { slug });
 
 export const componentTopics = [
   "Data Grid",

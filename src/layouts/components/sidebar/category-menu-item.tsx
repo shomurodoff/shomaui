@@ -12,9 +12,14 @@ import type { ComponentCategory } from "#/modules/components/data";
 type CategoryMenuItemProps = {
   category: ComponentCategory;
   isActive: boolean;
+  onSelect?: (category: ComponentCategory) => void;
 };
 
-const CategoryMenuItem = ({ category, isActive }: CategoryMenuItemProps) => {
+const CategoryMenuItem = ({
+  category,
+  isActive,
+  onSelect,
+}: CategoryMenuItemProps) => {
   const { isMobile, setOpenMobile } = useSidebar();
 
   return (
@@ -24,6 +29,7 @@ const CategoryMenuItem = ({ category, isActive }: CategoryMenuItemProps) => {
         size="default"
         isActive={isActive}
         onClick={() => {
+          onSelect?.(category);
           if (isMobile) setOpenMobile(false);
         }}
         className="h-9 px-3 text-[0.95rem]"

@@ -1,26 +1,37 @@
 import { useMemo, useState } from "react";
 import { useLocation } from "@tanstack/react-router";
-import { Filter, LayoutGrid } from "lucide-react";
-import { filter, get, includes, map, toLower, trim } from "lodash";
+import { Filter } from "lucide-react";
+import { filter, get, includes, last, map, split, toLower, trim } from "lodash";
 
-import { Button } from "#/components/ui/button";
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
+  SidebarGroupLabel,
   SidebarHeader,
   SidebarInput,
   SidebarMenu,
   SidebarTrigger,
 } from "#/components/ui/sidebar";
-import { componentCategories } from "#/modules/components/data";
+import {
+  componentCategories,
+  getComponentCard,
+  type ComponentCategory,
+} from "#/modules/components/data";
+import { useComponentNavigation } from "#/modules/components/navigation-state";
 
 import CategoryMenuItem from "./category-menu-item";
 
 const ComponentsSidebar = () => {
   const location = useLocation();
   const [categoryQuery, setCategoryQuery] = useState("");
+  const selectedCategory = useComponentNavigation(
+    (state) => state.activeCategory,
+  );
+  const setSelectedCategory = useComponentNavigation(
+    (state) => state.setActiveCategory,
+  );
   const visibleCategories = useMemo(() => {
     const query = toLower(trim(categoryQuery));
 
@@ -31,43 +42,56 @@ const ComponentsSidebar = () => {
     );
   }, [categoryQuery]);
 
+  const isComponentsIndex =
+    location.pathname === "/components" || location.pathname === "/components/";
+  const detailSlug = last(split(location.pathname, "/"));
+  const detailCategory = get(
+    getComponentCard(detailSlug ?? ""),
+    "categorySlug",
+  );
+  const activeCategory = isComponentsIndex ? selectedCategory : detailCategory;
+
+  const handleCategorySelect = (category: ComponentCategory) => {
+    setSelectedCategory(category.slug === "all" ? null : category.slug);
+  };
+
   return (
     <Sidebar
       className="top-16 h-[calc(100svh-4rem)] bg-none"
       collapsible="offcanvas"
     >
-      <SidebarHeader className="h-16 justify-center border-b px-4 group-data-[collapsible=icon]:px-2">
+      <SidebarHeader className="gap-3 border-b px-4 py-3 group-data-[collapsible=icon]:px-2">
         <div className="flex items-center gap-2">
           <div className="relative min-w-0 flex-1 group-data-[collapsible=icon]:hidden">
             <Filter className="pointer-events-none absolute top-2 left-1.5 size-4 text-muted-foreground" />
             <SidebarInput
               value={categoryQuery}
               onChange={(event) => setCategoryQuery(event.target.value)}
-              placeholder="Filter categories..."
-              aria-label="Filter categories"
+              placeholder="Filter component categories..."
+              aria-label="Filter component categories"
               className="border-0 bg-transparent pl-7 shadow-none focus-visible:ring-0"
             />
           </div>
-          <Button
-            variant="ghost"
-            size="icon-sm"
-            aria-label="Grid view"
-            className="shrink-0 group-data-[collapsible=icon]:hidden"
-          >
-            <LayoutGrid />
-          </Button>
           <SidebarTrigger className="shrink-0" />
         </div>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup className="px-3 py-4">
+          <SidebarGroupLabel className="px-3 text-xs uppercase tracking-wider">
+            Components
+          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {map(visibleCategories, (category) => (
                 <CategoryMenuItem
                   key={get(category, "slug")}
                   category={category}
-                  isActive={location.pathname === get(category, "href")}
+                  isActive={
+                    get(category, "slug") === "all"
+                      ? isComponentsIndex && !activeCategory
+                      : get(category, "slug") === activeCategory
+                  }
+                  onSelect={handleCategorySelect}
                 />
               ))}
             </SidebarMenu>
