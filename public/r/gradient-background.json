@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gradient-background",
+  "title": "Shomaui Gradient Background",
+  "description": "Layered radial gradients for soft focus without image assets.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/background/gradient-background.tsx",
+      "content": "import type { CSSProperties, HTMLAttributes } from \"react\";\nimport { get, omit } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport type GradientBackgroundProps = HTMLAttributes<HTMLDivElement> & {\n  from?: string;\n  to?: string;\n};\n\nexport function GradientBackground({\n  from = \"rgba(56, 189, 248, .28)\",\n  to = \"rgba(168, 85, 247, .2)\",\n  children,\n  className,\n  ...props\n}: GradientBackgroundProps) {\n  return (\n    <div\n      {...omit(props, [\"className\"])}\n      className={cn(\n        \"relative isolate min-h-56 overflow-hidden rounded-2xl border bg-background\",\n        className,\n      )}\n      style={\n        {\n          ...get(props, \"style\"),\n          backgroundImage: `radial-gradient(circle at 15% 20%, ${from}, transparent 42%), radial-gradient(circle at 85% 70%, ${to}, transparent 45%)`,\n        } as CSSProperties\n      }\n    >\n      <div\n        className=\"pointer-events-none absolute inset-0 bg-white/5 [mask-image:linear-gradient(to_bottom,transparent,black,transparent)]\"\n        aria-hidden=\"true\"\n      />\n      <div className=\"relative z-10\">{children}</div>\n    </div>\n  );\n}\n\nexport default GradientBackground;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/background/gradient-background.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

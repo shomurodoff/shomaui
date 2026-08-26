@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glare-hover",
+  "title": "Shomaui Glare Hover",
+  "description": "Pointer-aware glare that adds depth while preserving readable content.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/effects/glare-hover.tsx",
+      "content": "import { useState, type HTMLAttributes, type PointerEvent } from \"react\";\nimport { get, omit } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport type GlareHoverProps = HTMLAttributes<HTMLDivElement> & {\n  glareColor?: string;\n};\n\nexport function GlareHover({\n  glareColor = \"rgba(255,255,255,.24)\",\n  children,\n  className,\n  ...props\n}: GlareHoverProps) {\n  const [position, setPosition] = useState({ x: 50, y: 50 });\n\n  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {\n    const rect = event.currentTarget.getBoundingClientRect();\n    setPosition({\n      x: ((event.clientX - rect.left) / rect.width) * 100,\n      y: ((event.clientY - rect.top) / rect.height) * 100,\n    });\n  };\n\n  return (\n    <div\n      {...omit(props, [\"className\", \"onPointerMove\"])}\n      onPointerMove={handlePointerMove}\n      className={cn(\n        \"group relative overflow-hidden rounded-2xl border bg-card p-5 transition-transform duration-300 hover:-translate-y-1\",\n        className,\n      )}\n      style={{\n        ...get(props, \"style\"),\n        backgroundImage: `radial-gradient(circle at ${position.x}% ${position.y}%, ${glareColor}, transparent 35%)`,\n      }}\n    >\n      <div className=\"relative z-10\">{children}</div>\n    </div>\n  );\n}\n\nexport default GlareHover;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/effects/glare-hover.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

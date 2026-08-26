@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dot-pattern",
+  "title": "Shomaui Dot Pattern",
+  "description": "A configurable CSS dot field with token-aware color and spacing.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/background/dot-pattern.tsx",
+      "content": "import type { CSSProperties, HTMLAttributes } from \"react\";\nimport { get, omit } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport type DotPatternProps = HTMLAttributes<HTMLDivElement> & {\n  dotColor?: string;\n  dotSize?: number;\n  gap?: number;\n};\n\nexport function DotPattern({\n  dotColor = \"color-mix(in oklch, var(--foreground) 18%, transparent)\",\n  dotSize = 1.5,\n  gap = 22,\n  className,\n  ...props\n}: DotPatternProps) {\n  return (\n    <div\n      {...omit(props, [\"className\"])}\n      className={cn(\n        \"relative isolate min-h-56 overflow-hidden rounded-2xl border bg-background\",\n        className,\n      )}\n      style={\n        {\n          ...get(props, \"style\"),\n          backgroundImage: `radial-gradient(${dotColor} ${dotSize}px, transparent ${dotSize}px)`,\n          backgroundSize: `${gap}px ${gap}px`,\n        } as CSSProperties\n      }\n    />\n  );\n}\n\nexport default DotPattern;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/background/dot-pattern.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

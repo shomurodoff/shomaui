@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-list",
+  "title": "Shomaui Animated List",
+  "description": "A compact live activity rail with gentle item emphasis.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/components/animated-list.tsx",
+      "content": "import {\n  useEffect,\n  useState,\n  type HTMLAttributes,\n  type ReactNode,\n} from \"react\";\nimport { get, map, max, toNumber } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport type AnimatedListProps = HTMLAttributes<HTMLDivElement> & {\n  items?: ReactNode[];\n  interval?: number;\n};\n\nconst defaultItems = [\n  \"New component published\",\n  \"Build completed\",\n  \"Design review ready\",\n];\n\nexport function AnimatedList({\n  items = defaultItems,\n  interval = 2400,\n  className,\n  ...props\n}: AnimatedListProps) {\n  const [activeIndex, setActiveIndex] = useState(0);\n\n  useEffect(() => {\n    const timer = window.setInterval(() => {\n      setActiveIndex((index) => (index + 1) % (max([items.length, 1]) ?? 1));\n    }, toNumber(interval));\n\n    return () => window.clearInterval(timer);\n  }, [interval, items.length]);\n\n  return (\n    <div {...props} className={cn(\"grid gap-2\", className)}>\n      {map(items, (item, index) => (\n        <div\n          key={`${index}-${String(item)}`}\n          className={cn(\n            \"flex items-center gap-3 rounded-xl border bg-card px-3 py-2 text-sm transition-all duration-500\",\n            index === activeIndex\n              ? \"translate-x-1 border-primary/40 shadow-sm\"\n              : \"opacity-55\",\n          )}\n        >\n          <span className=\"size-2 rounded-full bg-primary\" aria-hidden=\"true\" />\n          <span className=\"truncate\">{item}</span>\n          {index === activeIndex ? (\n            <span className=\"ml-auto text-xs text-primary\">Live</span>\n          ) : null}\n        </div>\n      ))}\n      {!get(items, 0) ? (\n        <p className=\"text-sm text-muted-foreground\">No activity yet.</p>\n      ) : null}\n    </div>\n  );\n}\n\nexport default AnimatedList;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/components/animated-list.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

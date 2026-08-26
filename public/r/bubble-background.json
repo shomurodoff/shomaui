@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "bubble-background",
+  "title": "Shomaui Bubble Background",
+  "description": "A soft floating bubble field for playful interface moments.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/background/bubble-background.tsx",
+      "content": "import { useMemo, type CSSProperties, type HTMLAttributes } from \"react\";\nimport { get, map, range } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport type BubbleBackgroundProps = HTMLAttributes<HTMLDivElement> & {\n  count?: number;\n};\n\nexport function BubbleBackground({\n  count = 18,\n  children,\n  className,\n  ...props\n}: BubbleBackgroundProps) {\n  const bubbles = useMemo(\n    () =>\n      map(range(count), (index) => ({\n        id: index,\n        size: 18 + (index % 5) * 12,\n        left: (index * 29) % 100,\n        delay: (index % 8) * 0.45,\n        duration: 6 + (index % 5),\n      })),\n    [count],\n  );\n\n  return (\n    <div\n      {...props}\n      className={cn(\n        \"relative isolate min-h-56 overflow-hidden rounded-2xl bg-sky-950 text-white\",\n        className,\n      )}\n    >\n      <div\n        className=\"pointer-events-none absolute inset-0 overflow-hidden\"\n        aria-hidden=\"true\"\n      >\n        {map(bubbles, (bubble) => (\n          <span\n            key={get(bubble, \"id\")}\n            className=\"absolute bottom-[-15%] rounded-full border border-white/25 bg-white/10 blur-[.2px] [animation:shomaui-bubble_linear_infinite]\"\n            style={\n              {\n                left: `${get(bubble, \"left\", 0)}%`,\n                width: get(bubble, \"size\", 20),\n                height: get(bubble, \"size\", 20),\n                animationDelay: `${get(bubble, \"delay\", 0)}s`,\n                animationDuration: `${get(bubble, \"duration\", 7)}s`,\n              } as CSSProperties\n            }\n          />\n        ))}\n      </div>\n      <div className=\"relative z-10\">{children}</div>\n    </div>\n  );\n}\n\nexport default BubbleBackground;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/background/bubble-background.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "copy-button",
+  "title": "Shomaui Copy Button",
+  "description": "A reusable clipboard action with copied confirmation state.",
+  "dependencies": [
+    "@base-ui/react",
+    "class-variance-authority",
+    "cnfast",
+    "lodash",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://shomaui.vercel.app/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/components/copy-button.tsx",
+      "content": "import { Check, Copy } from \"lucide-react\";\nimport { get, toString } from \"lodash\";\nimport { useState, type ButtonHTMLAttributes, type ReactNode } from \"react\";\n\nimport { Button } from \"#/components/shomaui/button\";\n\nexport type CopyButtonProps = Omit<\n  ButtonHTMLAttributes<HTMLButtonElement>,\n  \"onClick\"\n> & {\n  value: string;\n  children?: ReactNode;\n};\n\nexport function CopyButton({\n  value,\n  children = \"Copy\",\n  ...props\n}: CopyButtonProps) {\n  const [copied, setCopied] = useState(false);\n\n  const copyValue = async () => {\n    await navigator.clipboard.writeText(toString(value));\n    setCopied(true);\n    window.setTimeout(() => setCopied(false), 1600);\n  };\n\n  return (\n    <Button\n      {...props}\n      type=\"button\"\n      variant=\"outline\"\n      onClick={copyValue}\n      aria-live=\"polite\"\n    >\n      {copied ? (\n        <Check data-icon=\"inline-start\" />\n      ) : (\n        <Copy data-icon=\"inline-start\" />\n      )}\n      {copied ? \"Copied\" : get({ children }, \"children\", \"Copy\")}\n    </Button>\n  );\n}\n\nexport default CopyButton;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/components/copy-button.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

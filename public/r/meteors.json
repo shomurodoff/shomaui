@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "meteors",
+  "title": "Shomaui Meteors",
+  "description": "A deterministic meteor shower for high-energy dark surfaces.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/effects/meteors.tsx",
+      "content": "import { useMemo, type CSSProperties, type HTMLAttributes } from \"react\";\nimport { get, map, range } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport type MeteorsProps = HTMLAttributes<HTMLDivElement> & {\n  count?: number;\n};\n\nexport function Meteors({\n  count = 10,\n  children,\n  className,\n  ...props\n}: MeteorsProps) {\n  const meteors = useMemo(\n    () =>\n      map(range(count), (index) => ({\n        id: index,\n        left: (index * 23) % 105,\n        delay: (index % 9) * 0.55,\n        duration: 2.8 + (index % 4) * 0.55,\n      })),\n    [count],\n  );\n\n  return (\n    <div\n      {...props}\n      className={cn(\n        \"relative isolate min-h-56 overflow-hidden rounded-2xl bg-slate-950 text-white\",\n        className,\n      )}\n    >\n      <div\n        className=\"pointer-events-none absolute inset-0 overflow-hidden\"\n        aria-hidden=\"true\"\n      >\n        {map(meteors, (meteor) => (\n          <span\n            key={get(meteor, \"id\")}\n            className=\"absolute top-[-10%] h-px w-20 -rotate-45 bg-gradient-to-r from-transparent via-sky-200 to-transparent opacity-70 [animation:shomaui-meteor_linear_infinite]\"\n            style={\n              {\n                left: `${get(meteor, \"left\", 0)}%`,\n                animationDelay: `${get(meteor, \"delay\", 0)}s`,\n                animationDuration: `${get(meteor, \"duration\", 3)}s`,\n              } as CSSProperties\n            }\n          />\n        ))}\n      </div>\n      <div className=\"relative z-10\">{children}</div>\n    </div>\n  );\n}\n\nexport default Meteors;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/effects/meteors.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

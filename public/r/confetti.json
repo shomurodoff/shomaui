@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "confetti",
+  "title": "Shomaui Confetti",
+  "description": "A lightweight celebration burst for completion moments.",
+  "dependencies": [
+    "@base-ui/react",
+    "class-variance-authority",
+    "cnfast",
+    "lodash",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "https://shomaui.vercel.app/r/button.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/effects/confetti.tsx",
+      "content": "import { PartyPopper } from \"lucide-react\";\nimport { get, map, range, toNumber } from \"lodash\";\nimport { useState, type CSSProperties, type ReactNode } from \"react\";\n\nimport { Button } from \"#/components/shomaui/button\";\nimport { cn } from \"#/lib/utils\";\n\nexport type ConfettiProps = {\n  children?: ReactNode;\n  pieces?: number;\n  className?: string;\n};\n\nexport function Confetti({\n  children = \"Celebrate\",\n  pieces = 18,\n  className,\n}: ConfettiProps) {\n  const [burst, setBurst] = useState(0);\n\n  return (\n    <div className={cn(\"relative inline-flex\", className)}>\n      <Button type=\"button\" onClick={() => setBurst((value) => value + 1)}>\n        <PartyPopper data-icon=\"inline-start\" />\n        {children}\n      </Button>\n      <div\n        key={burst}\n        className=\"pointer-events-none absolute inset-0\"\n        aria-hidden=\"true\"\n      >\n        {burst\n          ? map(range(pieces), (piece) => (\n              <span\n                key={`${burst}-${piece}`}\n                className=\"absolute left-1/2 top-1/2 size-1.5 animate-bounce rounded-sm bg-primary\"\n                style={\n                  {\n                    transform: `rotate(${piece * 20}deg) translateY(-${24 + (piece % 4) * 9}px)`,\n                    animationDelay: `${toNumber(piece) * 0.025}s`,\n                    backgroundColor: get(\n                      [\"#38bdf8\", \"#a78bfa\", \"#fbbf24\", \"#fb7185\"],\n                      piece % 4,\n                    ),\n                  } as CSSProperties\n                }\n              />\n            ))\n          : null}\n      </div>\n    </div>\n  );\n}\n\nexport default Confetti;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/effects/confetti.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "retro-grid",
+  "title": "Shomaui Retro Grid",
+  "description": "A perspective neon grid for atmospheric hero sections.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/background/retro-grid.tsx",
+      "content": "import type { HTMLAttributes } from \"react\";\nimport { get, omit } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport function RetroGrid(props: HTMLAttributes<HTMLDivElement>) {\n  const className = get(props, \"className\");\n\n  return (\n    <div\n      {...omit(props, [\"className\"])}\n      className={cn(\n        \"relative isolate min-h-56 overflow-hidden rounded-2xl border bg-slate-950 [background-image:linear-gradient(to_right,rgba(255,255,255,.12)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.12)_1px,transparent_1px)] [background-size:34px_34px] [perspective:400px] before:absolute before:inset-x-[-20%] before:bottom-[-65%] before:h-[90%] before:skew-y-[-10deg] before:bg-[linear-gradient(to_bottom,transparent,rgba(56,189,248,.4),transparent)] before:[background-size:100%_8px] before:opacity-80 before:[transform:rotateX(55deg)] before:content-['']\",\n        className,\n      )}\n    />\n  );\n}\n\nexport default RetroGrid;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/background/retro-grid.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aurora-text",
+  "title": "Shomaui Aurora Text",
+  "description": "Animated aurora color movement for expressive headlines.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/text/aurora-text.tsx",
+      "content": "import type { HTMLAttributes } from \"react\";\nimport { get, omit } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport function AuroraText({\n  className,\n  children,\n  ...props\n}: HTMLAttributes<HTMLSpanElement>) {\n  return (\n    <span\n      {...omit(props, [\"className\"])}\n      className={cn(\n        \"inline-block bg-[linear-gradient(110deg,#38bdf8,#a78bfa,#f472b6,#38bdf8)] bg-[length:300%_100%] bg-clip-text text-transparent [animation:shomaui-aurora-text_6s_ease_infinite]\",\n        className,\n      )}\n      style={{ ...get(props, \"style\") }}\n    >\n      {children}\n    </span>\n  );\n}\n\nexport default AuroraText;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/text/aurora-text.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

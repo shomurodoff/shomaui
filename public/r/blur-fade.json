@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "blur-fade",
+  "title": "Shomaui Blur Fade",
+  "description": "An IntersectionObserver-powered entrance animation.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/animations/blur-fade.tsx",
+      "content": "import { useEffect, useRef, useState, type HTMLAttributes } from \"react\";\nimport { get, omit } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport type BlurFadeProps = HTMLAttributes<HTMLDivElement> & {\n  delay?: number;\n  offset?: number;\n};\n\nexport function BlurFade({\n  delay = 0,\n  offset = 12,\n  children,\n  className,\n  ...props\n}: BlurFadeProps) {\n  const ref = useRef<HTMLDivElement>(null);\n  const [visible, setVisible] = useState(false);\n\n  useEffect(() => {\n    const node = ref.current;\n    if (!node) return;\n    const observer = new IntersectionObserver(\n      ([entry]) => setVisible(entry.isIntersecting),\n      { threshold: 0.1 },\n    );\n    observer.observe(node);\n    return () => observer.disconnect();\n  }, []);\n\n  return (\n    <div\n      ref={ref}\n      {...omit(props, [\"className\"])}\n      className={cn(\n        \"transition duration-700\",\n        visible ? \"translate-y-0 opacity-100 blur-0\" : \"opacity-0 blur-md\",\n        className,\n      )}\n      style={{\n        ...get(props, \"style\"),\n        transform: visible ? \"translateY(0)\" : `translateY(${offset}px)`,\n        transitionDelay: `${delay}ms`,\n      }}\n    >\n      {children}\n    </div>\n  );\n}\n\nexport default BlurFade;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/animations/blur-fade.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "progressive-blur",
+  "title": "Shomaui Progressive Blur",
+  "description": "A top or bottom blur veil for clipped content surfaces.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/effects/progressive-blur.tsx",
+      "content": "import type { HTMLAttributes } from \"react\";\nimport { get, omit } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport type ProgressiveBlurProps = HTMLAttributes<HTMLDivElement> & {\n  position?: \"top\" | \"bottom\";\n};\n\nexport function ProgressiveBlur({\n  position = \"bottom\",\n  children,\n  className,\n  ...props\n}: ProgressiveBlurProps) {\n  const isTop = position === \"top\";\n\n  return (\n    <div\n      {...omit(props, [\"className\"])}\n      className={cn(\n        \"relative overflow-hidden rounded-2xl border bg-card\",\n        className,\n      )}\n    >\n      <div className=\"relative z-10 p-5\">{children}</div>\n      <div\n        className={cn(\n          \"pointer-events-none absolute inset-x-0 z-20 h-16 backdrop-blur-md [mask-image:linear-gradient(to_bottom,transparent,black)]\",\n          isTop ? \"top-0 rotate-180\" : \"bottom-0\",\n        )}\n        style={{ opacity: get(props, \"style.opacity\", 1) }}\n        aria-hidden=\"true\"\n      />\n    </div>\n  );\n}\n\nexport default ProgressiveBlur;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/effects/progressive-blur.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

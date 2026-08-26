@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sparkles-text",
+  "title": "Shomaui Sparkles Text",
+  "description": "Small animated sparkles that make a short phrase feel special.",
+  "dependencies": [
+    "lodash",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/text/sparkles-text.tsx",
+      "content": "import { Sparkles } from \"lucide-react\";\nimport { get, map, range } from \"lodash\";\nimport type { HTMLAttributes } from \"react\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport function SparklesText({\n  className,\n  children,\n  ...props\n}: HTMLAttributes<HTMLSpanElement>) {\n  return (\n    <span {...props} className={cn(\"relative inline-block\", className)}>\n      {children}\n      <span\n        className=\"pointer-events-none absolute -inset-3\"\n        aria-hidden=\"true\"\n      >\n        {map(range(4), (index) => (\n          <Sparkles\n            key={index}\n            className=\"absolute size-3 animate-pulse text-primary\"\n            style={{\n              left: `${get([0, 92, 8, 82], index)}%`,\n              top: `${get([5, 14, 70, 85], index)}%`,\n              animationDelay: `${index * 0.35}s`,\n            }}\n          />\n        ))}\n      </span>\n    </span>\n  );\n}\n\nexport default SparklesText;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/text/sparkles-text.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

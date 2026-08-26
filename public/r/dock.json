@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dock",
+  "title": "Shomaui Dock",
+  "description": "A keyboard-friendly application dock with tooltip labels and active state.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/components/dock.tsx",
+      "content": "import { useState, type ReactNode } from \"react\";\nimport { get, map } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport type DockItem = {\n  label: string;\n  icon: ReactNode;\n  onClick?: () => void;\n};\n\nexport type DockProps = {\n  items?: DockItem[];\n  className?: string;\n};\n\nconst defaultItems: DockItem[] = [\n  { label: \"Home\", icon: \"⌂\" },\n  { label: \"Search\", icon: \"⌕\" },\n  { label: \"Settings\", icon: \"⚙\" },\n];\n\nexport function Dock({ items = defaultItems, className }: DockProps) {\n  const [activeLabel, setActiveLabel] = useState(get(items, \"0.label\", \"\"));\n\n  return (\n    <nav\n      aria-label=\"Application dock\"\n      className={cn(\"flex items-end justify-center gap-2\", className)}\n    >\n      {map(items, (item) => {\n        const active = item.label === activeLabel;\n        return (\n          <button\n            key={item.label}\n            type=\"button\"\n            onClick={() => {\n              setActiveLabel(item.label);\n              item.onClick?.();\n            }}\n            className={cn(\n              \"group relative flex size-11 items-center justify-center rounded-2xl border bg-card text-lg shadow-sm transition-all duration-200 hover:-translate-y-2 hover:scale-110\",\n              active && \"-translate-y-1 border-primary/50 text-primary\",\n            )}\n            aria-label={item.label}\n            aria-current={active ? \"page\" : undefined}\n          >\n            {item.icon}\n            <span className=\"pointer-events-none absolute -top-8 scale-90 rounded-md bg-foreground px-2 py-1 text-[10px] text-background opacity-0 transition group-hover:scale-100 group-hover:opacity-100\">\n              {item.label}\n            </span>\n          </button>\n        );\n      })}\n    </nav>\n  );\n}\n\nexport default Dock;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/components/dock.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

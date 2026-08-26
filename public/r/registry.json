@@ -421,6 +421,232 @@
           "target": "@lib/utils.ts"
         }
       ]
+    },
+    {
+      "name": "animated-list",
+      "type": "registry:ui",
+      "title": "Shomaui Animated List",
+      "description": "A compact live activity rail with gentle item emphasis.",
+      "dependencies": ["lodash"],
+      "files": [{"path":"src/components/shomaui/components/animated-list.tsx","type":"registry:ui","target":"@components/shomaui/components/animated-list.tsx"}]
+    },
+    {
+      "name": "dock",
+      "type": "registry:ui",
+      "title": "Shomaui Dock",
+      "description": "A keyboard-friendly application dock with tooltip labels and active state.",
+      "dependencies": ["lodash"],
+      "files": [{"path":"src/components/shomaui/components/dock.tsx","type":"registry:ui","target":"@components/shomaui/components/dock.tsx"}]
+    },
+    {
+      "name": "timeline",
+      "type": "registry:ui",
+      "title": "Shomaui Timeline",
+      "description": "A vertical milestone timeline for product progress and workflows.",
+      "dependencies": ["lodash", "lucide-react"],
+      "files": [{"path":"src/components/shomaui/components/timeline.tsx","type":"registry:ui","target":"@components/shomaui/components/timeline.tsx"}]
+    },
+    {
+      "name": "rating",
+      "type": "registry:ui",
+      "title": "Shomaui Rating",
+      "description": "An accessible star rating input with keyboard and screen-reader labels.",
+      "dependencies": ["lodash", "lucide-react"],
+      "files": [{"path":"src/components/shomaui/components/rating.tsx","type":"registry:ui","target":"@components/shomaui/components/rating.tsx"}]
+    },
+    {
+      "name": "file-upload",
+      "type": "registry:ui",
+      "title": "Shomaui File Upload",
+      "description": "Drag-and-drop file input with deduplication and remove actions.",
+      "dependencies": ["lodash", "lucide-react"],
+      "files": [{"path":"src/components/shomaui/components/file-upload.tsx","type":"registry:ui","target":"@components/shomaui/components/file-upload.tsx"}]
+    },
+    {
+      "name": "copy-button",
+      "type": "registry:ui",
+      "title": "Shomaui Copy Button",
+      "description": "A reusable clipboard action with copied confirmation state.",
+      "registryDependencies": ["https://shomaui.vercel.app/r/button.json"],
+      "dependencies": ["@base-ui/react", "class-variance-authority", "cnfast", "lodash", "lucide-react"],
+      "files": [{"path":"src/components/shomaui/components/copy-button.tsx","type":"registry:ui","target":"@components/shomaui/components/copy-button.tsx"}]
+    },
+    {
+      "name": "flickering-grid",
+      "type": "registry:ui",
+      "title": "Shomaui Flickering Grid",
+      "description": "A deterministic grid of softly flickering cells.",
+      "dependencies": ["lodash"],
+      "files": [{"path":"src/components/shomaui/background/flickering-grid.tsx","type":"registry:ui","target":"@components/shomaui/background/flickering-grid.tsx"}]
+    },
+    {
+      "name": "retro-grid",
+      "type": "registry:ui",
+      "title": "Shomaui Retro Grid",
+      "description": "A perspective neon grid for atmospheric hero sections.",
+      "dependencies": ["lodash"],
+      "files": [{"path":"src/components/shomaui/background/retro-grid.tsx","type":"registry:ui","target":"@components/shomaui/background/retro-grid.tsx"}]
+    },
+    {
+      "name": "dot-pattern",
+      "type": "registry:ui",
+      "title": "Shomaui Dot Pattern",
+      "description": "A configurable CSS dot field with token-aware color and spacing.",
+      "dependencies": ["lodash"],
+      "files": [{"path":"src/components/shomaui/background/dot-pattern.tsx","type":"registry:ui","target":"@components/shomaui/background/dot-pattern.tsx"}]
+    },
+    {
+      "name": "bubble-background",
+      "type": "registry:ui",
+      "title": "Shomaui Bubble Background",
+      "description": "A soft floating bubble field for playful interface moments.",
+      "dependencies": ["lodash"],
+      "files": [{"path":"src/components/shomaui/background/bubble-background.tsx","type":"registry:ui","target":"@components/shomaui/background/bubble-background.tsx"}]
+    },
+    {
+      "name": "gradient-background",
+      "type": "registry:ui",
+      "title": "Shomaui Gradient Background",
+      "description": "Layered radial gradients for soft focus without image assets.",
+      "dependencies": ["lodash"],
+      "files": [{"path":"src/components/shomaui/background/gradient-background.tsx","type":"registry:ui","target":"@components/shomaui/background/gradient-background.tsx"}]
+    },
+    {
+      "name": "hexagon-background",
+      "type": "registry:ui",
+      "title": "Shomaui Hexagon Background",
+      "description": "A lightweight hexagonal pattern for technical interfaces.",
+      "dependencies": ["lodash"],
+      "files": [{"path":"src/components/shomaui/background/hexagon-background.tsx","type":"registry:ui","target":"@components/shomaui/background/hexagon-background.tsx"}]
+    },
+    {
+      "name": "border-beam",
+      "type": "registry:ui",
+      "title": "Shomaui Border Beam",
+      "description": "A moving conic-gradient beam that draws attention to a card edge.",
+      "dependencies": ["lodash"],
+      "files": [{"path":"src/components/shomaui/effects/border-beam.tsx","type":"registry:ui","target":"@components/shomaui/effects/border-beam.tsx"}]
+    },
+    {
+      "name": "glare-hover",
+      "type": "registry:ui",
+      "title": "Shomaui Glare Hover",
+      "description": "Pointer-aware glare that adds depth while preserving readable content.",
+      "dependencies": ["lodash"],
+      "files": [{"path":"src/components/shomaui/effects/glare-hover.tsx","type":"registry:ui","target":"@components/shomaui/effects/glare-hover.tsx"}]
+    },
+    {
+      "name": "meteors",
+      "type": "registry:ui",
+      "title": "Shomaui Meteors",
+      "description": "A deterministic meteor shower for high-energy dark surfaces.",
+      "dependencies": ["lodash"],
+      "files": [{"path":"src/components/shomaui/effects/meteors.tsx","type":"registry:ui","target":"@components/shomaui/effects/meteors.tsx"}]
+    },
+    {
+      "name": "confetti",
+      "type": "registry:ui",
+      "title": "Shomaui Confetti",
+      "description": "A lightweight celebration burst for completion moments.",
+      "registryDependencies": ["https://shomaui.vercel.app/r/button.json"],
+      "dependencies": ["@base-ui/react", "class-variance-authority", "cnfast", "lodash", "lucide-react"],
+      "files": [{"path":"src/components/shomaui/effects/confetti.tsx","type":"registry:ui","target":"@components/shomaui/effects/confetti.tsx"}]
+    },
+    {
+      "name": "progressive-blur",
+      "type": "registry:ui",
+      "title": "Shomaui Progressive Blur",
+      "description": "A top or bottom blur veil for clipped content surfaces.",
+      "dependencies": ["lodash"],
+      "files": [{"path":"src/components/shomaui/effects/progressive-blur.tsx","type":"registry:ui","target":"@components/shomaui/effects/progressive-blur.tsx"}]
+    },
+    {
+      "name": "image-reveal",
+      "type": "registry:ui",
+      "title": "Shomaui Image Reveal",
+      "description": "A focus-friendly image transition from blur to clarity.",
+      "dependencies": ["lodash"],
+      "files": [{"path":"src/components/shomaui/effects/image-reveal.tsx","type":"registry:ui","target":"@components/shomaui/effects/image-reveal.tsx"}]
+    },
+    {
+      "name": "blur-fade",
+      "type": "registry:ui",
+      "title": "Shomaui Blur Fade",
+      "description": "An IntersectionObserver-powered entrance animation.",
+      "dependencies": ["lodash"],
+      "files": [{"path":"src/components/shomaui/animations/blur-fade.tsx","type":"registry:ui","target":"@components/shomaui/animations/blur-fade.tsx"}]
+    },
+    {
+      "name": "stacking-card",
+      "type": "registry:ui",
+      "title": "Shomaui Stacking Card",
+      "description": "Sticky cards that layer into a clear scroll narrative.",
+      "dependencies": ["lodash"],
+      "files": [{"path":"src/components/shomaui/animations/stacking-card.tsx","type":"registry:ui","target":"@components/shomaui/animations/stacking-card.tsx"}]
+    },
+    {
+      "name": "shimmer-loader",
+      "type": "registry:ui",
+      "title": "Shomaui Shimmer Loader",
+      "description": "A compact loading skeleton for async content states.",
+      "dependencies": ["lodash"],
+      "files": [{"path":"src/components/shomaui/animations/shimmer-loader.tsx","type":"registry:ui","target":"@components/shomaui/animations/shimmer-loader.tsx"}]
+    },
+    {
+      "name": "scroll-progress",
+      "type": "registry:ui",
+      "title": "Shomaui Scroll Progress",
+      "description": "A fixed reading progress indicator for long-form pages.",
+      "dependencies": ["lodash"],
+      "files": [{"path":"src/components/shomaui/animations/scroll-progress.tsx","type":"registry:ui","target":"@components/shomaui/animations/scroll-progress.tsx"}]
+    },
+    {
+      "name": "aurora-text",
+      "type": "registry:ui",
+      "title": "Shomaui Aurora Text",
+      "description": "Animated aurora color movement for expressive headlines.",
+      "dependencies": ["lodash"],
+      "files": [{"path":"src/components/shomaui/text/aurora-text.tsx","type":"registry:ui","target":"@components/shomaui/text/aurora-text.tsx"}]
+    },
+    {
+      "name": "sparkles-text",
+      "type": "registry:ui",
+      "title": "Shomaui Sparkles Text",
+      "description": "Small animated sparkles that make a short phrase feel special.",
+      "dependencies": ["lodash", "lucide-react"],
+      "files": [{"path":"src/components/shomaui/text/sparkles-text.tsx","type":"registry:ui","target":"@components/shomaui/text/sparkles-text.tsx"}]
+    },
+    {
+      "name": "morphing-text",
+      "type": "registry:ui",
+      "title": "Shomaui Morphing Text",
+      "description": "Looping word changes for compact value propositions.",
+      "dependencies": ["lodash"],
+      "files": [{"path":"src/components/shomaui/text/morphing-text.tsx","type":"registry:ui","target":"@components/shomaui/text/morphing-text.tsx"}]
+    },
+    {
+      "name": "text-reveal",
+      "type": "registry:ui",
+      "title": "Shomaui Text Reveal",
+      "description": "A viewport-aware line reveal for editorial headings.",
+      "dependencies": ["lodash"],
+      "files": [{"path":"src/components/shomaui/text/text-reveal.tsx","type":"registry:ui","target":"@components/shomaui/text/text-reveal.tsx"}]
+    },
+    {
+      "name": "text-highlighter",
+      "type": "registry:ui",
+      "title": "Shomaui Text Highlighter",
+      "description": "A semantic inline highlight for visual copy cues.",
+      "dependencies": ["lodash"],
+      "files": [{"path":"src/components/shomaui/text/text-highlighter.tsx","type":"registry:ui","target":"@components/shomaui/text/text-highlighter.tsx"}]
+    },
+    {
+      "name": "word-rotate",
+      "type": "registry:ui",
+      "title": "Shomaui Word Rotate",
+      "description": "An accessible rotating word primitive for concise animated copy.",
+      "dependencies": ["lodash"],
+      "files": [{"path":"src/components/shomaui/text/word-rotate.tsx","type":"registry:ui","target":"@components/shomaui/text/word-rotate.tsx"}]
     }
   ]
 }

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shimmer-loader",
+  "title": "Shomaui Shimmer Loader",
+  "description": "A compact loading skeleton for async content states.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/animations/shimmer-loader.tsx",
+      "content": "import { get, map, omit, range } from \"lodash\";\nimport type { HTMLAttributes } from \"react\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport type ShimmerLoaderProps = HTMLAttributes<HTMLDivElement> & {\n  lines?: number;\n};\n\nexport function ShimmerLoader({\n  lines = 3,\n  className,\n  ...props\n}: ShimmerLoaderProps) {\n  return (\n    <div\n      {...omit(props, [\"className\"])}\n      className={cn(\"grid gap-2\", className)}\n      aria-label=\"Loading\"\n    >\n      {map(range(lines), (index) => (\n        <div\n          key={index}\n          className={cn(\n            \"h-3 animate-pulse rounded-full bg-muted\",\n            index === lines - 1 ? \"w-2/3\" : \"w-full\",\n          )}\n          style={{ animationDelay: `${get([0, 80, 160], index % 3)}ms` }}\n        />\n      ))}\n    </div>\n  );\n}\n\nexport default ShimmerLoader;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/animations/shimmer-loader.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

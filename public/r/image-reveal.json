@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "image-reveal",
+  "title": "Shomaui Image Reveal",
+  "description": "A focus-friendly image transition from blur to clarity.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/effects/image-reveal.tsx",
+      "content": "import { useState, type ImgHTMLAttributes } from \"react\";\nimport { get } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport type ImageRevealProps = ImgHTMLAttributes<HTMLImageElement> & {\n  revealOn?: \"hover\" | \"always\";\n};\n\nexport function ImageReveal({\n  revealOn = \"hover\",\n  className,\n  alt = \"\",\n  ...props\n}: ImageRevealProps) {\n  const [revealed, setRevealed] = useState(revealOn === \"always\");\n\n  return (\n    <div\n      className={cn(\n        \"group relative overflow-hidden rounded-2xl bg-muted\",\n        className,\n      )}\n      onMouseEnter={() => setRevealed(true)}\n      onMouseLeave={() => revealOn === \"hover\" && setRevealed(false)}\n    >\n      <img\n        {...props}\n        alt={alt}\n        className={cn(\n          \"block aspect-video w-full object-cover transition duration-700\",\n          revealed ? \"scale-100 blur-0\" : \"scale-110 blur-xl\",\n        )}\n      />\n      <div\n        className={cn(\n          \"pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 to-transparent transition-opacity\",\n          revealed ? \"opacity-0\" : \"opacity-100\",\n        )}\n        aria-hidden=\"true\"\n      />\n      <span className=\"absolute inset-x-0 bottom-3 text-center text-xs font-medium text-white opacity-0 transition-opacity group-hover:opacity-100\">\n        {get(props, \"alt\", \"Preview\")}\n      </span>\n    </div>\n  );\n}\n\nexport default ImageReveal;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/effects/image-reveal.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

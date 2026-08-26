@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hexagon-background",
+  "title": "Shomaui Hexagon Background",
+  "description": "A lightweight hexagonal pattern for technical interfaces.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/background/hexagon-background.tsx",
+      "content": "import type { HTMLAttributes } from \"react\";\nimport { get, omit } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport function HexagonBackground(props: HTMLAttributes<HTMLDivElement>) {\n  const className = get(props, \"className\");\n\n  return (\n    <div\n      {...omit(props, [\"className\"])}\n      className={cn(\n        \"relative isolate min-h-56 overflow-hidden rounded-2xl border bg-background [background-image:linear-gradient(30deg,color-mix(in_oklch,var(--foreground)_10%,transparent)_12%,transparent_12.5%,transparent_87%,color-mix(in_oklch,var(--foreground)_10%,transparent)_87.5%,color-mix(in_oklch,var(--foreground)_10%,transparent)),linear-gradient(150deg,color-mix(in_oklch,var(--foreground)_10%,transparent)_12%,transparent_12.5%,transparent_87%,color-mix(in_oklch,var(--foreground)_10%,transparent)_87.5%,color-mix(in_oklch,var(--foreground)_10%,transparent)),linear-gradient(30deg,color-mix(in_oklch,var(--foreground)_10%,transparent)_12%,transparent_12.5%,transparent_87%,color-mix(in_oklch,var(--foreground)_10%,transparent)_87.5%,color-mix(in_oklch,var(--foreground)_10%,transparent)),linear-gradient(150deg,color-mix(in_oklch,var(--foreground)_10%,transparent)_12%,transparent_12.5%,transparent_87%,color-mix(in_oklch,var(--foreground)_10%,transparent)_87.5%,color-mix(in_oklch,var(--foreground)_10%,transparent))] [background-position:0_0,0_0,20px_35px,20px_35px] [background-size:40px_70px]\",\n        className,\n      )}\n    />\n  );\n}\n\nexport default HexagonBackground;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/background/hexagon-background.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

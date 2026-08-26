@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-reveal",
+  "title": "Shomaui Text Reveal",
+  "description": "A viewport-aware line reveal for editorial headings.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/text/text-reveal.tsx",
+      "content": "import { useEffect, useRef, useState, type HTMLAttributes } from \"react\";\nimport { get, omit } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport function TextReveal({\n  className,\n  children,\n  ...props\n}: HTMLAttributes<HTMLSpanElement>) {\n  const ref = useRef<HTMLSpanElement>(null);\n  const [visible, setVisible] = useState(false);\n\n  useEffect(() => {\n    const node = ref.current;\n    if (!node) return;\n    const observer = new IntersectionObserver(\n      ([entry]) => setVisible(entry.isIntersecting),\n      { threshold: 0.2 },\n    );\n    observer.observe(node);\n    return () => observer.disconnect();\n  }, []);\n\n  return (\n    <span\n      ref={ref}\n      {...omit(props, [\"className\"])}\n      className={cn(\"inline-block overflow-hidden align-bottom\", className)}\n    >\n      <span\n        className={cn(\n          \"inline-block transition duration-700\",\n          visible ? \"translate-y-0 opacity-100\" : \"translate-y-full opacity-0\",\n        )}\n        style={{\n          transitionDelay: `${get(props, \"style.transitionDelay\", \"0ms\")}`,\n        }}\n      >\n        {children}\n      </span>\n    </span>\n  );\n}\n\nexport default TextReveal;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/text/text-reveal.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

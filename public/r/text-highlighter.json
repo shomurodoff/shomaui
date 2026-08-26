@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "text-highlighter",
+  "title": "Shomaui Text Highlighter",
+  "description": "A semantic inline highlight for visual copy cues.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/text/text-highlighter.tsx",
+      "content": "import type { HTMLAttributes } from \"react\";\nimport { omit } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport type TextHighlighterProps = HTMLAttributes<HTMLSpanElement> & {\n  color?: string;\n};\n\nexport function TextHighlighter({\n  color = \"rgba(250, 204, 21, .38)\",\n  className,\n  children,\n  ...props\n}: TextHighlighterProps) {\n  return (\n    <span\n      {...omit(props, [\"className\"])}\n      className={cn(\"relative inline-block px-1\", className)}\n    >\n      <span\n        className=\"absolute inset-x-0 bottom-0 z-0 h-[45%] -rotate-1 rounded-sm\"\n        style={{ backgroundColor: color }}\n        aria-hidden=\"true\"\n      />\n      <span className=\"relative z-10\">{children}</span>\n    </span>\n  );\n}\n\nexport default TextHighlighter;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/text/text-highlighter.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rating",
+  "title": "Shomaui Rating",
+  "description": "An accessible star rating input with keyboard and screen-reader labels.",
+  "dependencies": [
+    "lodash",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/components/rating.tsx",
+      "content": "import { Star } from \"lucide-react\";\nimport { clamp, get, map, range } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport type RatingProps = {\n  value?: number;\n  max?: number;\n  onValueChange?: (value: number) => void;\n  className?: string;\n};\n\nexport function Rating({\n  value = 4,\n  max = 5,\n  onValueChange,\n  className,\n}: RatingProps) {\n  const safeValue = clamp(value, 0, max);\n\n  return (\n    <div\n      className={cn(\"flex items-center gap-1\", className)}\n      role=\"radiogroup\"\n      aria-label=\"Rating\"\n    >\n      {map(range(1, max + 1), (star) => {\n        const filled = star <= safeValue;\n        return (\n          <button\n            key={star}\n            type=\"button\"\n            role=\"radio\"\n            aria-checked={star === safeValue}\n            aria-label={`${star} out of ${max}`}\n            className=\"rounded-sm p-0.5 text-amber-500 outline-none transition-transform hover:scale-110 focus-visible:ring-2 focus-visible:ring-ring\"\n            onClick={() => onValueChange?.(clamp(star, 0, max))}\n          >\n            <Star\n              className={cn(\n                \"size-5\",\n                filled\n                  ? \"fill-current\"\n                  : \"fill-transparent text-muted-foreground\",\n              )}\n            />\n          </button>\n        );\n      })}\n      <span className=\"ml-1 text-xs text-muted-foreground\">\n        {get(safeValue, \"toFixed\") ? safeValue.toFixed(1) : safeValue}/{max}\n      </span>\n    </div>\n  );\n}\n\nexport default Rating;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/components/rating.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

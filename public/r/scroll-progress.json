@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-progress",
+  "title": "Shomaui Scroll Progress",
+  "description": "A fixed reading progress indicator for long-form pages.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/animations/scroll-progress.tsx",
+      "content": "import { useEffect, useState, type HTMLAttributes } from \"react\";\nimport { clamp, max } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport function ScrollProgress({\n  className,\n  ...props\n}: HTMLAttributes<HTMLDivElement>) {\n  const [progress, setProgress] = useState(0);\n\n  useEffect(() => {\n    const updateProgress = () => {\n      const height = document.documentElement.scrollHeight - window.innerHeight;\n      setProgress(\n        height > 0 ? clamp((window.scrollY / height) * 100, 0, 100) : 0,\n      );\n    };\n    updateProgress();\n    window.addEventListener(\"scroll\", updateProgress, { passive: true });\n    return () => window.removeEventListener(\"scroll\", updateProgress);\n  }, []);\n\n  return (\n    <div\n      {...props}\n      className={cn(\"fixed inset-x-0 top-0 z-50 h-1 bg-transparent\", className)}\n      aria-hidden=\"true\"\n    >\n      <div\n        className=\"h-full bg-primary transition-[width] duration-150\"\n        style={{ width: `${max([progress, 0])}%` }}\n      />\n    </div>\n  );\n}\n\nexport default ScrollProgress;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/animations/scroll-progress.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

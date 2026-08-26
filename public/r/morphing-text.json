@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "morphing-text",
+  "title": "Shomaui Morphing Text",
+  "description": "Looping word changes for compact value propositions.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/text/morphing-text.tsx",
+      "content": "import { useEffect, useState, type HTMLAttributes } from \"react\";\nimport { get, max, toNumber } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport type MorphingTextProps = HTMLAttributes<HTMLSpanElement> & {\n  words?: string[];\n  interval?: number;\n};\n\nconst defaultWords = [\"clear\", \"playful\", \"memorable\"];\n\nexport function MorphingText({\n  words = defaultWords,\n  interval = 2200,\n  className,\n  ...props\n}: MorphingTextProps) {\n  const [index, setIndex] = useState(0);\n\n  useEffect(() => {\n    const timer = window.setInterval(\n      () => setIndex((value) => (value + 1) % (max([words.length, 1]) ?? 1)),\n      toNumber(interval),\n    );\n    return () => window.clearInterval(timer);\n  }, [interval, words.length]);\n\n  return (\n    <span\n      {...props}\n      className={cn(\n        \"inline-block min-w-24 transition-all duration-500\",\n        className,\n      )}\n    >\n      {get(words, index, \"\")}\n    </span>\n  );\n}\n\nexport default MorphingText;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/text/morphing-text.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

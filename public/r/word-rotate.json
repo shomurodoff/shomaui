@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "word-rotate",
+  "title": "Shomaui Word Rotate",
+  "description": "An accessible rotating word primitive for concise animated copy.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/text/word-rotate.tsx",
+      "content": "import { useEffect, useState, type HTMLAttributes } from \"react\";\nimport { get, max, toNumber } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport type WordRotateProps = HTMLAttributes<HTMLSpanElement> & {\n  words?: string[];\n  duration?: number;\n};\n\nconst defaultWords = [\"design\", \"build\", \"ship\"];\n\nexport function WordRotate({\n  words = defaultWords,\n  duration = 1800,\n  className,\n  ...props\n}: WordRotateProps) {\n  const [index, setIndex] = useState(0);\n\n  useEffect(() => {\n    const timer = window.setInterval(\n      () => setIndex((value) => (value + 1) % (max([words.length, 1]) ?? 1)),\n      toNumber(duration),\n    );\n    return () => window.clearInterval(timer);\n  }, [duration, words.length]);\n\n  return (\n    <span {...props} className={cn(\"inline-block animate-pulse\", className)}>\n      {get(words, index, \"\")}\n    </span>\n  );\n}\n\nexport default WordRotate;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/text/word-rotate.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

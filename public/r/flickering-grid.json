@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "flickering-grid",
+  "title": "Shomaui Flickering Grid",
+  "description": "A deterministic grid of softly flickering cells.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/background/flickering-grid.tsx",
+      "content": "import { useMemo, type CSSProperties, type HTMLAttributes } from \"react\";\nimport { get, map, range } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport type FlickeringGridProps = HTMLAttributes<HTMLDivElement> & {\n  squareSize?: number;\n  gridGap?: number;\n  flickerChance?: number;\n};\n\nexport function FlickeringGrid({\n  squareSize = 6,\n  gridGap = 5,\n  flickerChance = 0.18,\n  children,\n  className,\n  ...props\n}: FlickeringGridProps) {\n  const cells = useMemo(\n    () =>\n      map(range(72), (index) => ({\n        id: index,\n        delay: `${(index % 11) * 0.19}s`,\n        active: index % 7 === 0 || index % 13 === 0,\n      })),\n    [],\n  );\n\n  return (\n    <div\n      {...props}\n      className={cn(\n        \"relative isolate overflow-hidden rounded-2xl border bg-background p-5\",\n        className,\n      )}\n    >\n      <div\n        className=\"pointer-events-none absolute inset-0 grid grid-cols-12 content-start gap-1.5 p-4 opacity-70\"\n        aria-hidden=\"true\"\n      >\n        {map(cells, (cell) => (\n          <span\n            key={get(cell, \"id\")}\n            className={cn(\n              \"aspect-square rounded-[2px] bg-primary/15\",\n              cell.active && \"animate-pulse bg-primary/45\",\n            )}\n            style={\n              {\n                animationDelay: get(cell, \"delay\"),\n                animationDuration: `${2 + (get(cell, \"id\", 0) % 5) * flickerChance + 1}s`,\n                width: squareSize,\n                height: squareSize,\n                margin: gridGap / 2,\n              } as CSSProperties\n            }\n          />\n        ))}\n      </div>\n      <div className=\"relative z-10\">{children}</div>\n    </div>\n  );\n}\n\nexport default FlickeringGrid;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/background/flickering-grid.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}
