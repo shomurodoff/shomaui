@@ -1,5 +1,15 @@
 import type { ComponentType } from "react";
-import { concat } from "lodash";
+import {
+  concat,
+  filter,
+  get,
+  groupBy,
+  kebabCase,
+  keys,
+  map,
+  size,
+  sortBy,
+} from "lodash";
 import {
   Activity,
   Asterisk,
@@ -96,6 +106,13 @@ export type CatalogItem = {
   author: string;
   license: string;
   attribution?: string;
+};
+
+export type CatalogCategory = {
+  slug: string;
+  label: string;
+  count: number;
+  href: `/${CatalogKind}`;
 };
 
 export const catalogProducts: CatalogProduct[] = [
@@ -1054,10 +1071,36 @@ export const getCatalogProduct = (kind: CatalogKind) =>
   catalogProducts[0];
 
 export const getCatalogItems = (kind: CatalogKind) =>
-  catalogItems.filter((item) => item.kind === kind);
+  filter(catalogItems, (item) => item.kind === kind);
+
+export const getCatalogCategories = (kind: CatalogKind): CatalogCategory[] => {
+  const product = getCatalogProduct(kind);
+  const items = getCatalogItems(kind);
+  const groupedItems = groupBy(items, "category");
+
+  return concat(
+    [
+      {
+        slug: "all",
+        label: `All ${product.label}`,
+        count: size(items),
+        href: product.basePath,
+      },
+    ],
+    map(sortBy(keys(groupedItems)), (label) => ({
+      slug: kebabCase(label),
+      label,
+      count: size(get(groupedItems, label, [])),
+      href: product.basePath,
+    })),
+  );
+};
 
 export const getCatalogItem = (kind: CatalogKind, slug: string) =>
-  catalogItems.find((item) => item.kind === kind && item.slug === slug);
+  get(
+    filter(catalogItems, (item) => item.kind === kind && item.slug === slug),
+    0,
+  );
 
 export const catalogKindIcons = {
   components: Boxes,

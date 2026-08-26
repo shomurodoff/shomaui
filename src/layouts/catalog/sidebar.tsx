@@ -1,7 +1,17 @@
 import { useMemo, useState } from "react";
 import { Link, useLocation } from "@tanstack/react-router";
 import { Filter } from "lucide-react";
-import { filter, get, includes, map, toLower, trim } from "lodash";
+import {
+  filter,
+  get,
+  includes,
+  kebabCase,
+  last,
+  map,
+  split,
+  toLower,
+  trim,
+} from "lodash";
 
 import {
   Sidebar,
@@ -19,60 +29,75 @@ import {
   useSidebar,
 } from "#/components/ui/sidebar";
 import {
-  catalogProducts,
-  getCatalogItems,
+  getCatalogCategories,
+  getCatalogItem,
   getCatalogProduct,
-  type CatalogItem,
+  type CatalogCategory,
   type CatalogKind,
 } from "#/modules/catalog/data";
-import { CatalogItemAnchor } from "#/modules/catalog/link";
+import { useCatalogNavigation } from "#/modules/catalog/navigation-state";
 
-const CatalogMenuItem = ({
-  item,
+const CatalogCategoryMenuItem = ({
+  category,
   isActive,
+  onSelect,
 }: {
-  item: CatalogItem;
+  category: CatalogCategory;
   isActive: boolean;
+  onSelect: (category: CatalogCategory) => void;
 }) => {
   const { isMobile, setOpenMobile } = useSidebar();
 
   return (
     <SidebarMenuItem>
       <SidebarMenuButton
-        render={<CatalogItemAnchor item={item} />}
+        render={<Link to={category.href} />}
         isActive={isActive}
         onClick={() => {
+          onSelect(category);
           if (isMobile) setOpenMobile(false);
         }}
-        className="h-9 px-3 text-[0.9rem]"
+        className="h-9 px-3 text-[0.95rem]"
       >
-        <span className="truncate">{item.name}</span>
+        <span className="truncate">{category.label}</span>
       </SidebarMenuButton>
-      <SidebarMenuBadge>{item.category}</SidebarMenuBadge>
+      <SidebarMenuBadge>{category.count}</SidebarMenuBadge>
     </SidebarMenuItem>
   );
 };
 
 const CatalogSidebar = ({ kind }: { kind: CatalogKind }) => {
   const location = useLocation();
-  const [query, setQuery] = useState("");
+  const [categoryQuery, setCategoryQuery] = useState("");
+  const categories = useMemo(() => getCatalogCategories(kind), [kind]);
   const product = getCatalogProduct(kind);
-  const items = getCatalogItems(kind);
-  const ProductIcon = get(product, "icon");
-  const visibleItems = useMemo(() => {
-    const normalizedQuery = toLower(trim(query));
+  const selectedCategory = useCatalogNavigation((state) =>
+    get(state.activeCategories, kind, null),
+  );
+  const setSelectedCategory = useCatalogNavigation(
+    (state) => state.setActiveCategory,
+  );
+  const visibleCategories = useMemo(() => {
+    const query = toLower(trim(categoryQuery));
 
-    if (!normalizedQuery) return items;
+    if (!query) return categories;
 
-    return filter(items, (item) => {
-      const searchable = [item.name, item.category, ...item.tags].join(" ");
-      return includes(toLower(searchable), normalizedQuery);
-    });
-  }, [items, query]);
+    return filter(categories, (category) =>
+      includes(toLower(category.label), query),
+    );
+  }, [categories, categoryQuery]);
 
-  const isIndexActive =
+  const isCatalogIndex =
     location.pathname === product.basePath ||
     location.pathname === `${product.basePath}/`;
+  const detailSlug = last(split(location.pathname, "/"));
+  const detailItem = getCatalogItem(kind, detailSlug ?? "");
+  const detailCategory = detailItem ? kebabCase(detailItem.category) : null;
+  const activeCategory = isCatalogIndex ? selectedCategory : detailCategory;
+
+  const handleCategorySelect = (category: CatalogCategory) => {
+    setSelectedCategory(kind, category.slug === "all" ? null : category.slug);
+  };
 
   return (
     <Sidebar
@@ -81,70 +106,41 @@ const CatalogSidebar = ({ kind }: { kind: CatalogKind }) => {
     >
       <SidebarHeader className="gap-3 border-b px-4 py-3 group-data-[collapsible=icon]:px-2">
         <div className="flex items-center gap-2">
-          <div className="flex min-w-0 flex-1 items-center gap-2 group-data-[collapsible=icon]:justify-center">
-            <ProductIcon className="size-4 shrink-0 text-muted-foreground" aria-hidden="true" />
-            <span className="truncate text-sm font-medium group-data-[collapsible=icon]:hidden">
-              {get(product, "label")}
-            </span>
+          <div className="relative min-w-0 flex-1 group-data-[collapsible=icon]:hidden">
+            <Filter className="pointer-events-none absolute top-2 left-1.5 size-4 text-muted-foreground" />
+            <SidebarInput
+              value={categoryQuery}
+              onChange={(event) => setCategoryQuery(event.target.value)}
+              placeholder="Filter categories..."
+              aria-label="Filter categories"
+              className="border-0 bg-transparent pl-7 shadow-none focus-visible:ring-0"
+            />
           </div>
-          <SidebarTrigger className="shrink-0" />
-        </div>
-        <div className="relative group-data-[collapsible=icon]:hidden">
-          <Filter className="pointer-events-none absolute top-2 left-1.5 size-4 text-muted-foreground" />
-          <SidebarInput
-            value={query}
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder={`Filter ${product.label.toLowerCase()}...`}
-            aria-label={`Filter ${product.label}`}
-            className="border-0 bg-transparent pl-7 shadow-none focus-visible:ring-0"
+          <SidebarTrigger
+            className="shrink-0"
+            aria-label="Compact view"
+            title="Compact view"
           />
         </div>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup className="px-3 py-4">
-          <SidebarGroupLabel className="px-3 text-xs uppercase tracking-wider">
+          <SidebarGroupLabel className="sr-only">
             {product.label}
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              <SidebarMenuItem>
-                <SidebarMenuButton
-                  render={<Link to={product.basePath} />}
-                  isActive={isIndexActive}
-                  onClick={() => {
-                    if (location.pathname !== product.basePath) setQuery("");
-                  }}
-                  className="h-9 px-3 text-[0.9rem]"
-                >
-                  <span className="truncate">All {product.label}</span>
-                </SidebarMenuButton>
-                <SidebarMenuBadge>{items.length}</SidebarMenuBadge>
-              </SidebarMenuItem>
-              {map(visibleItems, (item) => (
-                <CatalogMenuItem
-                  key={item.slug}
-                  item={item}
-                  isActive={location.pathname === `/${kind}/${item.slug}`}
+              {map(visibleCategories, (category) => (
+                <CatalogCategoryMenuItem
+                  key={category.slug}
+                  category={category}
+                  isActive={
+                    category.slug === "all"
+                      ? isCatalogIndex && !activeCategory
+                      : category.slug === activeCategory
+                  }
+                  onSelect={handleCategorySelect}
                 />
-              ))}
-            </SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-        <SidebarGroup className="mt-auto border-t px-3 py-4 group-data-[collapsible=icon]:hidden">
-          <SidebarGroupLabel>Products</SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu>
-              {map(catalogProducts, (catalog) => (
-                <SidebarMenuItem key={catalog.kind}>
-                  <SidebarMenuButton
-                    render={<Link to={catalog.basePath} />}
-                    isActive={catalog.kind === kind}
-                    className="h-8 px-3 text-xs"
-                  >
-                    {catalog.label}
-                  </SidebarMenuButton>
-                  <SidebarMenuBadge>{getCatalogItems(catalog.kind).length}</SidebarMenuBadge>
-                </SidebarMenuItem>
               ))}
             </SidebarMenu>
           </SidebarGroupContent>

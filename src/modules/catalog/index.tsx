@@ -1,7 +1,7 @@
 import { useMemo, useState, type MouseEvent } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, Code2, ExternalLink, Search } from "lucide-react";
-import { filter, includes, map, size, toLower, trim, uniq } from "lodash";
+import { filter, includes, kebabCase, map, size, toLower, trim } from "lodash";
 
 import { Badge } from "#/components/ui/badge";
 import { Button } from "#/components/ui/button";
@@ -20,7 +20,6 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "#/components/ui/empty";
-import { Input } from "#/components/ui/input";
 import { Separator } from "#/components/ui/separator";
 import CodeSheet from "#/modules/components/code-sheet";
 import CatalogLayout from "#/layouts/catalog";
@@ -35,6 +34,7 @@ import {
 import { CatalogItemLink } from "./link";
 import { useComponentNavigation } from "#/modules/components/navigation-state";
 import { getComponentFamily } from "#/modules/components/data";
+import { useCatalogNavigation } from "./navigation-state";
 
 const getViewStorageKey = (kind: CatalogKind) => `shomaui-${kind}-view`;
 
@@ -101,11 +101,12 @@ export function CatalogIndexPage({ kind }: { kind: CatalogKind }) {
   const product = getCatalogProduct(kind);
   const items = useMemo(() => getCatalogItems(kind), [kind]);
   const [query, setQuery] = useState("");
-  const [activeTag, setActiveTag] = useState<string | null>(null);
   const [view, setView] = useState<"grid" | "list">(() => getStoredView(kind));
-  const tags = useMemo(
-    () => uniq(items.flatMap((item) => item.tags)).slice(0, 8),
-    [items],
+  const activeCategory = useCatalogNavigation(
+    (state) => state.activeCategories[kind] ?? null,
+  );
+  const setActiveCategory = useCatalogNavigation(
+    (state) => state.setActiveCategory,
   );
 
   const visibleItems = useMemo(() => {
@@ -118,12 +119,13 @@ export function CatalogIndexPage({ kind }: { kind: CatalogKind }) {
         item.description,
         ...item.tags,
       ].join(" ");
-      const matchesTag = !activeTag || includes(item.tags, activeTag);
+      const matchesCategory =
+        !activeCategory || kebabCase(item.category) === activeCategory;
       const matchesQuery =
         !normalizedQuery || includes(toLower(searchable), normalizedQuery);
-      return matchesTag && matchesQuery;
+      return matchesCategory && matchesQuery;
     });
-  }, [activeTag, items, query]);
+  }, [activeCategory, items, query]);
 
   const handleViewChange = (nextView: "grid" | "list") => {
     setView(nextView);
@@ -136,7 +138,7 @@ export function CatalogIndexPage({ kind }: { kind: CatalogKind }) {
 
   const resetFilters = () => {
     setQuery("");
-    setActiveTag(null);
+    setActiveCategory(kind, null);
   };
 
   return (
@@ -148,7 +150,7 @@ export function CatalogIndexPage({ kind }: { kind: CatalogKind }) {
       <main className="mx-auto w-full max-w-[1524px] px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
         <div className="mb-9">
           <p className="mb-3 text-sm font-medium text-muted-foreground">
-            ShomaUI / Products
+            {product.label}
           </p>
           <div className="flex flex-wrap items-center gap-3">
             <h1 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
@@ -164,39 +166,12 @@ export function CatalogIndexPage({ kind }: { kind: CatalogKind }) {
           </p>
         </div>
 
-        <div className="mb-8 flex flex-col gap-4 xl:flex-row xl:items-center xl:justify-between">
-          <div className="flex flex-wrap gap-2">
-            {map(tags, (tag) => (
-              <Button
-                key={tag}
-                type="button"
-                variant={activeTag === tag ? "secondary" : "outline"}
-                size="sm"
-                className="rounded-full px-3"
-                onClick={() => setActiveTag(activeTag === tag ? null : tag)}
-              >
-                {tag}
-              </Button>
-            ))}
-          </div>
-          <div className="relative w-full xl:max-w-80">
-            <Search className="pointer-events-none absolute top-2.5 left-3 size-4 text-muted-foreground" />
-            <Input
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder={`Search ${product.label.toLowerCase()}...`}
-              aria-label={`Search ${product.label}`}
-              className="h-10 rounded-full pl-9"
-            />
-          </div>
-        </div>
-
         {size(visibleItems) ? (
           <div
             className={
               view === "list"
                 ? "grid grid-cols-1 gap-5"
-                : "grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+                : "grid gap-7 md:grid-cols-2 xl:grid-cols-4"
             }
           >
             {map(visibleItems, (item) => (
@@ -269,6 +244,9 @@ export function CatalogDetailPage({
   const setActiveComponentCategory = useComponentNavigation(
     (state) => state.setActiveCategory,
   );
+  const setActiveCatalogCategory = useCatalogNavigation(
+    (state) => state.setActiveCategory,
+  );
 
   if (!item) {
     const notFoundContent = <NotFoundCatalogItem kind={kind} />;
@@ -323,9 +301,17 @@ export function CatalogDetailPage({
                     </Badge>
                   </Link>
                 ) : (
-                  <Badge variant="secondary" className="rounded-full">
-                    {item.category}
-                  </Badge>
+                  <Link
+                    to={product.basePath}
+                    onClick={() =>
+                      setActiveCatalogCategory(kind, kebabCase(item.category))
+                    }
+                    className="rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                  >
+                    <Badge variant="secondary" className="rounded-full">
+                      {item.category}
+                    </Badge>
+                  </Link>
                 )}
               </div>
               <h1 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">

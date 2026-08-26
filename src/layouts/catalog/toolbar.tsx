@@ -2,18 +2,23 @@ import { Search } from "lucide-react";
 
 import { Input } from "#/components/ui/input";
 import { SidebarTrigger, useSidebar } from "#/components/ui/sidebar";
+import { getCatalogProduct, type CatalogKind } from "#/modules/catalog/data";
 import type { CatalogSearchState, CatalogViewState } from "./types";
 
 import ComponentViewToggle from "#/layouts/components/toolbar/view-toggle";
+import CustomizeSheet from "#/layouts/components/toolbar/customize-sheet";
 
 const CatalogToolbar = ({
+  kind,
   search,
   view,
 }: {
+  kind: CatalogKind;
   search?: CatalogSearchState;
   view?: CatalogViewState;
 }) => {
   const { open } = useSidebar();
+  const product = getCatalogProduct(kind);
 
   return (
     <div className="sticky top-16 z-30 border-b bg-background/95 backdrop-blur">
@@ -31,13 +36,16 @@ const CatalogToolbar = ({
             <Input
               value={search?.value}
               onChange={(event) => search?.onChange(event.target.value)}
-              placeholder="Search catalog..."
-              aria-label="Search catalog"
+              placeholder={`Search ${product.label.toLowerCase()}...`}
+              aria-label={`Search ${product.label}`}
               className="h-9 border-0 bg-transparent pl-9 shadow-none focus-visible:ring-0"
             />
           </div>
         </div>
-        {view ? <ComponentViewToggle {...view} /> : null}
+        <div className="flex shrink-0 items-center gap-2">
+          {view ? <ComponentViewToggle {...view} /> : null}
+          <CustomizeSheet />
+        </div>
       </div>
     </div>
   );

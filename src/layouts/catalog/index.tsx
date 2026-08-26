@@ -5,7 +5,12 @@ import CatalogSidebar from "./sidebar";
 import CatalogToolbar from "./toolbar";
 import type { CatalogLayoutProps } from "./types";
 
-const CatalogLayout = ({ kind, children, search, view }: CatalogLayoutProps) => (
+const CatalogLayout = ({
+  kind,
+  children,
+  search,
+  view,
+}: CatalogLayoutProps) => (
   <SidebarProvider
     defaultOpen
     className="min-h-[calc(100svh-4rem)] items-stretch"
@@ -13,7 +18,7 @@ const CatalogLayout = ({ kind, children, search, view }: CatalogLayoutProps) => 
   >
     <CatalogSidebar kind={kind} />
     <SidebarInset className="min-h-[calc(100svh-4rem)] min-w-0">
-      <CatalogToolbar search={search} view={view} />
+      <CatalogToolbar kind={kind} search={search} view={view} />
       {children}
     </SidebarInset>
   </SidebarProvider>
