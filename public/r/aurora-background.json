@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "aurora-background",
+  "title": "Shomaui Aurora Background",
+  "description": "Soft layered gradient light for hero and empty states.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/background/aurora-background.tsx",
+      "content": "import type { HTMLAttributes } from \"react\";\nimport { get, omit } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport function AuroraBackground(props: HTMLAttributes<HTMLDivElement>) {\n  const className = get(props, \"className\");\n  const children = get(props, \"children\");\n\n  return (\n    <div\n      {...omit(props, [\"className\", \"children\"])}\n      className={cn(\n        \"relative isolate min-h-56 overflow-hidden rounded-2xl border bg-background\",\n        className,\n      )}\n    >\n      <div className=\"pointer-events-none absolute -top-24 left-1/2 h-64 w-[80%] -translate-x-1/2 rounded-full bg-fuchsia-400/20 blur-3xl dark:bg-fuchsia-400/15\" />\n      <div className=\"pointer-events-none absolute -right-16 bottom-0 h-48 w-48 rounded-full bg-cyan-400/20 blur-3xl dark:bg-cyan-400/15\" />\n      <div className=\"relative z-10\">{children}</div>\n    </div>\n  );\n}\n\nexport default AuroraBackground;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/background/aurora-background.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

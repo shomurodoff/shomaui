@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "animated-tooltip",
+  "title": "Shomaui Animated Tooltip",
+  "description": "A spring-powered tooltip that accepts any React node as trigger and content.",
+  "dependencies": [
+    "cnfast",
+    "lodash",
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/animated-tooltip.tsx",
+      "content": "\"use client\";\n\nimport type { MouseEvent, ReactNode } from \"react\";\nimport { useEffect, useRef, useState } from \"react\";\n\nimport {\n  AnimatePresence,\n  motion,\n  useMotionValue,\n  useSpring,\n  useTransform,\n} from \"motion/react\";\nimport { get, map } from \"lodash\";\n\nimport { cn } from \"#/lib/utils.ts\";\n\ntype AnimatedTooltipItem = {\n  id: string | number;\n  trigger: ReactNode;\n  content: ReactNode;\n};\n\ntype AnimatedTooltipProps = {\n  items: AnimatedTooltipItem[];\n  className?: string;\n  itemClassName?: string;\n};\n\nconst springConfig = { stiffness: 100, damping: 15 };\n\nconst AnimatedTooltip = (props: AnimatedTooltipProps) => {\n  const items = get(props, \"items\", []);\n  const className = get(props, \"className\");\n  const itemClassName = get(props, \"itemClassName\");\n  const [hoveredId, setHoveredId] = useState<string | number | null>(null);\n  const x = useMotionValue(0);\n  const animationFrameRef = useRef<number | null>(null);\n\n  const rotate = useSpring(\n    useTransform(x, [-100, 100], [-12, 12]),\n    springConfig,\n  );\n  const translateX = useSpring(\n    useTransform(x, [-100, 100], [-24, 24]),\n    springConfig,\n  );\n\n  useEffect(\n    () => () => {\n      if (animationFrameRef.current !== null) {\n        cancelAnimationFrame(animationFrameRef.current);\n      }\n    },\n    [],\n  );\n\n  const handleMouseMove = (event: MouseEvent<HTMLDivElement>) => {\n    if (animationFrameRef.current !== null) {\n      cancelAnimationFrame(animationFrameRef.current);\n    }\n\n    const clientX = event.clientX;\n    const target = event.currentTarget;\n\n    animationFrameRef.current = requestAnimationFrame(() => {\n      const rect = target.getBoundingClientRect();\n      x.set(clientX - rect.left - rect.width / 2);\n      animationFrameRef.current = null;\n    });\n  };\n\n  return (\n    <div\n      className={cn(\n        \"flex flex-wrap items-center justify-center gap-4\",\n        className,\n      )}\n    >\n      {map(items, (item) => {\n        const id = get(item, \"id\");\n        const trigger = get(item, \"trigger\");\n        const content = get(item, \"content\");\n\n        return (\n          <div\n            key={id}\n            className={cn(\"group relative inline-flex\", itemClassName)}\n            onMouseEnter={() => setHoveredId(id)}\n            onMouseLeave={() => setHoveredId(null)}\n            onFocus={() => setHoveredId(id)}\n            onBlur={() => setHoveredId(null)}\n            onMouseMove={handleMouseMove}\n          >\n            <AnimatePresence>\n              {hoveredId === id && (\n                <motion.div\n                  initial={{ opacity: 0, y: 8, scale: 0.92 }}\n                  animate={{ opacity: 1, y: 0, scale: 1 }}\n                  exit={{ opacity: 0, y: 8, scale: 0.92 }}\n                  style={{ translateX, rotate }}\n                  className=\"pointer-events-none absolute bottom-full left-1/2 z-50 mb-3 flex -translate-x-1/2 flex-col items-center rounded-md bg-foreground px-3 py-2 text-xs text-background shadow-xl\"\n                >\n                  {content}\n                  <span className=\"absolute inset-x-6 -bottom-px h-px bg-gradient-to-r from-transparent via-primary to-transparent\" />\n                </motion.div>\n              )}\n            </AnimatePresence>\n            <div className=\"relative\">{trigger}</div>\n          </div>\n        );\n      })}\n    </div>\n  );\n};\n\nexport { AnimatedTooltip, type AnimatedTooltipItem, type AnimatedTooltipProps };\n\nexport default AnimatedTooltip;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/animated-tooltip.tsx"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "export { cn, type ClassValue } from \"cnfast\";\n",
+      "type": "registry:lib",
+      "target": "@lib/utils.ts"
+    }
+  ],
+  "type": "registry:ui"
+}

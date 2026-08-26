@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "action-menu",
+  "title": "Shomaui Action Menu",
+  "description": "Base UI action menu with shortcuts and destructive states.",
+  "dependencies": [
+    "@base-ui/react",
+    "lodash",
+    "lucide-react"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/components/action-menu.tsx",
+      "content": "import { MoreHorizontal } from \"lucide-react\";\nimport { get, map } from \"lodash\";\n\nimport { Button } from \"#/components/ui/button\";\nimport {\n  DropdownMenu,\n  DropdownMenuContent,\n  DropdownMenuGroup,\n  DropdownMenuItem,\n  DropdownMenuLabel,\n  DropdownMenuSeparator,\n  DropdownMenuShortcut,\n  DropdownMenuTrigger,\n} from \"#/components/ui/dropdown-menu\";\n\nexport type ActionMenuItem = {\n  label: string;\n  shortcut?: string;\n  destructive?: boolean;\n  separator?: boolean;\n};\n\nconst defaultItems: ActionMenuItem[] = [\n  { label: \"Duplicate\", shortcut: \"⌘D\" },\n  { label: \"Archive\", shortcut: \"⌘E\" },\n  { label: \"Delete\", shortcut: \"⌫\", destructive: true },\n];\n\ntype ActionMenuProps = {\n  label?: string;\n  items?: ActionMenuItem[];\n};\n\nexport function ActionMenu({\n  label = \"Actions\",\n  items = defaultItems,\n}: ActionMenuProps) {\n  return (\n    <DropdownMenu>\n      <DropdownMenuTrigger\n        render={<Button variant=\"outline\" size=\"sm\" />}\n        aria-label={label}\n      >\n        <MoreHorizontal data-icon=\"inline-start\" />\n        {label}\n      </DropdownMenuTrigger>\n      <DropdownMenuContent align=\"end\" className=\"w-48\">\n        <DropdownMenuGroup>\n          <DropdownMenuLabel>{label}</DropdownMenuLabel>\n          <DropdownMenuSeparator />\n          {map(items, (item) => (\n            <span key={get(item, \"label\")}>\n              {get(item, \"separator\") ? <DropdownMenuSeparator /> : null}\n              <DropdownMenuItem variant={get(item, \"destructive\") ? \"destructive\" : \"default\"}>\n                {get(item, \"label\")}\n                {get(item, \"shortcut\") ? (\n                  <DropdownMenuShortcut>{get(item, \"shortcut\")}</DropdownMenuShortcut>\n                ) : null}\n              </DropdownMenuItem>\n            </span>\n          ))}\n        </DropdownMenuGroup>\n      </DropdownMenuContent>\n    </DropdownMenu>\n  );\n}\n\nexport default ActionMenu;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/components/action-menu.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

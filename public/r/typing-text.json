@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "typing-text",
+  "title": "Shomaui Typing Text",
+  "description": "Looping typewriter text with live-region semantics.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/text/typing-text.tsx",
+      "content": "import { useEffect, useState } from \"react\";\nimport { get, toNumber } from \"lodash\";\n\ntype TypingTextProps = {\n  words?: string[];\n  speed?: number;\n  className?: string;\n};\n\nconst defaultTypingWords = [\"thoughtful interfaces\", \"faster launches\", \"better products\"];\n\nexport function TypingText({\n  words = defaultTypingWords,\n  speed = 75,\n  className,\n}: TypingTextProps) {\n  const [wordIndex, setWordIndex] = useState(0);\n  const [characterIndex, setCharacterIndex] = useState(0);\n\n  useEffect(() => {\n    const word = get(words, wordIndex, \"\");\n    const timeout = window.setTimeout(() => {\n      if (characterIndex >= word.length) {\n        setCharacterIndex(0);\n        setWordIndex((index) => (index + 1) % Math.max(words.length, 1));\n        return;\n      }\n      setCharacterIndex((index) => index + 1);\n    }, characterIndex >= word.length ? toNumber(speed) * 8 : speed);\n\n    return () => window.clearTimeout(timeout);\n  }, [characterIndex, speed, wordIndex, words]);\n\n  return (\n    <span className={className} aria-live=\"polite\">\n      {get(words, wordIndex, \"\").slice(0, characterIndex)}\n      <span className=\"ml-0.5 inline-block h-[1em] w-px animate-pulse bg-current align-[-0.1em]\" aria-hidden=\"true\" />\n    </span>\n  );\n}\n\nexport default TypingText;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/text/typing-text.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

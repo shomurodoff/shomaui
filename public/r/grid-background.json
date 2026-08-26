@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "grid-background",
+  "title": "Shomaui Grid Background",
+  "description": "Responsive CSS grid surface for structured layouts.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/background/grid-background.tsx",
+      "content": "import type { HTMLAttributes } from \"react\";\nimport { get, omit } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport function GridBackground(props: HTMLAttributes<HTMLDivElement>) {\n  const className = get(props, \"className\");\n\n  return (\n    <div\n      {...omit(props, [\"className\"])}\n      className={cn(\n        \"relative isolate min-h-56 overflow-hidden rounded-2xl border bg-background [background-image:linear-gradient(to_right,color-mix(in_oklch,var(--foreground)_9%,transparent)_1px,transparent_1px),linear-gradient(to_bottom,color-mix(in_oklch,var(--foreground)_9%,transparent)_1px,transparent_1px)] [background-size:32px_32px]\",\n        className,\n      )}\n    />\n  );\n}\n\nexport default GridBackground;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/background/grid-background.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

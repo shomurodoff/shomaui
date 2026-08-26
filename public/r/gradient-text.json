@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gradient-text",
+  "title": "Shomaui Gradient Text",
+  "description": "Token-aware gradient typography for expressive headlines.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/text/gradient-text.tsx",
+      "content": "import type { HTMLAttributes } from \"react\";\nimport { get, omit } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport function GradientText(props: HTMLAttributes<HTMLSpanElement>) {\n  const className = get(props, \"className\");\n\n  return (\n    <span\n      {...omit(props, [\"className\"])}\n      className={cn(\n        \"bg-[linear-gradient(90deg,var(--color-2),var(--color-4),var(--color-5))] bg-clip-text text-transparent\",\n        className,\n      )}\n    />\n  );\n}\n\nexport default GradientText;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/text/gradient-text.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

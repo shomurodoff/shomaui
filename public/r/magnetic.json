@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "magnetic",
+  "title": "Shomaui Magnetic",
+  "description": "Subtle pointer attraction wrapper for interactive targets.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/effects/magnetic.tsx",
+      "content": "import { useState, type HTMLAttributes, type PointerEvent } from \"react\";\nimport { get, omit } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport function Magnetic(props: HTMLAttributes<HTMLDivElement>) {\n  const [offset, setOffset] = useState({ x: 0, y: 0 });\n  const children = get(props, \"children\");\n\n  const handleMove = (event: PointerEvent<HTMLDivElement>) => {\n    const rect = event.currentTarget.getBoundingClientRect();\n    setOffset({\n      x: (event.clientX - rect.left - rect.width / 2) * 0.15,\n      y: (event.clientY - rect.top - rect.height / 2) * 0.15,\n    });\n  };\n\n  return (\n    <div\n      {...omit(props, [\"className\", \"children\", \"onPointerMove\", \"onPointerLeave\"])}\n      onPointerMove={handleMove}\n      onPointerLeave={() => setOffset({ x: 0, y: 0 })}\n      className={cn(\"inline-flex transition-transform duration-200 ease-out\", get(props, \"className\"))}\n      style={{\n        ...get(props, \"style\"),\n        transform: `translate3d(${offset.x}px, ${offset.y}px, 0)`,\n      }}\n    >\n      {children}\n    </div>\n  );\n}\n\nexport default Magnetic;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/effects/magnetic.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

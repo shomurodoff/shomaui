@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "stars-background",
+  "title": "Shomaui Stars Background",
+  "description": "Deterministic animated star field for immersive surfaces.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/background/stars-background.tsx",
+      "content": "import { useMemo, type CSSProperties, type HTMLAttributes } from \"react\";\nimport { get, map, range } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport type StarsBackgroundProps = HTMLAttributes<HTMLDivElement> & {\n  count?: number;\n  starColor?: string;\n};\n\nexport function StarsBackground({\n  count = 42,\n  starColor = \"currentColor\",\n  className,\n  children,\n  ...props\n}: StarsBackgroundProps) {\n  const stars = useMemo(\n    () =>\n      map(range(count), (index) => ({\n        id: index,\n        left: `${(index * 37) % 101}%`,\n        top: `${(index * 61) % 97}%`,\n        size: `${1 + (index % 3)}px`,\n        delay: `${(index % 9) * 0.35}s`,\n        duration: `${2.6 + (index % 5) * 0.45}s`,\n      })),\n    [count],\n  );\n\n  return (\n    <div\n      {...props}\n      className={cn(\n        \"relative isolate min-h-56 overflow-hidden rounded-2xl bg-slate-950 text-white\",\n        className,\n      )}\n    >\n      <div className=\"pointer-events-none absolute inset-0\" aria-hidden=\"true\">\n        {map(stars, (star) => (\n          <span\n            key={get(star, \"id\")}\n            className=\"absolute animate-pulse rounded-full opacity-70\"\n            style={\n              {\n                left: get(star, \"left\"),\n                top: get(star, \"top\"),\n                width: get(star, \"size\"),\n                height: get(star, \"size\"),\n                backgroundColor: starColor,\n                animationDelay: get(star, \"delay\"),\n                animationDuration: get(star, \"duration\"),\n              } as CSSProperties\n            }\n          />\n        ))}\n      </div>\n      <div className=\"relative z-10\">{children}</div>\n    </div>\n  );\n}\n\nexport default StarsBackground;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/background/stars-background.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

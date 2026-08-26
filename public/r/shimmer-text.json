@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shimmer-text",
+  "title": "Shomaui Shimmer Text",
+  "description": "Low-cost animated highlight sweep for headings and labels.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/text/shimmer-text.tsx",
+      "content": "import type { HTMLAttributes } from \"react\";\nimport { get, omit } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport function ShimmerText(props: HTMLAttributes<HTMLSpanElement>) {\n  const className = get(props, \"className\");\n\n  return (\n    <span\n      {...omit(props, [\"className\"])}\n      className={cn(\n        \"inline-block bg-[linear-gradient(110deg,var(--muted-foreground)_35%,var(--foreground)_50%,var(--muted-foreground)_65%)] bg-[length:200%_100%] bg-clip-text text-transparent [animation:shomaui-shimmer_2.4s_linear_infinite]\",\n        className,\n      )}\n    />\n  );\n}\n\nexport default ShimmerText;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/text/shimmer-text.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

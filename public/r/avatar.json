@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar",
+  "title": "Shomaui Avatar",
+  "description": "Composable avatar primitives with image, fallback, group, badge, and count support.",
+  "dependencies": [
+    "@base-ui/react",
+    "cnfast",
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/avatar.tsx",
+      "content": "import * as React from \"react\";\nimport { Avatar as AvatarPrimitive } from \"@base-ui/react/avatar\";\nimport { get, omit } from \"lodash\";\n\nimport { cn } from \"#/lib/utils.ts\";\n\nconst avatarSizeClasses = {\n  default: \"size-8\",\n  sm: \"size-6\",\n  lg: \"size-10\",\n} as const;\n\nconst Avatar = (\n  props: AvatarPrimitive.Root.Props & {\n    size?: \"default\" | \"sm\" | \"lg\";\n  },\n) => {\n  const className = get(props, \"className\");\n  const size = get(props, \"size\", \"default\");\n\n  return (\n    <AvatarPrimitive.Root\n      data-slot=\"avatar\"\n      data-size={size}\n      className={cn(\n        \"group/avatar relative flex shrink-0 rounded-full select-none after:absolute after:inset-0 after:rounded-full after:border after:border-border after:mix-blend-darken dark:after:mix-blend-lighten\",\n        get(avatarSizeClasses, size),\n        className,\n      )}\n      {...omit(props, [\"className\", \"size\"])}\n    />\n  );\n};\n\nconst AvatarImage = (props: AvatarPrimitive.Image.Props) => {\n  const className = get(props, \"className\");\n\n  return (\n    <AvatarPrimitive.Image\n      data-slot=\"avatar-image\"\n      className={cn(\n        \"aspect-square size-full rounded-full object-cover\",\n        className,\n      )}\n      {...omit(props, \"className\")}\n    />\n  );\n};\n\nconst AvatarFallback = (props: AvatarPrimitive.Fallback.Props) => {\n  const className = get(props, \"className\");\n\n  return (\n    <AvatarPrimitive.Fallback\n      data-slot=\"avatar-fallback\"\n      className={cn(\n        \"flex size-full items-center justify-center rounded-full bg-muted text-sm text-muted-foreground group-data-[size=sm]/avatar:text-xs\",\n        className,\n      )}\n      {...omit(props, \"className\")}\n    />\n  );\n};\n\nconst AvatarBadge = (props: React.ComponentProps<\"span\">) => {\n  const className = get(props, \"className\");\n\n  return (\n    <span\n      data-slot=\"avatar-badge\"\n      className={cn(\n        \"absolute right-0 bottom-0 z-10 inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground bg-blend-color ring-2 ring-background select-none\",\n        \"group-data-[size=sm]/avatar:size-2 group-data-[size=sm]/avatar:[&>svg]:hidden\",\n        \"group-data-[size=default]/avatar:size-2.5 group-data-[size=default]/avatar:[&>svg]:size-2\",\n        \"group-data-[size=lg]/avatar:size-3 group-data-[size=lg]/avatar:[&>svg]:size-2\",\n        className,\n      )}\n      {...omit(props, \"className\")}\n    />\n  );\n};\n\nconst AvatarGroup = (props: React.ComponentProps<\"div\">) => {\n  const className = get(props, \"className\");\n\n  return (\n    <div\n      data-slot=\"avatar-group\"\n      className={cn(\n        \"group/avatar-group flex -space-x-2 *:data-[slot=avatar]:ring-2 *:data-[slot=avatar]:ring-background\",\n        className,\n      )}\n      {...omit(props, \"className\")}\n    />\n  );\n};\n\nconst AvatarGroupCount = (props: React.ComponentProps<\"div\">) => {\n  const className = get(props, \"className\");\n\n  return (\n    <div\n      data-slot=\"avatar-group-count\"\n      className={cn(\n        \"relative flex size-8 shrink-0 items-center justify-center rounded-full bg-muted text-sm text-muted-foreground ring-2 ring-background group-has-data-[size=lg]/avatar-group:size-10 group-has-data-[size=sm]/avatar-group:size-6 [&>svg]:size-4 group-has-data-[size=lg]/avatar-group:[&>svg]:size-5 group-has-data-[size=sm]/avatar-group:[&>svg]:size-3\",\n        className,\n      )}\n      {...omit(props, \"className\")}\n    />\n  );\n};\n\nexport {\n  Avatar,\n  AvatarImage,\n  AvatarFallback,\n  AvatarGroup,\n  AvatarGroupCount,\n  AvatarBadge,\n};\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/avatar.tsx"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "export { cn, type ClassValue } from \"cnfast\";\n",
+      "type": "registry:lib",
+      "target": "@lib/utils.ts"
+    }
+  ],
+  "type": "registry:ui"
+}

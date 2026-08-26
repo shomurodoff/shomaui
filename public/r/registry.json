@@ -1,0 +1,426 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "shomaui",
+  "homepage": "https://shomaui.dev",
+  "items": [
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Shomaui Avatar",
+      "description": "Composable avatar primitives with image, fallback, group, badge, and count support.",
+      "dependencies": ["@base-ui/react", "cnfast", "lodash"],
+      "files": [
+        {
+          "path": "src/components/shomaui/avatar.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/avatar.tsx"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "avatar-hover-card",
+      "type": "registry:ui",
+      "title": "Shomaui Avatar Hover Card",
+      "description": "An animated avatar trigger with morph and static variants for profile context on hover.",
+      "registryDependencies": ["https://shomaui.dev/r/avatar.json"],
+      "dependencies": ["motion", "lodash"],
+      "files": [
+        {
+          "path": "src/components/shomaui/avatar-hover-card.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/avatar-hover-card.tsx"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "avatar-spring-stack",
+      "type": "registry:ui",
+      "title": "Shomaui Avatar Spring Stack",
+      "description": "An interactive overlapping avatar stack with spring hover motion.",
+      "registryDependencies": ["https://shomaui.dev/r/avatar.json"],
+      "dependencies": ["motion", "lodash"],
+      "files": [
+        {
+          "path": "src/components/shomaui/avatar-spring-stack.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/avatar-spring-stack.tsx"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Shomaui Button",
+      "description": "A reusable button component with variants, statuses, xl, and icon-xl sizes.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cnfast",
+        "lodash",
+        "lucide-react"
+      ],
+      "files": [
+        {
+          "path": "src/components/shomaui/button.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/button.tsx"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "rainbow-button",
+      "type": "registry:ui",
+      "title": "Shomaui Rainbow Button",
+      "description": "A Base UI button with animated rainbow variants and the full Shomaui size scale.",
+      "dependencies": [
+        "@base-ui/react",
+        "class-variance-authority",
+        "cnfast",
+        "lodash"
+      ],
+      "files": [
+        {
+          "path": "src/components/shomaui/rainbow-button.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/rainbow-button.tsx"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "interactive-hover-button",
+      "type": "registry:ui",
+      "title": "Shomaui Interactive Hover Button",
+      "description": "A compact button that reveals an arrow action on hover.",
+      "dependencies": ["cnfast", "lodash", "lucide-react"],
+      "files": [
+        {
+          "path": "src/components/shomaui/interactive-hover-button.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/interactive-hover-button.tsx"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "shiny-button",
+      "type": "registry:ui",
+      "title": "Shomaui Shiny Button",
+      "description": "A button with a subtle animated highlight sweep.",
+      "dependencies": ["cnfast", "lodash", "motion"],
+      "files": [
+        {
+          "path": "src/components/shomaui/shiny-button.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/shiny-button.tsx"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "ripple-button",
+      "type": "registry:ui",
+      "title": "Shomaui Ripple Button",
+      "description": "A button with a click-position ripple animation.",
+      "dependencies": ["cnfast", "lodash"],
+      "files": [
+        {
+          "path": "src/components/shomaui/ripple-button.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/ripple-button.tsx"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Shomaui Tooltip",
+      "description": "Accessible Base UI tooltip primitives with shadcn styling.",
+      "dependencies": ["@base-ui/react", "cnfast", "lodash"],
+      "files": [
+        {
+          "path": "src/components/shomaui/tooltip.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/tooltip.tsx"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/utils.ts"
+        }
+      ]
+    },
+    {
+      "name": "action-menu",
+      "type": "registry:ui",
+      "title": "Shomaui Action Menu",
+      "description": "Base UI action menu with shortcuts and destructive states.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react"],
+      "files": [{
+        "path": "src/components/shomaui/components/action-menu.tsx",
+        "type": "registry:ui",
+        "target": "@components/shomaui/components/action-menu.tsx"
+      }]
+    },
+    {
+      "name": "glass-card",
+      "type": "registry:ui",
+      "title": "Shomaui Glass Card",
+      "description": "Layered glass surface for dashboards and product highlights.",
+      "dependencies": ["lodash"],
+      "files": [{
+        "path": "src/components/shomaui/components/glass-card.tsx",
+        "type": "registry:ui",
+        "target": "@components/shomaui/components/glass-card.tsx"
+      }]
+    },
+    {
+      "name": "status-badge",
+      "type": "registry:ui",
+      "title": "Shomaui Status Badge",
+      "description": "Consistent new, stable, beta and deprecated statuses.",
+      "dependencies": ["@base-ui/react", "lodash"],
+      "files": [{
+        "path": "src/components/shomaui/components/status-badge.tsx",
+        "type": "registry:ui",
+        "target": "@components/shomaui/components/status-badge.tsx"
+      }]
+    },
+    {
+      "name": "segmented-control",
+      "type": "registry:ui",
+      "title": "Shomaui Segmented Control",
+      "description": "Base UI tab behavior presented as a compact segmented switcher.",
+      "dependencies": ["@base-ui/react", "lodash"],
+      "files": [{
+        "path": "src/components/shomaui/components/segmented-control.tsx",
+        "type": "registry:ui",
+        "target": "@components/shomaui/components/segmented-control.tsx"
+      }]
+    },
+    {
+      "name": "stars-background",
+      "type": "registry:ui",
+      "title": "Shomaui Stars Background",
+      "description": "Deterministic animated star field for immersive surfaces.",
+      "dependencies": ["lodash"],
+      "files": [{
+        "path": "src/components/shomaui/background/stars-background.tsx",
+        "type": "registry:ui",
+        "target": "@components/shomaui/background/stars-background.tsx"
+      }]
+    },
+    {
+      "name": "grid-background",
+      "type": "registry:ui",
+      "title": "Shomaui Grid Background",
+      "description": "Responsive CSS grid surface for structured layouts.",
+      "dependencies": ["lodash"],
+      "files": [{
+        "path": "src/components/shomaui/background/grid-background.tsx",
+        "type": "registry:ui",
+        "target": "@components/shomaui/background/grid-background.tsx"
+      }]
+    },
+    {
+      "name": "aurora-background",
+      "type": "registry:ui",
+      "title": "Shomaui Aurora Background",
+      "description": "Soft layered gradient light for hero and empty states.",
+      "dependencies": ["lodash"],
+      "files": [{
+        "path": "src/components/shomaui/background/aurora-background.tsx",
+        "type": "registry:ui",
+        "target": "@components/shomaui/background/aurora-background.tsx"
+      }]
+    },
+    {
+      "name": "noise-background",
+      "type": "registry:ui",
+      "title": "Shomaui Noise Background",
+      "description": "Asset-free texture layer made from CSS gradients.",
+      "dependencies": ["lodash"],
+      "files": [{
+        "path": "src/components/shomaui/background/noise-background.tsx",
+        "type": "registry:ui",
+        "target": "@components/shomaui/background/noise-background.tsx"
+      }]
+    },
+    {
+      "name": "spotlight-card",
+      "type": "registry:ui",
+      "title": "Shomaui Spotlight Card",
+      "description": "Pointer-aware radial light for readable interactive cards.",
+      "dependencies": ["lodash"],
+      "files": [{
+        "path": "src/components/shomaui/effects/spotlight-card.tsx",
+        "type": "registry:ui",
+        "target": "@components/shomaui/effects/spotlight-card.tsx"
+      }]
+    },
+    {
+      "name": "shine-border",
+      "type": "registry:ui",
+      "title": "Shomaui Shine Border",
+      "description": "Lightweight conic-gradient border animation.",
+      "dependencies": ["lodash"],
+      "files": [{
+        "path": "src/components/shomaui/effects/shine-border.tsx",
+        "type": "registry:ui",
+        "target": "@components/shomaui/effects/shine-border.tsx"
+      }]
+    },
+    {
+      "name": "magnetic",
+      "type": "registry:ui",
+      "title": "Shomaui Magnetic",
+      "description": "Subtle pointer attraction wrapper for interactive targets.",
+      "dependencies": ["lodash"],
+      "files": [{
+        "path": "src/components/shomaui/effects/magnetic.tsx",
+        "type": "registry:ui",
+        "target": "@components/shomaui/effects/magnetic.tsx"
+      }]
+    },
+    {
+      "name": "glow-hover-card",
+      "type": "registry:ui",
+      "title": "Shomaui Glow Hover Card",
+      "description": "Lift, border glow and shadow for card-level feedback.",
+      "dependencies": ["lodash"],
+      "files": [{
+        "path": "src/components/shomaui/effects/glow-hover-card.tsx",
+        "type": "registry:ui",
+        "target": "@components/shomaui/effects/glow-hover-card.tsx"
+      }]
+    },
+    {
+      "name": "marquee",
+      "type": "registry:ui",
+      "title": "Shomaui Marquee",
+      "description": "Accessible looping content rail with reduced-motion support.",
+      "dependencies": ["lodash"],
+      "files": [{
+        "path": "src/components/shomaui/animations/marquee.tsx",
+        "type": "registry:ui",
+        "target": "@components/shomaui/animations/marquee.tsx"
+      }]
+    },
+    {
+      "name": "reveal",
+      "type": "registry:ui",
+      "title": "Shomaui Reveal",
+      "description": "IntersectionObserver reveal primitive for progressive content.",
+      "dependencies": ["lodash"],
+      "files": [{
+        "path": "src/components/shomaui/animations/reveal.tsx",
+        "type": "registry:ui",
+        "target": "@components/shomaui/animations/reveal.tsx"
+      }]
+    },
+    {
+      "name": "number-ticker",
+      "type": "registry:ui",
+      "title": "Shomaui Number Ticker",
+      "description": "Smooth numeric counter for metrics and dashboards.",
+      "dependencies": ["lodash"],
+      "files": [{
+        "path": "src/components/shomaui/animations/number-ticker.tsx",
+        "type": "registry:ui",
+        "target": "@components/shomaui/animations/number-ticker.tsx"
+      }]
+    },
+    {
+      "name": "typing-text",
+      "type": "registry:ui",
+      "title": "Shomaui Typing Text",
+      "description": "Looping typewriter text with live-region semantics.",
+      "dependencies": ["lodash"],
+      "files": [{
+        "path": "src/components/shomaui/text/typing-text.tsx",
+        "type": "registry:ui",
+        "target": "@components/shomaui/text/typing-text.tsx"
+      }]
+    },
+    {
+      "name": "shimmer-text",
+      "type": "registry:ui",
+      "title": "Shomaui Shimmer Text",
+      "description": "Low-cost animated highlight sweep for headings and labels.",
+      "dependencies": ["lodash"],
+      "files": [{
+        "path": "src/components/shomaui/text/shimmer-text.tsx",
+        "type": "registry:ui",
+        "target": "@components/shomaui/text/shimmer-text.tsx"
+      }]
+    },
+    {
+      "name": "gradient-text",
+      "type": "registry:ui",
+      "title": "Shomaui Gradient Text",
+      "description": "Token-aware gradient typography for expressive headlines.",
+      "dependencies": ["lodash"],
+      "files": [{
+        "path": "src/components/shomaui/text/gradient-text.tsx",
+        "type": "registry:ui",
+        "target": "@components/shomaui/text/gradient-text.tsx"
+      }]
+    },
+    {
+      "name": "animated-tooltip",
+      "type": "registry:ui",
+      "title": "Shomaui Animated Tooltip",
+      "description": "A spring-powered tooltip that accepts any React node as trigger and content.",
+      "dependencies": ["cnfast", "lodash", "motion"],
+      "files": [
+        {
+          "path": "src/components/shomaui/animated-tooltip.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/animated-tooltip.tsx"
+        },
+        {
+          "path": "src/lib/utils.ts",
+          "type": "registry:lib",
+          "target": "@lib/utils.ts"
+        }
+      ]
+    }
+  ]
+}

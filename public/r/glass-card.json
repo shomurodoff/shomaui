@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glass-card",
+  "title": "Shomaui Glass Card",
+  "description": "Layered glass surface for dashboards and product highlights.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/components/glass-card.tsx",
+      "content": "import type { HTMLAttributes } from \"react\";\nimport { get, omit } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport type GlassCardProps = HTMLAttributes<HTMLDivElement> & {\n  glow?: boolean;\n};\n\nexport function GlassCard(props: GlassCardProps) {\n  const className = get(props, \"className\");\n  const glow = get(props, \"glow\", false);\n\n  return (\n    <div\n      {...omit(props, [\"className\", \"glow\"])}\n      className={cn(\n        \"relative overflow-hidden rounded-2xl border bg-card/70 p-6 shadow-sm backdrop-blur-xl transition-all duration-300\",\n        glow &&\n          \"before:pointer-events-none before:absolute before:inset-0 before:bg-[radial-gradient(circle_at_15%_0%,color-mix(in_oklch,var(--primary)_20%,transparent),transparent_36%)] before:opacity-80\",\n        className,\n      )}\n    />\n  );\n}\n\nexport default GlassCard;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/components/glass-card.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "shiny-button",
+  "title": "Shomaui Shiny Button",
+  "description": "A button with a subtle animated highlight sweep.",
+  "dependencies": [
+    "cnfast",
+    "lodash",
+    "motion"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/shiny-button.tsx",
+      "content": "import { forwardRef, type HTMLAttributes, type ReactNode } from \"react\";\nimport { get, omit } from \"lodash\";\nimport { motion, type MotionProps } from \"motion/react\";\n\nimport { cn } from \"#/lib/utils.ts\";\n\nconst animationProps: MotionProps = {\n  initial: { \"--x\": \"100%\", scale: 0.8 },\n  animate: { \"--x\": \"-100%\", scale: 1 },\n  whileTap: { scale: 0.95 },\n  transition: {\n    repeat: Infinity,\n    repeatType: \"loop\",\n    repeatDelay: 1,\n    type: \"spring\",\n    stiffness: 20,\n    damping: 15,\n    mass: 2,\n    scale: {\n      type: \"spring\",\n      stiffness: 200,\n      damping: 5,\n      mass: 0.5,\n    },\n  },\n};\n\ninterface ShinyButtonProps\n  extends Omit<HTMLAttributes<HTMLElement>, keyof MotionProps>, MotionProps {\n  children: ReactNode;\n  className?: string;\n}\n\nconst ShinyButton = forwardRef<HTMLButtonElement, ShinyButtonProps>(\n  (props, ref) => {\n    const children = get(props, \"children\");\n    const className = get(props, \"className\");\n\n    return (\n      <motion.button\n        ref={ref}\n        className={cn(\n          \"relative cursor-pointer rounded-lg border px-6 py-2 font-medium backdrop-blur-xl transition-shadow duration-300 ease-in-out hover:shadow dark:bg-[radial-gradient(circle_at_50%_0%,var(--primary)/10%_0%,transparent_60%)] dark:hover:shadow-[0_0_20px_var(--primary)/10%]\",\n          className,\n        )}\n        {...animationProps}\n        {...omit(props, [\"children\", \"className\"])}\n      >\n        <span\n          className=\"relative block size-full text-sm tracking-wide text-[rgb(0,0,0,65%)] uppercase dark:font-light dark:text-[rgb(255,255,255,90%)]\"\n          style={{\n            maskImage:\n              \"linear-gradient(-75deg,var(--primary) calc(var(--x) + 20%),transparent calc(var(--x) + 30%),var(--primary) calc(var(--x) + 100%))\",\n          }}\n        >\n          {children}\n        </span>\n        <span\n          style={{\n            mask: \"linear-gradient(rgb(0,0,0), rgb(0,0,0)) content-box exclude,linear-gradient(rgb(0,0,0), rgb(0,0,0))\",\n            WebkitMask:\n              \"linear-gradient(rgb(0,0,0), rgb(0,0,0)) content-box exclude,linear-gradient(rgb(0,0,0), rgb(0,0,0))\",\n            backgroundImage:\n              \"linear-gradient(-75deg,var(--primary)/10% calc(var(--x)+20%),var(--primary)/50% calc(var(--x)+25%),var(--primary)/10% calc(var(--x)+100%))\",\n          }}\n          className=\"absolute inset-0 z-10 block rounded-[inherit] p-px\"\n        />\n      </motion.button>\n    );\n  },\n);\n\nShinyButton.displayName = \"ShinyButton\";\n\nexport { ShinyButton, type ShinyButtonProps };\nexport default ShinyButton;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/shiny-button.tsx"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "export { cn, type ClassValue } from \"cnfast\";\n",
+      "type": "registry:lib",
+      "target": "@lib/utils.ts"
+    }
+  ],
+  "type": "registry:ui"
+}

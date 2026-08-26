@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "marquee",
+  "title": "Shomaui Marquee",
+  "description": "Accessible looping content rail with reduced-motion support.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/animations/marquee.tsx",
+      "content": "import type { HTMLAttributes } from \"react\";\nimport { get, map, omit } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport function Marquee(props: HTMLAttributes<HTMLDivElement>) {\n  const className = get(props, \"className\");\n  const children = get(props, \"children\");\n\n  return (\n    <div\n      {...omit(props, [\"className\", \"children\"])}\n      className={cn(\"relative flex overflow-hidden\", className)}\n      aria-label=\"Scrolling content\"\n    >\n      {map([0, 1], (copy) => (\n        <div\n          key={copy}\n          aria-hidden={copy === 1}\n          className=\"flex min-w-full shrink-0 items-center justify-around gap-8 px-4 [animation:shomaui-marquee_18s_linear_infinite]\"\n        >\n          {children}\n        </div>\n      ))}\n    </div>\n  );\n}\n\nexport default Marquee;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/animations/marquee.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

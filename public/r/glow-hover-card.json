@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "glow-hover-card",
+  "title": "Shomaui Glow Hover Card",
+  "description": "Lift, border glow and shadow for card-level feedback.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/effects/glow-hover-card.tsx",
+      "content": "import type { HTMLAttributes } from \"react\";\nimport { get, omit } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport function GlowHoverCard(props: HTMLAttributes<HTMLDivElement>) {\n  const className = get(props, \"className\");\n\n  return (\n    <div\n      {...omit(props, [\"className\"])}\n      className={cn(\n        \"group relative min-h-48 overflow-hidden rounded-2xl border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_16px_50px_-20px_color-mix(in_oklch,var(--primary)_60%,transparent)]\",\n        className,\n      )}\n    />\n  );\n}\n\nexport default GlowHoverCard;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/effects/glow-hover-card.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

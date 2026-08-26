@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spotlight-card",
+  "title": "Shomaui Spotlight Card",
+  "description": "Pointer-aware radial light for readable interactive cards.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/effects/spotlight-card.tsx",
+      "content": "import { useState, type HTMLAttributes, type PointerEvent } from \"react\";\nimport { get, omit } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport type SpotlightCardProps = HTMLAttributes<HTMLDivElement> & {\n  spotlightColor?: string;\n};\n\nexport function SpotlightCard({\n  spotlightColor = \"rgba(120, 119, 198, .18)\",\n  className,\n  ...props\n}: SpotlightCardProps) {\n  const [position, setPosition] = useState({ x: 50, y: 50 });\n\n  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {\n    const rect = event.currentTarget.getBoundingClientRect();\n    setPosition({\n      x: ((event.clientX - rect.left) / rect.width) * 100,\n      y: ((event.clientY - rect.top) / rect.height) * 100,\n    });\n  };\n\n  return (\n    <div\n      {...omit(props, [\"onPointerMove\"])}\n      onPointerMove={handlePointerMove}\n      className={cn(\n        \"group relative min-h-48 overflow-hidden rounded-2xl border bg-card p-6 transition-colors\",\n        className,\n      )}\n      style={{\n        ...get(props, \"style\"),\n        backgroundImage: `radial-gradient(circle at ${position.x}% ${position.y}%, ${spotlightColor}, transparent 38%)`,\n      }}\n    />\n  );\n}\n\nexport default SpotlightCard;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/effects/spotlight-card.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

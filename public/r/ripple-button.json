@@ -1,0 +1,25 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "ripple-button",
+  "title": "Shomaui Ripple Button",
+  "description": "A button with a click-position ripple animation.",
+  "dependencies": [
+    "cnfast",
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/ripple-button.tsx",
+      "content": "import {\n  forwardRef,\n  useEffect,\n  useState,\n  type ButtonHTMLAttributes,\n  type CSSProperties,\n  type MouseEvent,\n} from \"react\";\n\nimport { filter, get, last, map, omit, split, toNumber } from \"lodash\";\n\nimport { cn } from \"#/lib/utils.ts\";\n\ntype Ripple = {\n  x: number;\n  y: number;\n  size: number;\n  key: number;\n};\n\ntype RippleButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {\n  rippleColor?: string;\n  duration?: string;\n};\n\nconst RippleButton = forwardRef<HTMLButtonElement, RippleButtonProps>(\n  (props, ref) => {\n    const children = get(props, \"children\");\n    const className = get(props, \"className\");\n    const duration = get(props, \"duration\", \"600ms\");\n    const onClick = get(props, \"onClick\");\n    const rippleColor = get(props, \"rippleColor\", \"#ffffff\");\n    const [buttonRipples, setButtonRipples] = useState<Ripple[]>([]);\n    const durationInMilliseconds = toNumber(get(split(duration, \"ms\"), 0, 0));\n\n    const createRipple = (event: MouseEvent<HTMLButtonElement>) => {\n      const button = event.currentTarget;\n      const rect = button.getBoundingClientRect();\n      const rippleSize = Math.max(rect.width, rect.height);\n      const x = event.clientX - rect.left - rippleSize / 2;\n      const y = event.clientY - rect.top - rippleSize / 2;\n      const newRipple = { x, y, size: rippleSize, key: Date.now() };\n\n      setButtonRipples((previousRipples) => [...previousRipples, newRipple]);\n    };\n\n    const handleClick = (event: MouseEvent<HTMLButtonElement>) => {\n      createRipple(event);\n      onClick?.(event);\n    };\n\n    useEffect(() => {\n      const lastRipple = last(buttonRipples);\n\n      if (!lastRipple) return undefined;\n\n      const timeout = setTimeout(() => {\n        setButtonRipples((previousRipples) =>\n          filter(\n            previousRipples,\n            (ripple) => get(ripple, \"key\") !== get(lastRipple, \"key\"),\n          ),\n        );\n      }, durationInMilliseconds);\n\n      return () => clearTimeout(timeout);\n    }, [buttonRipples, duration]);\n\n    return (\n      <button\n        className={cn(\n          \"relative flex cursor-pointer items-center justify-center overflow-hidden rounded-lg border-2 bg-background px-4 py-2 text-center text-primary\",\n          className,\n        )}\n        onClick={handleClick}\n        ref={ref}\n        {...omit(props, [\n          \"children\",\n          \"className\",\n          \"duration\",\n          \"onClick\",\n          \"rippleColor\",\n        ])}\n      >\n        <div className=\"relative z-10\">{children}</div>\n        <span className=\"pointer-events-none absolute inset-0\">\n          {map(buttonRipples, (ripple) => {\n            const rippleKey = get(ripple, \"key\");\n            const rippleSize = get(ripple, \"size\");\n            const rippleX = get(ripple, \"x\");\n            const rippleY = get(ripple, \"y\");\n\n            return (\n              <span\n                className=\"absolute animate-rippling rounded-full bg-background opacity-30\"\n                key={rippleKey}\n                style={\n                  {\n                    width: `${rippleSize}px`,\n                    height: `${rippleSize}px`,\n                    top: `${rippleY}px`,\n                    left: `${rippleX}px`,\n                    backgroundColor: rippleColor,\n                    transform: \"scale(0)\",\n                    \"--duration\": duration,\n                  } as CSSProperties\n                }\n              />\n            );\n          })}\n        </span>\n      </button>\n    );\n  },\n);\n\nRippleButton.displayName = \"RippleButton\";\n\nexport { RippleButton, type RippleButtonProps };\nexport default RippleButton;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/ripple-button.tsx"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "export { cn, type ClassValue } from \"cnfast\";\n",
+      "type": "registry:lib",
+      "target": "@lib/utils.ts"
+    }
+  ],
+  "type": "registry:ui"
+}

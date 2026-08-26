@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "segmented-control",
+  "title": "Shomaui Segmented Control",
+  "description": "Base UI tab behavior presented as a compact segmented switcher.",
+  "dependencies": [
+    "@base-ui/react",
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/components/segmented-control.tsx",
+      "content": "import { useState } from \"react\";\nimport { get, map } from \"lodash\";\n\nimport { Tabs, TabsList, TabsTrigger } from \"#/components/ui/tabs\";\n\ntype SegmentedControlProps = {\n  items?: string[];\n  defaultValue?: string;\n  onValueChange?: (value: string) => void;\n};\n\nconst defaultItems = [\"Overview\", \"Activity\", \"Settings\"];\n\nexport function SegmentedControl({\n  items = defaultItems,\n  defaultValue,\n  onValueChange,\n}: SegmentedControlProps) {\n  const [value, setValue] = useState(defaultValue ?? get(items, 0, \"\"));\n\n  const handleValueChange = (nextValue: string | null) => {\n    if (!nextValue) return;\n    setValue(nextValue);\n    onValueChange?.(nextValue);\n  };\n\n  return (\n    <Tabs value={value} onValueChange={handleValueChange}>\n      <TabsList className=\"rounded-full border bg-muted/70 p-1\">\n        {map(items, (item) => (\n          <TabsTrigger key={item} value={item} className=\"rounded-full px-4\">\n            {item}\n          </TabsTrigger>\n        ))}\n      </TabsList>\n    </Tabs>\n  );\n}\n\nexport default SegmentedControl;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/components/segmented-control.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

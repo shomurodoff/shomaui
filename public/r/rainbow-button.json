@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "rainbow-button",
+  "title": "Shomaui Rainbow Button",
+  "description": "A Base UI button with animated rainbow variants and the full Shomaui size scale.",
+  "dependencies": [
+    "@base-ui/react",
+    "class-variance-authority",
+    "cnfast",
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/rainbow-button.tsx",
+      "content": "import { Button as ButtonPrimitive } from \"@base-ui/react/button\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { get, omit } from \"lodash\";\n\nimport { cn } from \"#/lib/utils.ts\";\n\nconst rainbowButtonVariants = cva(\n  \"group/rainbow-button relative inline-flex shrink-0 cursor-pointer items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4\",\n  {\n    variants: {\n      variant: {\n        default:\n          \"animate-rainbow border-0 bg-[linear-gradient(#121213,#121213),linear-gradient(#121213_50%,rgba(18,18,19,0.6)_80%,rgba(18,18,19,0)),linear-gradient(90deg,var(--color-1),var(--color-5),var(--color-3),var(--color-4),var(--color-2))] bg-[length:200%] text-primary-foreground [background-clip:padding-box,border-box,border-box] [background-origin:border-box] [border:calc(0.125rem)_solid_transparent] before:absolute before:bottom-[-20%] before:left-1/2 before:z-0 before:h-1/5 before:w-3/5 before:-translate-x-1/2 before:animate-rainbow before:bg-[length:200%] before:[background-image:linear-gradient(90deg,var(--color-1),var(--color-5),var(--color-3),var(--color-4),var(--color-2))] before:[filter:blur(0.75rem)] before:content-[''] dark:bg-[linear-gradient(#fff,#fff),linear-gradient(#fff_50%,rgba(255,255,255,0.6)_80%,rgba(0,0,0,0)),linear-gradient(90deg,var(--color-1),var(--color-5),var(--color-3),var(--color-4),var(--color-2))]\",\n        outline:\n          \"animate-rainbow bg-background text-foreground [border:1px_solid_var(--input)] before:pointer-events-none before:absolute before:bottom-[-1px] before:left-1/2 before:z-0 before:h-px before:w-3/4 before:-translate-x-1/2 before:animate-rainbow before:bg-[length:200%] before:[background-image:linear-gradient(90deg,var(--color-1),var(--color-5),var(--color-3),var(--color-4),var(--color-2))] before:[filter:blur(0.75px)] before:content-['']\",\n        link: \"bg-[linear-gradient(90deg,var(--color-1),var(--color-5),var(--color-3),var(--color-4),var(--color-2))] bg-[length:200%] bg-clip-text text-transparent underline-offset-4 hover:underline\",\n      },\n      size: {\n        default:\n          \"h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2\",\n        xs: \"h-6 gap-1 rounded-[min(var(--radius-md),10px)] px-2 text-xs in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3\",\n        sm: \"h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5\",\n        lg: \"h-9 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2\",\n        xl: \"h-11 gap-1.5 px-3 has-data-[icon=inline-end]:pr-2.5 has-data-[icon=inline-start]:pl-2.5\",\n        icon: \"size-8\",\n        \"icon-xs\":\n          \"size-6 rounded-[min(var(--radius-md),10px)] in-data-[slot=button-group]:rounded-lg [&_svg:not([class*='size-'])]:size-3\",\n        \"icon-sm\":\n          \"size-7 rounded-[min(var(--radius-md),12px)] in-data-[slot=button-group]:rounded-lg\",\n        \"icon-lg\": \"size-9\",\n        \"icon-xl\": \"size-11\",\n      },\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\",\n    },\n  },\n);\n\ntype RainbowButtonProps = ButtonPrimitive.Props &\n  VariantProps<typeof rainbowButtonVariants>;\n\nconst RainbowButton = (props: RainbowButtonProps) => {\n  const className = get(props, \"className\");\n  const variant = get(props, \"variant\", \"default\");\n  const size = get(props, \"size\", \"default\");\n\n  return (\n    <ButtonPrimitive\n      {...omit(props, [\"className\", \"variant\", \"size\"])}\n      data-slot=\"button\"\n      className={cn(rainbowButtonVariants({ variant, size, className }))}\n    />\n  );\n};\n\nexport { RainbowButton, rainbowButtonVariants, type RainbowButtonProps };\nexport default RainbowButton;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/rainbow-button.tsx"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "export { cn, type ClassValue } from \"cnfast\";\n",
+      "type": "registry:lib",
+      "target": "@lib/utils.ts"
+    }
+  ],
+  "type": "registry:ui"
+}

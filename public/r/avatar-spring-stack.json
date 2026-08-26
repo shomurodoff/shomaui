@@ -1,0 +1,28 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-spring-stack",
+  "title": "Shomaui Avatar Spring Stack",
+  "description": "An interactive overlapping avatar stack with spring hover motion.",
+  "dependencies": [
+    "motion",
+    "lodash"
+  ],
+  "registryDependencies": [
+    "https://shomaui.dev/r/avatar.json"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/avatar-spring-stack.tsx",
+      "content": "import {\n  Avatar,\n  AvatarFallback,\n  AvatarImage,\n} from \"#/components/shomaui/avatar.tsx\";\nimport { cn } from \"#/lib/utils.ts\";\nimport {\n  get,\n  map,\n  round,\n  size as collectionSize,\n  slice,\n  toUpper,\n} from \"lodash\";\nimport { AnimatePresence, motion } from \"motion/react\";\nimport { useState } from \"react\";\n\ninterface AvatarSpringStackItem {\n  src: string;\n  alt?: string;\n  label?: string;\n}\n\ninterface AvatarSpringStackProps {\n  avatars: AvatarSpringStackItem[];\n  maxVisible?: number;\n  size?: number;\n  className?: string;\n}\n\nconst AvatarSpringStack = (props: AvatarSpringStackProps) => {\n  const avatars = get(props, \"avatars\", [] as AvatarSpringStackItem[]);\n  const maxVisible = get(props, \"maxVisible\", 5);\n  const size = get(props, \"size\", 44);\n  const className = get(props, \"className\");\n  const [activeIdx, setActiveIdx] = useState<number | null>(null);\n\n  const visible = slice(avatars, 0, maxVisible);\n  const extra = collectionSize(avatars) - maxVisible;\n  const total = collectionSize(visible) + (extra > 0 ? 1 : 0);\n\n  const overlap = round(size * 0.32);\n  const step = size - overlap;\n  const spread = round(size * 0.45);\n\n  const getOffset = (idx: number) => {\n    if (activeIdx === null) return 0;\n    const d = idx - activeIdx;\n    if (d === 0) return 0;\n    return (d > 0 ? 1 : -1) * (spread / Math.abs(d));\n  };\n\n  const hasActive = activeIdx !== null;\n\n  return (\n    <div\n      className={cn(\"relative\", className)}\n      style={{ width: (total - 1) * step + size, height: size }}\n      onMouseLeave={() => setActiveIdx(null)}\n    >\n      {map(visible, (avatar, idx) => {\n        const active = activeIdx === idx;\n\n        return (\n          <motion.div\n            key={idx}\n            className=\"absolute top-0 cursor-pointer\"\n            animate={{\n              x: idx * step + getOffset(idx),\n              y: active ? -6 : 0,\n              scale: active ? 1.08 : 1,\n            }}\n            transition={{\n              x: { type: \"spring\", stiffness: 500, damping: 30 },\n              y: { type: \"spring\", stiffness: 420, damping: 22 },\n              scale: { type: \"spring\", stiffness: 420, damping: 22 },\n            }}\n            style={{\n              width: size,\n              height: size,\n              zIndex: active ? 50 : total - idx,\n            }}\n            onMouseEnter={() => setActiveIdx(idx)}\n          >\n            <div\n              className=\"size-full overflow-hidden rounded-full border-2 border-background\"\n              style={{\n                opacity: hasActive && !active ? 0.65 : 1,\n                transition: \"opacity 0.2s\",\n              }}\n            >\n              <Avatar className=\"size-full\">\n                <AvatarImage\n                  src={get(avatar, \"src\")}\n                  alt={get(avatar, \"alt\") || get(avatar, \"label\") || \"\"}\n                />\n                <AvatarFallback className=\"text-xs font-medium\">\n                  {toUpper(get(avatar, \"label[0]\", \"?\"))}\n                </AvatarFallback>\n              </Avatar>\n            </div>\n\n            <AnimatePresence>\n              {active && get(avatar, \"label\") && (\n                <motion.span\n                  initial={{ opacity: 0, y: -4 }}\n                  animate={{ opacity: 1, y: 0 }}\n                  exit={{ opacity: 0, y: -4 }}\n                  transition={{ type: \"spring\", stiffness: 380, damping: 20 }}\n                  className=\"pointer-events-none absolute left-1/2 -translate-x-1/2 whitespace-nowrap pt-1.5 text-[11px] font-medium text-muted-foreground\"\n                  style={{ top: \"100%\" }}\n                >\n                  {get(avatar, \"label\")}\n                </motion.span>\n              )}\n            </AnimatePresence>\n          </motion.div>\n        );\n      })}\n\n      {extra > 0 && (\n        <motion.div\n          className=\"absolute top-0\"\n          animate={{\n            x:\n              collectionSize(visible) * step +\n              getOffset(collectionSize(visible)),\n          }}\n          transition={{\n            type: \"spring\",\n            stiffness: 500,\n            damping: 30,\n          }}\n          style={{ width: size, height: size, zIndex: 0 }}\n        >\n          <div\n            className=\"flex size-full items-center justify-center rounded-full border-2 border-background bg-muted font-semibold text-muted-foreground\"\n            style={{\n              fontSize: round(size * 0.3),\n              opacity: hasActive ? 0.65 : 1,\n              transition: \"opacity 0.2s\",\n            }}\n          >\n            +{extra}\n          </div>\n        </motion.div>\n      )}\n    </div>\n  );\n};\n\nexport default AvatarSpringStack;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/avatar-spring-stack.tsx"
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "export { cn, type ClassValue } from \"cnfast\";\n",
+      "type": "registry:lib",
+      "target": "@lib/utils.ts"
+    }
+  ],
+  "type": "registry:ui"
+}

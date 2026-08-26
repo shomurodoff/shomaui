@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "number-ticker",
+  "title": "Shomaui Number Ticker",
+  "description": "Smooth numeric counter for metrics and dashboards.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/animations/number-ticker.tsx",
+      "content": "import { useEffect, useState } from \"react\";\nimport { clamp, get, toNumber } from \"lodash\";\n\ntype NumberTickerProps = {\n  value?: number;\n  duration?: number;\n  className?: string;\n};\n\nexport function NumberTicker({\n  value = 100,\n  duration = 900,\n  className,\n}: NumberTickerProps) {\n  const [current, setCurrent] = useState(0);\n\n  useEffect(() => {\n    const target = toNumber(value);\n    const start = performance.now();\n    let frame = 0;\n\n    const tick = (now: number) => {\n      const progress = clamp((now - start) / duration, 0, 1);\n      setCurrent(Math.round(target * progress));\n      if (progress < 1) frame = requestAnimationFrame(tick);\n    };\n\n    frame = requestAnimationFrame(tick);\n    return () => cancelAnimationFrame(frame);\n  }, [duration, value]);\n\n  return (\n    <span className={get({ className }, \"className\")} aria-label={`${value}`}>\n      {current.toLocaleString()}\n    </span>\n  );\n}\n\nexport default NumberTicker;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/animations/number-ticker.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

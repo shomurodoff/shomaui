@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "status-badge",
+  "title": "Shomaui Status Badge",
+  "description": "Consistent new, stable, beta and deprecated statuses.",
+  "dependencies": [
+    "@base-ui/react",
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/components/status-badge.tsx",
+      "content": "import type { HTMLAttributes } from \"react\";\nimport { get, omit } from \"lodash\";\n\nimport { Badge } from \"#/components/ui/badge\";\n\ntype StatusBadgeProps = HTMLAttributes<HTMLSpanElement> & {\n  status?: \"new\" | \"stable\" | \"beta\" | \"deprecated\";\n};\n\nconst statusLabel = {\n  new: \"New\",\n  stable: \"Stable\",\n  beta: \"Beta\",\n  deprecated: \"Deprecated\",\n} as const;\n\nexport function StatusBadge({ status = \"new\", ...props }: StatusBadgeProps) {\n  const label = get(statusLabel, status);\n\n  return (\n    <Badge\n      {...omit(props, [\"status\"])}\n      variant={status === \"deprecated\" ? \"destructive\" : \"outline\"}\n      className=\"rounded-full\"\n    >\n      {label}\n    </Badge>\n  );\n}\n\nexport default StatusBadge;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/components/status-badge.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}

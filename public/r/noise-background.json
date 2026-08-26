@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "noise-background",
+  "title": "Shomaui Noise Background",
+  "description": "Asset-free texture layer made from CSS gradients.",
+  "dependencies": [
+    "lodash"
+  ],
+  "files": [
+    {
+      "path": "src/components/shomaui/background/noise-background.tsx",
+      "content": "import type { HTMLAttributes } from \"react\";\nimport { get, omit } from \"lodash\";\n\nimport { cn } from \"#/lib/utils\";\n\nexport function NoiseBackground(props: HTMLAttributes<HTMLDivElement>) {\n  const className = get(props, \"className\");\n\n  return (\n    <div\n      {...omit(props, [\"className\"])}\n      className={cn(\n        \"relative isolate min-h-56 overflow-hidden rounded-2xl bg-neutral-950 text-white [background-image:radial-gradient(circle_at_20%_20%,rgba(255,255,255,.12),transparent_20%),radial-gradient(circle_at_80%_30%,rgba(255,255,255,.09),transparent_18%),radial-gradient(circle_at_50%_90%,rgba(255,255,255,.1),transparent_22%)]\",\n        className,\n      )}\n    />\n  );\n}\n\nexport default NoiseBackground;\n",
+      "type": "registry:ui",
+      "target": "@components/shomaui/background/noise-background.tsx"
+    }
+  ],
+  "type": "registry:ui"
+}
