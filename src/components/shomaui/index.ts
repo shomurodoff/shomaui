@@ -10,6 +10,7 @@ export { default as SegmentedControl } from "./components/segmented-control";
 export { default as StatusBadge } from "./components/status-badge";
 export { default as Timeline } from "./components/timeline";
 export * from "./components/reference-components";
+export * from "./components/tripled-components";
 export { default as AuroraBackground } from "./background/aurora-background";
 export { default as BubbleBackground } from "./background/bubble-background";
 export { default as DotPattern } from "./background/dot-pattern";

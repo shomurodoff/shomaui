@@ -2361,6 +2361,20 @@
           "target": "@components/shomaui/components/reference-components.tsx"
         }
       ]
+    },
+    {
+      "name": "tripled-components",
+      "type": "registry:ui",
+      "title": "Shomaui TripleD Components",
+      "description": "Original ShomaUI adaptations of UI TripleD interaction patterns, blocks and product surfaces.",
+      "dependencies": ["@base-ui/react", "lodash", "lucide-react", "motion"],
+      "files": [
+        {
+          "path": "src/components/shomaui/components/tripled-components.tsx",
+          "type": "registry:ui",
+          "target": "@components/shomaui/components/tripled-components.tsx"
+        }
+      ]
     }
   ]
 }

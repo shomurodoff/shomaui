@@ -77,6 +77,7 @@ import {
   WordRotatePreview,
 } from "./previews";
 import { referenceCatalogItems } from "./reference-data";
+import { tripledCatalogItems } from "./tripled-data";
 
 export type CatalogKind =
   "components" | "backgrounds" | "effects" | "animations" | "texts";
@@ -1064,6 +1065,7 @@ const baseCatalogItems: CatalogItem[] = [
 export const catalogItems: CatalogItem[] = concat(
   baseCatalogItems,
   referenceCatalogItems,
+  tripledCatalogItems,
 );
 
 export const getCatalogProduct = (kind: CatalogKind) =>
